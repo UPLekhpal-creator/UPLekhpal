@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>हाई-फाई मेमोरी गेम</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-color: #161b22;
+            --text-color: #c9d1d9;
+            --accent-color: #58a6ff;
+            --success-color: #3fb950;
+            --danger-color: #f85149;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            text-align: center; 
+            margin: 0;
+            padding: 50px 0;
+            background-color: var(--bg-color); 
+            color: var(--text-color);
+        }
+
+        h1 { margin-bottom: 10px; font-weight: 300; letter-spacing: 2px; }
+
+        .dashboard {
+            background-color: var(--card-color);
+            padding: 20px 30px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            border: 1px solid #30363d;
+        }
+
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 120px); 
+            gap: 20px; 
+            justify-content: center; 
+            margin-top: 40px; 
+        }
+
+        .card { 
+            width: 120px; 
+            height: 120px; 
+            background: linear-gradient(145deg, #1f242d, #161b22);
+            color: var(--accent-color); 
+            font-size: 32px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            border-radius: 20px; 
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s; 
+            box-shadow: 10px 10px 20px #080a0e, -10px -10px 20px #242d3a;
+            border: 1px solid #30363d;
+        }
+
+        .card:hover { transform: translateY(-5px); box-shadow: 15px 15px 30px #080a0e, -5px -5px 15px #242d3a; }
+        
+        .card.active { 
+            background: linear-gradient(145deg, var(--accent-color), #0984e3);
+            color: #ffffff;
+            box-shadow: 0 0 20px var(--accent-color);
+            transform: scale(0.95);
+        }
+
+        .card.success { background: var(--success-color); color: #fff; }
+        .card.wrong { background: var(--danger-color); color: #fff; }
+
+        #timer { font-size: 20px; color: var(--danger-color); font-weight: bold; margin-top: 15px; }
+        
+        button {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.2s;
+        }
+
+        button:hover { background-color: #0984e3; }
+    </style>
+</head>
+<body>
+    <h1>मेमोरी गेम</h1>
+    <div class="dashboard">
+        <div>स्टेज: <span id="stage" style="color: var(--accent-color); font-weight: bold;">1</span></div>
+        <div id="timer">समय: <span id="time-left">10</span> सेकंड</div>
+    </div>
+    
+    <div class="grid" id="grid"></div>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "[https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js](https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js)";
+  import { getAnalytics } from "[https://www.gstatic.com/firebasejs/12.19.0/firebase-analytics.js](https://www.gstatic.com/firebasejs/12.19.0/firebase-analytics.js)";
+ import { getAuth, signInWithPopup, GoogleAuthProvider } from "[https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js](https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js)";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBc_sqq9-QlVziERc6gstgLFmJMjhVEzrA",
+    authDomain: "memorymania-b89d0.firebaseapp.com",
+    projectId: "memorymania-b89d0",
+    storageBucket: "memorymania-b89d0.firebasestorage.app",
+    messagingSenderId: "200972153303",
+    appId: "1:200972153303:web:0b9a214810861bdb025b92",
+    measurementId: "G-24BWB5Y2L3"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+</script>
+  <script>
+        const grid = document.getElementById('grid');
+        const stageDisplay = document.getElementById('stage');
+        const timeLeftDisplay = document.getElementById('time-left');
+        let stage = 1;
+        let sequence = [];
+        let playerSequence = [];
+        let canClick = false;
+        let timer;
+        let timeLeft = 10;
+
+        function createGrid() {
+            grid.innerHTML = '';
+            for (let i = 0; i < 4; i++) {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.dataset.id = i;
+                card.addEventListener('click', () => handleCardClick(i));
+                grid.appendChild(card);
+            }
+        }
+
+        async function startGame() {
+            try { await signInWithPopup(auth, provider); } catch (error) { console.error("Error signing in: ", error); alert("Login failed!"); return; }
+            sequence = [];
+            playerSequence = [];
+            canClick = false;
+            clearInterval(timer);
+            timeLeft = 10 + Math.floor(stage * 1.5);
+            timeLeftDisplay.innerText = timeLeft;
+
+            for (let i = 0; i < stage; i++) {
+                sequence.push(Math.floor(Math.random() * 4));
+            }
+            await showSequence();
+            canClick = true;
+            startTimer();
+        }
+
+        async function showSequence() {
+            const cards = document.querySelectorAll('.card');
+            for (let id of sequence) {
+                await new Promise(resolve => setTimeout(resolve, 600));
+                cards[id].classList.add('active');
+                await new Promise(resolve => setTimeout(resolve, 600));
+                cards[id].classList.remove('active');
+            }
+        }
+
+        function startTimer() {
+            timer = setInterval(() => {
+                timeLeft--;
+                timeLeftDisplay.innerText = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    canClick = false;
+                    alert('समय समाप्त! फिर से कोशिश करें।');
+                    startGame();
+                }
+            }, 1000);
+        }
+
+        function handleCardClick(id) {
+            if (!canClick) return;
+            playerSequence.push(id);
+            const cards = document.querySelectorAll('.card');
+            cards[id].classList.add('active');
+            setTimeout(() => cards[id].classList.remove('active'), 200);
+
+            if (playerSequence[playerSequence.length - 1] !== sequence[playerSequence.length - 1]) {
+                clearInterval(timer);
+                canClick = false;
+                cards[id].classList.add('wrong');
+                setTimeout(() => cards[id].classList.remove('wrong'), 500);
+                alert('गलत! फिर से कोशिश करें।');
+                startGame();
+                return;
+            }
+
+            if (playerSequence.length === sequence.length) {
+                clearInterval(timer);
+                canClick = false;
+                if (stage < 20) {
+                    alert('बधाई हो! आप अगले स्टेज के लिए चुने गए हैं।');
+                    stage++;
+                    stageDisplay.innerText = stage;
+                    startGame();
+                } else {
+                    alert('शानदार! आपने सभी 20 स्टेज पूरे कर लिए!');
+                    stage = 1;
+                    stageDisplay.innerText = stage;
+                    startGame();
+                }
+            }
+        }
+
+        createGrid();
+        startGame();
+    </script>
+</body>
+</html>
