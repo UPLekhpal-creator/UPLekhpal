@@ -143,7 +143,6 @@
         }
 
         async function startGame() {
-            try { await signInWithPopup(auth, provider); } catch (error) { console.error("Error signing in: ", error); alert("Login failed!"); return; }
             sequence = [];
             playerSequence = [];
             canClick = false;
