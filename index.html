@@ -1,100 +1,87 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>जन सेवा केंद्र</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
-        header { background-color: #009879; color: #ffffff; padding: 2rem 0; text-align: center; }
-        nav { display: flex; justify-content: center; background-color: #333; }
-        nav a { color: white; padding: 14px 20px; text-decoration: none; }
-        nav a:hover { background-color: #ddd; color: black; }
-        .container { padding: 20px; max-width: 1000px; margin: auto; }
-        .section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #009879; }
-        h2 { padding-bottom: 10px; margin-top: 0; }
-        ul { list-style-type: none; padding: 0; }
-        li { padding: 8px 0; border-bottom: 1px solid #ddd; }
-        
-        /* अलग-अलग सेक्शन के रंग */
-        .doc-section { border-left-color: #007bff; } /* नीला */
-        .doc-section h2 { color: #007bff; }
-        
-        .land-section { border-left-color: #28a745; } /* हरा */
-        .land-section h2 { color: #28a745; }
-        
-        .id-section { border-left-color: #ffc107; } /* पीला */
-        .id-section h2 { color: #fe9e09; }
-        
-        .fin-section { border-left-color: #dc3545; } /* लाल */
-        .fin-section h2 { color: #dc3545; }
-        
-        .delivery-section { border-left-color: #17a2b8; } /* आसमानी */
-        .delivery-section h2 { color: #17a2b8; }
-        
-        footer { background-color: #333; color: white; text-align: center; padding: 15px 0; margin-top: 20px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>जन सेवा केंद्र</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: linear-gradient(135deg, #e3f2fd, #b3e5fc); min-height: 100vh; color: #333; }
+    header { background: linear-gradient(90deg, #009879, #00796b); color: #ffffff; padding: 3rem 1rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    header h1 { margin: 0; font-size: 2.5rem; letter-spacing: 2px; }
+    header p { margin: 10px 0 0; font-size: 1.1rem; opacity: 0.9; }
+    nav { display: flex; justify-content: center; background-color: #004d40; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+    nav a { color: white; padding: 16px 25px; text-decoration: none; font-size: 1.1rem; transition: background-color 0.3s; }
+    nav a:hover { background-color: #00796b; }
+    .container { padding: 30px; max-width: 1000px; margin: auto; }
+    section { background: rgba(255, 255, 255, 0.9); padding: 25px; margin-bottom: 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-left: 8px solid #009879; }
+    h2 { color: #00796b; padding-bottom: 15px; border-bottom: 2px solid #009879; margin-top: 0; }
+    ul { list-style-type: none; padding: 0; }
+    li { padding: 12px; border-bottom: 1px solid #e0e0e0; font-size: 1.1rem; }
+    li:last-child { border-bottom: none; }
+    li a { color: #00796b; text-decoration: none; font-weight: 500; }
+    li a:hover { text-decoration: underline; }
+    footer { text-align: center; padding: 20px; color: #555; font-size: 0.9rem; }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>जन सेवा केंद्र</h1>
-        <p>आपकी सभी ऑनलाइन सेवाएँ, एक ही जगह पर</p>
-    </header>
-    <nav>
-        <a href="#">होम</a>
-        <a href="#">सेवाएँ</a>
-        <a href="#">संपर्क</a>
-    </nav>
-    <div class="container">
-        <div class="section doc-section">
-            <h2>दस्तावेज़ और पेंशन सेवाएँ</h2>
-            <ul>
-                <li>आय, जाति और मूल निवास प्रमाण-पत्र</li>
-                <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScwvQv984keFffunhanm1BGChG9Gjf5V7mnSaR8CF0UKl_5ig/viewform?usp=header">पैन कार्ड और जन्म प्रमाण-पत्र</a></li>
-                <li>वृद्धा पेंशन (ओल्ड ऐज पेंशन)</li>
-                <li>चरित्र प्रमाण-पत्र</li>
-            </ul>
-        </div>
-        <div class="section land-section">
-            <h2>भूमि और कृषि सेवाएँ</h2>
-            <ul>
-                <li>खतौनी की नकल और भूमि सुधार</li>
-                <li>खसरा और हिस्सा सुधार</li>
-                <li>फार्मर केवाईसी (KYC) और फार्मर रजिस्टर</li>
-                <li>पीएम किसान सम्मान निधि</li>
-            </ul>
-        </div>
-        <div class="section id-section">
-            <h2>पहचान और सुधार</h2>
-            <ul>
-                <li>आधार कार्ड में नाम, डेट ऑफ बर्थ और मोबाइल अपडेट</li>
-                <li>नया वोटर कार्ड और वोटर लिस्ट में सुधार</li>
-                <li>राशन कार्ड में नाम जोड़ना और नया कार्ड</li>
-                <li>आयुष्मान कार्ड और ई-श्रम कार्ड</li>
-                <li>नरेगा जॉब कार्ड डाउनलोड</li>
-                <li>परिवार रजिस्टर की नकल</li>
-            </ul>
-        </div>
-        <div class="section fin-section">
-            <h2>वित्तीय और साइबर सहायता</h2>
-            <ul>
-                <li>पीएफ (PF) निकलवाना</li>
-                <li>साइबर फ्रॉड की समस्या का समाधान</li>
-                <li>फ्री ऑनलाइन वकील की सलाह</li>
-            </ul>
-        </div>
-        <div class="section delivery-section">
-            <h2>वितरण और अन्य सेवाएँ</h2>
-            <ul>
-                <li>होम डिलीवरी: सभी दस्तावेज़ घर पर मँगवाएँ</li>
-                <li>पोस्ट ऑफिस सेवाएँ और ऑनलाइन एफआईआर</li>
-                <li>पुलिस वेरिफिकेशन</li>
-                <li>ई-कॉमर्स और पार्सल सेवा</li>
-            </ul>
-        </div>
-    </div>
-    <footer>
-        <p>&copy; २०२६ जन सेवा केंद्र. सभी अधिकार सुरक्षित।</p>
-    </footer>
+
+  <header>
+    <h1>जन सेवा केंद्र</h1>
+    <p>आपकी सभी ऑनलाइन सेवाएँ, एक ही जगह पर</p>
+  </header>
+
+  <nav>
+    <a href="#">होम</a>
+    <a href="#">सेवाएँ</a>
+    <a href="#">संपर्क</a>
+  </nav>
+
+  <div class="container">
+    <section>
+      <h2>दस्तावेज़ और पेंशन सेवाएँ</h2>
+      <ul>
+        <li>आय, जाति और मूल निवास प्रमाण-पत्र</li>
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScwvQv984kEfffunhann1B6CH69gJf5V7mnsAR8CFOuKl_5Ig/viewform">पैन कार्ड और जन्म प्रमाण-पत्र</a></li>
+        <li>वृद्धा पेंशन (ओल्ड ऐज पेंशन)</li>
+        <li>चरित्र प्रमाण-पत्र</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>भूमि और कृषि सेवाएँ</h2>
+      <ul>
+        <li>खतौनी की नकल और भूमि सुधार</li>
+        <li>खसरा और हिस्सा सुधार</li>
+        <li>फार्मर केवाईसी (KYC) और फार्मर रजिस्टर</li>
+        <li>पीएम किसान सम्मान निधि</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>पहचान और सुधार</h2>
+      <ul>
+        <li>आधार कार्ड में नाम, डेट ऑफ बर्थ और मोबाइल अपडेट</li>
+        <li>नया वोटर कार्ड और वोटर लिस्ट में सुधार</li>
+        <li>राशन कार्ड में नाम जोड़ना और नया कार्ड</li>
+        <li>आयुष्मान कार्ड और ई-श्रम कार्ड</li>
+        <li>नरेगा जॉब कार्ड डाउनलोड</li>
+        <li>परिवार रजिस्टर की नकल</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>वित्तीय और साइबर सहायता</h2>
+      <ul>
+        <li>पीएफ (PF) निकलवाना</li>
+        <li>साइबर फ्रॉड की समस्या का समाधान</li>
+        <li>फ्री ऑनलाइन वकील की सलाह</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 जन सेवा केंद्र. सभी अधिकार सुरक्षित।</p>
+  </footer>
+
 </body>
 </html>
