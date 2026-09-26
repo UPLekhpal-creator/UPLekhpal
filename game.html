@@ -3,51 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>गेमिंग ऐप</title>
+    <title>गेमज़ोन प्रो</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        #app-container { background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 300px; text-align: center; }
-        button { background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px; }
-        button:hover { background-color: #0056b3; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        #app-container { background-color: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); width: 350px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); }
+        h1 { margin-bottom: 20px; font-weight: 300; letter-spacing: 2px; }
+        button { background: linear-gradient(90deg, #4cc9f0, #4361ee); color: white; padding: 12px 25px; border: none; border-radius: 25px; cursor: pointer; font-size: 16px; transition: transform 0.2s, box-shadow 0.2s; margin-top: 15px; width: 100%; box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4); }
+        button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(76, 201, 240, 0.6); }
+        button:active { transform: translateY(0); }
+        .wallet-box { font-size: 20px; margin-bottom: 20px; background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 15px; color: #4cc9f0; }
         .hidden { display: none; }
+        #game-area { margin-top: 20px; }
+        .emoji-display { font-size: 50px; margin: 20px 0; min-height: 70px; }
     </style>
 </head>
 <body>
     <div id="app-container">
         <section id="login-section">
-            <h1>लॉगिन करें</h1>
-            <button id="google-login">Google से लॉगिन करें</button>
+            <h1>गेमज़ोन प्रो</h1>
+            <p>तैयार हैं जीतने के लिए?</p>
+            <button id="google-login">🎮 Google से लॉगिन करें</button>
         </section>
         <section id="dashboard-section" class="hidden">
             <h1>डैशबोर्ड</h1>
-            <p>वॉलेट बैलेंस: <span id="wallet-balance">₹0</span></p>
-            <!-- रेज़रपे का फॉर्म कोड यहाँ डालें -->
-            <div id="game-zone">
-                <h2>गेम ज़ोन</h2>
-                <button class="play-game" data-cost="10">गेम खेलें (₹10)</button>
+            <div class="wallet-box">
+                आपका वॉलेट: <span id="wallet-balance">₹0</span>
+            </div>
+            <!-- रेज़रपे का फॉर्म यहाँ डालें -->
+            <div id="game-area">
+                <h2>🎮 गेम ज़ोन 🎮</h2>
+                <div class="emoji-display" id="emoji-result">🤔</div>
+                <button class="play-game" data-cost="10">🎲 गेम खेलें (₹10)</button>
             </div>
         </section>
     </div>
     <script>
         let balance = 0;
+        // साउंड इफेक्ट्स
+        const winSound = new Audio('https://www.soundjay.com/button/beep-07.wav');
+        const loseSound = new Audio('https://www.soundjay.com/button/beep-09.wav');
+
         document.getElementById('google-login').addEventListener('click', () => {
             document.getElementById('login-section').classList.add('hidden');
             document.getElementById('dashboard-section').classList.remove('hidden');
         });
+
         document.querySelector('.play-game').addEventListener('click', (e) => {
             const cost = parseInt(e.target.dataset.cost);
+            const emojiDisplay = document.getElementById('emoji-result');
+            
             if (balance >= cost) {
                 balance -= cost;
                 document.getElementById('wallet-balance').innerText = `₹${balance}`;
+                
                 const isWin = Math.random() < 0.5;
                 if (isWin) {
                     balance += cost * 2;
                     document.getElementById('wallet-balance').innerText = `₹${balance}`;
-                    alert('आप जीत गए!');
+                    emojiDisplay.innerHTML = '🎉 जीत गए! 💰';
+                    winSound.play();
                 } else {
-                    alert('आप हार गए, फिर से कोशिश करें।');
+                    emojiDisplay.innerHTML = '😢 हार गए! 💔';
+                    loseSound.play();
                 }
             } else {
+                emojiDisplay.innerHTML = '⚠️';
                 alert('कृपया बैलेंस जोड़ें।');
             }
         });
