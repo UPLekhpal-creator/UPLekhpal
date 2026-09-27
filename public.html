@@ -1,0 +1,2902 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>airport Job Private Recruitment Application Portal</title>
+
+<!-- Razorpay -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- PDF Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,"Noto Sans Devanagari",sans-serif;
+    background:#f2f5f8;
+    color:#202124;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:15px;
+}
+
+.header{
+    background:white;
+    border-radius:16px;
+    padding:22px;
+    text-align:center;
+    box-shadow:0 4px 20px rgba(0,0,0,.08);
+    margin-bottom:15px;
+}
+
+.header h1{
+    margin:0 0 8px;
+    font-size:28px;
+    color:#153b70;
+}
+
+.header p{
+    margin:5px 0;
+    color:#555;
+}
+
+.notice{
+    background:#fff4d5;
+    border:1px solid #e0bd56;
+    border-radius:10px;
+    padding:12px;
+    margin-top:15px;
+    font-size:14px;
+}
+
+.vacancy{
+    margin-top:15px;
+    background:#f6f9ff;
+    border:1px solid #d8e2f1;
+    padding:15px;
+    border-radius:10px;
+}
+
+.vacancy table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.vacancy th,
+.vacancy td{
+    border:1px solid #ccd4df;
+    padding:9px;
+    text-align:center;
+}
+
+.vacancy th{
+    background:#e7eef9;
+}
+
+.steps{
+    display:flex;
+    gap:7px;
+    margin:15px 0;
+    overflow-x:auto;
+}
+
+.step-indicator{
+    flex:1;
+    min-width:125px;
+    padding:12px 7px;
+    text-align:center;
+    background:#dce2e8;
+    border-radius:8px;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.step-indicator.active{
+    background:#1769aa;
+    color:white;
+}
+
+.step-indicator.done{
+    background:#2e7d32;
+    color:white;
+}
+
+.card{
+    background:white;
+    padding:24px;
+    border-radius:16px;
+    box-shadow:0 4px 20px rgba(0,0,0,.07);
+}
+
+.step{
+    display:none;
+}
+
+.step.active{
+    display:block;
+}
+
+h2{
+    margin-top:0;
+    color:#153b70;
+}
+
+h3{
+    margin-top:25px;
+    padding-bottom:8px;
+    border-bottom:1px solid #ddd;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+}
+
+label{
+    font-weight:bold;
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #b8c0ca;
+    border-radius:8px;
+    font-size:15px;
+    background:white;
+}
+
+textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#1769aa;
+    box-shadow:0 0 0 2px rgba(23,105,170,.1);
+}
+
+small{
+    color:#666;
+    margin-top:5px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:25px;
+}
+
+button{
+    border:0;
+    border-radius:8px;
+    padding:13px 22px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+}
+
+.next{
+    background:#1769aa;
+    color:white;
+}
+
+.back{
+    background:#666;
+    color:white;
+}
+
+.pay{
+    background:#16803c;
+    color:white;
+}
+
+.download{
+    background:#7b1fa2;
+    color:white;
+}
+
+.preview{
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+.preview img{
+    width:120px;
+    height:150px;
+    object-fit:cover;
+    border:1px solid #aaa;
+    border-radius:8px;
+}
+
+.preview .signature{
+    height:80px;
+    object-fit:contain;
+}
+
+.review{
+    background:#f7f9fc;
+    border:1px solid #dde4ed;
+    border-radius:10px;
+    padding:18px;
+    line-height:1.8;
+}
+
+.payment-box{
+    text-align:center;
+    border:2px dashed #bfc7d0;
+    border-radius:12px;
+    padding:30px 15px;
+}
+
+.price{
+    font-size:38px;
+    font-weight:bold;
+    color:#16803c;
+    margin:15px;
+}
+
+.success{
+    display:none;
+    text-align:center;
+    padding:30px 10px;
+}
+
+.registration{
+    display:inline-block;
+    padding:15px 22px;
+    background:#e7f6eb;
+    border:1px solid #a9d8b4;
+    border-radius:10px;
+    font-size:27px;
+    font-weight:bold;
+    margin:15px;
+    letter-spacing:1px;
+}
+
+.status{
+    padding:10px;
+    background:#e7f6eb;
+    color:#16652c;
+    border-radius:8px;
+    display:inline-block;
+}
+
+.footer{
+    text-align:center;
+    color:#666;
+    font-size:13px;
+    padding:25px 10px;
+}
+
+/* PDF PREVIEW */
+#pdfArea{
+    position:absolute;
+    left:-10000px;
+    top:0;
+    width:794px;
+    background:white;
+    padding:35px;
+    color:#111;
+}
+
+.pdf-header{
+    text-align:center;
+    border-bottom:2px solid #222;
+    padding-bottom:15px;
+    margin-bottom:20px;
+}
+
+.pdf-title{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.pdf-subtitle{
+    font-size:15px;
+    margin-top:5px;
+}
+
+.pdf-photo{
+    width:120px;
+    height:150px;
+    object-fit:cover;
+    border:1px solid #333;
+}
+
+.pdf-signature{
+    width:150px;
+    height:70px;
+    object-fit:contain;
+}
+
+.pdf-section{
+    margin-top:18px;
+    font-size:18px;
+    font-weight:bold;
+    background:#eeeeee;
+    padding:7px;
+}
+
+.pdf-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:8px;
+    font-size:13px;
+}
+
+.pdf-table td,
+.pdf-table th{
+    border:1px solid #555;
+    padding:7px;
+    vertical-align:top;
+}
+
+.pdf-label{
+    width:30%;
+    font-weight:bold;
+}
+
+@media(max-width:700px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    .header h1{
+        font-size:22px;
+    }
+
+    .card{
+        padding:15px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    button{
+        width:100%;
+    }
+
+    .vacancy{
+        overflow-x:auto;
+    }
+
+    .vacancy table{
+        min-width:650px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ================= HEADER ================= -->
+
+<div class="header">
+
+<h1 id="organizationName">
+airport Uttar Pradesh government job
+</h1>
+
+<p>
+airport jobPrivate Recruitment Application Portal
+</p>
+
+<p>
+Recruitment Application 2026
+</p>
+
+<div class="notice">
+<strong>Important Notice:</strong><br>
+यह एक airport job  Private Recruitment/Application Portal है।
+ Government Department की official website  authorization hai 
+</div>
+
+<div class="vacancy">
+
+<h3>Vacancy Information</h3>
+
+<table>
+<thead>
+<tr>
+<th>Post</th>
+<th>Qualification</th>
+<th>Salary</th>
+<th>Posts</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Customer Service Associate (CSA)</td>
+<td>10+2 Pass</td>
+<td>₹16,000 – ₹30,000</td>
+<td>3,108</td>
+</tr>
+
+<tr>
+<td>Housekeeping / Loader</td>
+<td>10th Pass</td>
+<td>₹12,000 – ₹22,000</td>
+<td>1,103</td>
+</tr>
+
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+
+<!-- ================= STEPS ================= -->
+
+<div class="steps">
+
+<div class="step-indicator active" id="indicator1">
+1. Personal
+</div>
+
+<div class="step-indicator" id="indicator2">
+2. Personal Info
+</div>
+
+<div class="step-indicator" id="indicator3">
+3. Address
+</div>
+
+<div class="step-indicator" id="indicator4">
+4. Qualification
+</div>
+
+<div class="step-indicator" id="indicator5">
+Payment
+</div>
+
+</div>
+
+
+<div class="card">
+
+<form id="applicationForm">
+
+<!-- ================= STEP 1 ================= -->
+
+<div class="step active" id="step1">
+
+<h2>Step 1 — Personal Details</h2>
+
+<div class="grid">
+
+<div class="field">
+<label>Applicant Full Name *</label>
+<input
+type="text"
+id="name"
+name="name"
+required
+maxlength="100">
+</div>
+
+<div class="field">
+<label>Father's Name *</label>
+<input
+type="text"
+id="father"
+name="father"
+required
+maxlength="100">
+</div>
+
+<div class="field">
+<label>Mother's Name *</label>
+<input
+type="text"
+id="mother"
+name="mother"
+required
+maxlength="100">
+</div>
+
+<div class="field">
+<label>Mobile Number *</label>
+<input
+type="tel"
+id="mobile"
+name="mobile"
+required
+maxlength="10"
+pattern="[6-9][0-9]{9}">
+<small>10 digit mobile number</small>
+</div>
+
+<div class="field">
+<label>Email ID *</label>
+<input
+type="email"
+id="email"
+name="email"
+required>
+</div>
+
+<div class="field">
+<label>Gender *</label>
+
+<select id="gender" name="gender" required>
+<option value="">Select Gender</option>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select>
+
+</div>
+
+<div class="field full">
+
+<label>Select Post *</label>
+
+<select id="postName" name="postName" required>
+
+<option value="">
+Select Vacancy
+</option>
+
+<option value="Customer Service Associate (CSA)">
+Customer Service Associate (CSA) — 10+2 Pass
+</option>
+
+<option value="Housekeeping / Loader">
+Housekeeping / Loader — 10th Pass
+</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Passport Size Photo *</label>
+
+<input
+type="file"
+id="photo"
+accept=".jpg,.jpeg,.png,image/jpeg,image/png"
+required>
+
+<small>
+Only JPG/JPEG/PNG — 5 KB to 1 MB
+</small>
+
+</div>
+
+<div class="field">
+
+<label>Signature *</label>
+
+<input
+type="file"
+id="signature"
+accept=".jpg,.jpeg,.png,image/jpeg,image/png"
+required>
+
+<small>
+Only JPG/JPEG/PNG — 5 KB to 1 MB
+</small>
+
+</div>
+
+</div>
+
+
+<div class="preview">
+
+<div>
+<strong>Photo Preview</strong><br>
+<img id="photoPreview" style="display:none">
+</div>
+
+<div>
+<strong>Signature Preview</strong><br>
+<img
+id="signaturePreview"
+class="signature"
+style="display:none">
+</div>
+
+</div>
+
+
+<div class="buttons">
+
+<div></div>
+
+<button
+type="button"
+class="next"
+onclick="nextStep()">
+Next →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= STEP 2 ================= -->
+
+<div class="step" id="step2">
+
+<h2>Step 2 — Personal Information</h2>
+
+<div class="grid">
+
+<div class="field">
+
+<label>Date of Birth *</label>
+
+<input
+type="date"
+id="dob"
+required>
+
+</div>
+
+<div class="field">
+
+<label>Category *</label>
+
+<select id="category" required>
+
+<option value="">
+Select Category
+</option>
+
+<option>General</option>
+<option>OBC</option>
+<option>SC</option>
+<option>ST</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="buttons">
+
+<button
+type="button"
+class="back"
+onclick="previousStep()">
+← Back
+</button>
+
+<button
+type="button"
+class="next"
+onclick="nextStep()">
+Next →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= STEP 3 ================= -->
+
+<div class="step" id="step3">
+
+<h2>Step 3 — Address Details</h2>
+
+<div class="grid">
+
+<div class="field">
+<label>Village / Town *</label>
+<input id="village" required>
+</div>
+
+<div class="field">
+<label>Post Office *</label>
+<input id="postOffice" required>
+</div>
+
+<div class="field">
+<label>Tehsil *</label>
+<input id="tehsil" required>
+</div>
+
+<div class="field">
+<label>District *</label>
+<input id="district" required>
+</div>
+
+<div class="field">
+<label>State *</label>
+
+<input
+id="state"
+value="Uttar Pradesh"
+required>
+
+</div>
+
+<div class="field">
+<label>PIN Code *</label>
+
+<input
+id="pincode"
+maxlength="6"
+pattern="[0-9]{6}"
+required>
+
+</div>
+
+<div class="field full">
+
+<label>Permanent Address *</label>
+
+<textarea
+id="permanentAddress"
+required>
+</textarea>
+
+</div>
+
+<div class="field full">
+
+<label>Correspondence Address</label>
+
+<textarea
+id="correspondenceAddress">
+</textarea>
+
+</div>
+
+</div>
+
+
+<div class="buttons">
+
+<button
+type="button"
+class="back"
+onclick="previousStep()">
+← Back
+</button>
+
+<button
+type="button"
+class="next"
+onclick="nextStep()">
+Next →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= STEP 4 ================= -->
+
+<div class="step" id="step4">
+
+<h2>Step 4 — Educational Qualification</h2>
+
+
+<h3>High School / 10th</h3>
+
+<div class="grid">
+
+<div class="field">
+<label>Board *</label>
+<input id="hsBoard" required>
+</div>
+
+<div class="field">
+<label>School Name *</label>
+<input id="hsSchool" required>
+</div>
+
+<div class="field">
+<label>Passing Year *</label>
+<input
+id="hsYear"
+maxlength="4"
+required>
+</div>
+
+<div class="field">
+<label>Roll Number</label>
+<input id="hsRoll">
+</div>
+
+<div class="field">
+<label>Marksheet Number</label>
+<input id="hsMarksheet">
+</div>
+
+<div class="field">
+<label>Total Marks</label>
+<input
+type="number"
+id="hsTotal">
+</div>
+
+<div class="field">
+<label>Obtained Marks</label>
+<input
+type="number"
+id="hsObtained">
+</div>
+
+<div class="field">
+<label>Percentage</label>
+<input
+type="number"
+step="0.01"
+id="hsPercentage">
+</div>
+
+</div>
+
+
+<h3>Intermediate / 12th</h3>
+
+<div class="grid">
+
+<div class="field">
+<label>Board</label>
+<input id="interBoard">
+</div>
+
+<div class="field">
+<label>School / College Name</label>
+<input id="interCollege">
+</div>
+
+<div class="field">
+<label>Passing Year</label>
+<input id="interYear">
+</div>
+
+<div class="field">
+<label>Roll Number</label>
+<input id="interRoll">
+</div>
+
+<div class="field">
+<label>Marksheet Number</label>
+<input id="interMarksheet">
+</div>
+
+<div class="field">
+<label>Total Marks</label>
+<input
+type="number"
+id="interTotal">
+</div>
+
+<div class="field">
+<label>Obtained Marks</label>
+<input
+type="number"
+id="interObtained">
+</div>
+
+<div class="field">
+<label>Percentage</label>
+<input
+type="number"
+step="0.01"
+id="interPercentage">
+</div>
+
+</div>
+
+
+<h3>Other Qualification</h3>
+
+<div class="grid">
+
+<div class="field">
+<label>Qualification</label>
+<input id="otherQualification">
+</div>
+
+<div class="field">
+<label>Institution</label>
+<input id="otherInstitution">
+</div>
+
+<div class="field">
+<label>Passing Year</label>
+<input id="otherYear">
+</div>
+
+<div class="field">
+<label>Percentage</label>
+<input id="otherPercentage">
+</div>
+
+</div>
+
+
+<div class="review">
+
+<label>
+
+<input
+type="checkbox"
+id="declaration"
+required>
+
+मैं घोषणा करता/करती हूँ कि मेरे द्वारा दी गई जानकारी
+मेरी जानकारी के अनुसार सही है।
+
+</label>
+
+</div>
+
+
+<div class="buttons">
+
+<button
+type="button"
+class="back"
+onclick="previousStep()">
+← Back
+</button>
+
+<button
+type="button"
+class="next"
+onclick="goToPayment()">
+Review & Payment →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= STEP 5 PAYMENT ================= -->
+
+<div class="step" id="step5">
+
+<h2>Application Fee & Payment</h2>
+
+<div
+class="review"
+id="reviewBox">
+</div>
+
+<br>
+
+<div class="payment-box">
+
+<h3>
+Application Fee
+</h3>
+
+<div class="price">
+₹100
+</div>
+
+<p>
+Payment successful होने के बाद ही Final Submission
+का विकल्प खुलेगा।
+</p>
+
+<button
+type="button"
+class="pay"
+id="paymentButton"
+onclick="payNow()">
+
+Pay ₹100 & Continue
+
+</button>
+
+<p id="paymentStatus"></p>
+
+</div>
+
+</div>
+
+</form>
+
+
+<!-- ================= SUCCESS ================= -->
+
+<div
+class="success"
+id="successBox">
+
+<h2>
+Application Submitted Successfully
+</h2>
+
+<p>
+Payment status:
+</p>
+
+<div class="status">
+PAID ✓
+</div>
+
+<br>
+
+<div
+class="registration"
+id="registrationNumber">
+</div>
+
+<p>
+यह आपका application registration number है।
+</p>
+
+<button
+class="download"
+onclick="downloadPDF()">
+Download Application PDF
+</button>
+
+<br><br>
+
+<button
+class="back"
+onclick="location.reload()">
+New Application
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= PDF CONTENT ================= -->
+
+<div id="pdfArea">
+
+<div class="pdf-header">
+
+<div class="pdf-title">
+<span id="pdfOrgName"></span>
+</div>
+
+<div class="pdf-subtitle">
+PRIVATE RECRUITMENT APPLICATION
+</div>
+
+<div>
+Application Form 2026
+</div>
+
+</div>
+
+
+<table class="pdf-table">
+
+<tr>
+
+<td class="pdf-label">
+Registration Number
+</td>
+
+<td id="pdfReg"></td>
+
+<td rowspan="4" style="text-align:center">
+
+<img
+id="pdfPhoto"
+class="pdf-photo">
+
+</td>
+
+</tr>
+
+<tr>
+<td class="pdf-label">Application Date</td>
+<td id="pdfDate"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">Selected Post</td>
+<td id="pdfPost"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">Application Fee</td>
+<td>₹100 — PAID</td>
+</tr>
+
+</table>
+
+
+<div class="pdf-section">
+Personal Details
+</div>
+
+<table class="pdf-table">
+
+<tr>
+<td class="pdf-label">Applicant Name</td>
+<td id="pdfName"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">Father's Name</td>
+<td id="pdfFather"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">Mother's Name</td>
+<td id="pdfMother"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">Mobile</td>
+<td id="pdfMobile"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">Email</td>
+<td id="pdfEmail"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">Gender</td>
+<td id="pdfGender"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">Date of Birth</td>
+<td id="pdfDob"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">Category</td>
+<td id="pdfCategory"></td>
+</tr>
+
+</table>
+
+
+<div class="pdf-section">
+Address Details
+</div>
+
+<table class="pdf-table">
+
+<tr>
+<td class="pdf-label">Village / Town</td>
+<td id="pdfVillage"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">Post Office</td>
+<td id="pdfPostOffice"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">Tehsil</td>
+<td id="pdfTehsil"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">District</td>
+<td id="pdfDistrict"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">State</td>
+<td id="pdfState"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">PIN Code</td>
+<td id="pdfPincode"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">Permanent Address</td>
+<td id="pdfPermanent"></td>
+</tr>
+
+<tr>
+<td class="pdf-label">Correspondence Address</td>
+<td id="pdfCorrespondence"></td>
+</tr>
+
+</table>
+
+
+<div class="pdf-section">
+Educational Qualification
+</div>
+
+<table class="pdf-table">
+
+<tr>
+<th>Qualification</th>
+<th>Board</th>
+<th>School/College</th>
+<th>Year</th>
+<th>Marks</th>
+<th>Percentage</th>
+</tr>
+
+<tr>
+
+<td>High School</td>
+
+<td id="pdfHsBoard"></td>
+
+<td id="pdfHsSchool"></td>
+
+<td id="pdfHsYear"></td>
+
+<td>
+<span id="pdfHsObtained"></span> /
+<span id="pdfHsTotal"></span>
+</td>
+
+<td id="pdfHsPercentage"></td>
+
+</tr>
+
+<tr>
+
+<td>Intermediate</td>
+
+<td id="pdfInterBoard"></td>
+
+<td id="pdfInterCollege"></td>
+
+<td id="pdfInterYear"></td>
+
+<td>
+<span id="pdfInterObtained"></span> /
+<span id="pdfInterTotal"></span>
+</td>
+
+<td id="pdfInterPercentage"></td>
+
+</tr>
+
+</table>
+
+
+<div class="pdf-section">
+Payment Details
+</div>
+
+<table class="pdf-table">
+
+<tr>
+<td class="pdf-label">Application Fee</td>
+<td>₹100</td>
+</tr>
+
+<tr>
+<td class="pdf-label">Payment Status</td>
+<td>PAID</td>
+</tr>
+
+<tr>
+<td class="pdf-label">Payment ID</td>
+<td id="pdfPaymentId"></td>
+</tr>
+
+</table>
+
+
+<div style="margin-top:35px;text-align:right">
+
+<p>
+Applicant Signature
+</p>
+
+<img
+id="pdfSignature"
+class="pdf-signature">
+
+</div>
+
+
+<div style="margin-top:30px;font-size:11px">
+
+<strong>Declaration:</strong>
+
+I declare that the information provided in this application
+is true and correct to the best of my knowledge.
+
+</div>
+
+
+<div
+style="margin-top:25px;text-align:center;font-size:10px;border-top:1px solid #777;padding-top:10px">
+
+Private Recruitment Application Portal<br>
+
+<span id="pdfFooter"></span>
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+<strong>Private Recruitment Application Portal</strong>
+
+<br><br>
+
+For authorized recruitment use only.
+
+<br><br>
+
+Application Fee: ₹100
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   CONFIGURATION
+===================================================== */
+
+/*
+ * IMPORTANT:
+ * Put ONLY your Razorpay KEY ID here.
+ *
+ * Never put Razorpay Secret Key in this file.
+ */
+const RAZORPAY_KEY_ID = "https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Tf1agSEA3hN5mU";
+
+
+/*
+ * Replace with your authorized organization name.
+ */
+const ORGANIZATION_NAME =
+"YOUR PRIVATE ORGANIZATION NAME";
+
+
+/*
+ * Organization contact details.
+ */
+const ORGANIZATION_EMAIL =
+"SarkariResultacom@gmail.com";
+
+const ORGANIZATION_PHONE =
+"7819019217";
+
+const ORGANIZATION_ADDRESS =
+"airport Uttar Pradesh AUTHORIZED REGISTERED OFFICE Uttar Pradesh Noida ";
+
+
+/*
+ * Application fee.
+ */
+const APPLICATION_FEE = 100;
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let currentStep = 1;
+
+let photoData = "";
+
+let signatureData = "";
+
+let paymentCompleted = false;
+
+let paymentId = "";
+
+let registrationNumber = "";
+
+
+/* =====================================================
+   INITIAL SETUP
+===================================================== */
+
+document.getElementById(
+"organizationName"
+).innerText =
+ORGANIZATION_NAME;
+
+
+/* =====================================================
+   STEP MANAGEMENT
+===================================================== */
+
+function showStep(step){
+
+    document.querySelectorAll(
+        ".step"
+    ).forEach(function(element){
+
+        element.classList.remove(
+            "active"
+        );
+
+    });
+
+
+    const selected =
+    document.getElementById(
+        "step" + step
+    );
+
+    if(selected){
+
+        selected.classList.add(
+            "active"
+        );
+
+    }
+
+
+    for(
+        let i = 1;
+        i <= 5;
+        i++
+    ){
+
+        const indicator =
+        document.getElementById(
+            "indicator" + i
+        );
+
+        if(!indicator){
+            continue;
+        }
+
+
+        indicator.classList.remove(
+            "active"
+        );
+
+        indicator.classList.remove(
+            "done"
+        );
+
+
+        if(i < step){
+
+            indicator.classList.add(
+                "done"
+            );
+
+        }
+
+
+        if(i === step){
+
+            indicator.classList.add(
+                "active"
+            );
+
+        }
+
+    }
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function validateStep(step){
+
+    const container =
+    document.getElementById(
+        "step" + step
+    );
+
+
+    const required =
+    container.querySelectorAll(
+        "input[required],select[required],textarea[required]"
+    );
+
+
+    for(
+        const field of required
+    ){
+
+        if(
+            field.type === "file"
+        ){
+
+            if(
+                !field.files ||
+                field.files.length === 0
+            ){
+
+                alert(
+                    "कृपया आवश्यक file upload करें।"
+                );
+
+                field.focus();
+
+                return false;
+            }
+
+            continue;
+
+        }
+
+
+        if(
+            field.type === "checkbox"
+        ){
+
+            if(!field.checked){
+
+                alert(
+                    "कृपया declaration स्वीकार करें।"
+                );
+
+                return false;
+
+            }
+
+            continue;
+
+        }
+
+
+        if(!field.checkValidity()){
+
+            field.reportValidity();
+
+            return false;
+
+        }
+
+    }
+
+
+    return true;
+
+}
+
+
+function nextStep(){
+
+    if(
+        !validateStep(
+            currentStep
+        )
+    ){
+
+        return;
+
+    }
+
+
+    if(currentStep < 4){
+
+        currentStep++;
+
+        showStep(
+            currentStep
+        );
+
+    }
+
+}
+
+
+function previousStep(){
+
+    if(currentStep > 1){
+
+        currentStep--;
+
+        showStep(
+            currentStep
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   IMAGE VALIDATION
+===================================================== */
+
+function handleImage(
+    input,
+    previewElement,
+    type
+){
+
+    const file =
+    input.files[0];
+
+
+    if(!file){
+
+        return;
+
+    }
+
+
+    /*
+     * Minimum 5 KB
+     */
+    if(
+        file.size < 5 * 1024
+    ){
+
+        alert(
+            type +
+            " का size कम से कम 5 KB होना चाहिए।"
+        );
+
+        input.value = "";
+
+        return;
+
+    }
+
+
+    /*
+     * Maximum 1 MB
+     */
+    if(
+        file.size > 1024 * 1024
+    ){
+
+        alert(
+            type +
+            " का size अधिकतम 1 MB होना चाहिए।"
+        );
+
+        input.value = "";
+
+        return;
+
+    }
+
+
+    /*
+     * JPG / PNG only
+     */
+    const allowedTypes = [
+        "image/jpeg",
+        "image/png"
+    ];
+
+
+    if(
+        !allowedTypes.includes(
+            file.type
+        )
+    ){
+
+        alert(
+            type +
+            " केवल JPG/JPEG/PNG में होना चाहिए।"
+        );
+
+        input.value = "";
+
+        return;
+
+    }
+
+
+    const reader =
+    new FileReader();
+
+
+    reader.onload =
+    function(event){
+
+        const data =
+        event.target.result;
+
+
+        if(type === "Photo"){
+
+            photoData =
+            data;
+
+        }else{
+
+            signatureData =
+            data;
+
+        }
+
+
+        previewElement.src =
+        data;
+
+        previewElement.style.display =
+        "block";
+
+    };
+
+
+    reader.readAsDataURL(
+        file
+    );
+
+}
+
+
+document.getElementById(
+"photo"
+).addEventListener(
+"change",
+function(){
+
+    handleImage(
+        this,
+        document.getElementById(
+            "photoPreview"
+        ),
+        "Photo"
+    );
+
+});
+
+
+document.getElementById(
+"signature"
+).addEventListener(
+"change",
+function(){
+
+    handleImage(
+        this,
+        document.getElementById(
+            "signaturePreview"
+        ),
+        "Signature"
+    );
+
+});
+
+
+/* =====================================================
+   FORM DATA
+===================================================== */
+
+function getData(){
+
+    return {
+
+        name:
+        document.getElementById(
+            "name"
+        ).value.trim(),
+
+        father:
+        document.getElementById(
+            "father"
+        ).value.trim(),
+
+        mother:
+        document.getElementById(
+            "mother"
+        ).value.trim(),
+
+        mobile:
+        document.getElementById(
+            "mobile"
+        ).value.trim(),
+
+        email:
+        document.getElementById(
+            "email"
+        ).value.trim(),
+
+        gender:
+        document.getElementById(
+            "gender"
+        ).value,
+
+        postName:
+        document.getElementById(
+            "postName"
+        ).value,
+
+        dob:
+        document.getElementById(
+            "dob"
+        ).value,
+
+        category:
+        document.getElementById(
+            "category"
+        ).value,
+
+        village:
+        document.getElementById(
+            "village"
+        ).value.trim(),
+
+        postOffice:
+        document.getElementById(
+            "postOffice"
+        ).value.trim(),
+
+        tehsil:
+        document.getElementById(
+            "tehsil"
+        ).value.trim(),
+
+        district:
+        document.getElementById(
+            "district"
+        ).value.trim(),
+
+        state:
+        document.getElementById(
+            "state"
+        ).value.trim(),
+
+        pincode:
+        document.getElementById(
+            "pincode"
+        ).value.trim(),
+
+        permanentAddress:
+        document.getElementById(
+            "permanentAddress"
+        ).value.trim(),
+
+        correspondenceAddress:
+        document.getElementById(
+            "correspondenceAddress"
+        ).value.trim(),
+
+        hsBoard:
+        document.getElementById(
+            "hsBoard"
+        ).value.trim(),
+
+        hsSchool:
+        document.getElementById(
+            "hsSchool"
+        ).value.trim(),
+
+        hsYear:
+        document.getElementById(
+            "hsYear"
+        ).value.trim(),
+
+        hsRoll:
+        document.getElementById(
+            "hsRoll"
+        ).value.trim(),
+
+        hsMarksheet:
+        document.getElementById(
+            "hsMarksheet"
+        ).value.trim(),
+
+        hsTotal:
+        document.getElementById(
+            "hsTotal"
+        ).value,
+
+        hsObtained:
+        document.getElementById(
+            "hsObtained"
+        ).value,
+
+        hsPercentage:
+        document.getElementById(
+            "hsPercentage"
+        ).value,
+
+        interBoard:
+        document.getElementById(
+            "interBoard"
+        ).value.trim(),
+
+        interCollege:
+        document.getElementById(
+            "interCollege"
+        ).value.trim(),
+
+        interYear:
+        document.getElementById(
+            "interYear"
+        ).value.trim(),
+
+        interRoll:
+        document.getElementById(
+            "interRoll"
+        ).value.trim(),
+
+        interMarksheet:
+        document.getElementById(
+            "interMarksheet"
+        ).value.trim(),
+
+        interTotal:
+        document.getElementById(
+            "interTotal"
+        ).value,
+
+        interObtained:
+        document.getElementById(
+            "interObtained"
+        ).value,
+
+        interPercentage:
+        document.getElementById(
+            "interPercentage"
+        ).value,
+
+        otherQualification:
+        document.getElementById(
+            "otherQualification"
+        ).value.trim(),
+
+        otherInstitution:
+        document.getElementById(
+            "otherInstitution"
+        ).value.trim(),
+
+        otherYear:
+        document.getElementById(
+            "otherYear"
+        ).value.trim(),
+
+        otherPercentage:
+        document.getElementById(
+            "otherPercentage"
+        ).value.trim()
+
+    };
+
+}
+
+
+/* =====================================================
+   REVIEW + PAYMENT
+===================================================== */
+
+function goToPayment(){
+
+    if(
+        !validateStep(4)
+    ){
+
+        return;
+
+    }
+
+
+    const data =
+    getData();
+
+
+    let review = "";
+
+    review +=
+    "<h3>Application Review</h3>";
+
+    review +=
+    "<strong>Name:</strong> " +
+    escapeHTML(data.name) +
+    "<br>";
+
+    review +=
+    "<strong>Father's Name:</strong> " +
+    escapeHTML(data.father) +
+    "<br>";
+
+    review +=
+    "<strong>Mother's Name:</strong> " +
+    escapeHTML(data.mother) +
+    "<br>";
+
+    review +=
+    "<strong>Mobile:</strong> " +
+    escapeHTML(data.mobile) +
+    "<br>";
+
+    review +=
+    "<strong>Email:</strong> " +
+    escapeHTML(data.email) +
+    "<br>";
+
+    review +=
+    "<strong>Date of Birth:</strong> " +
+    escapeHTML(data.dob) +
+    "<br>";
+
+    review +=
+    "<strong>Selected Post:</strong> " +
+    escapeHTML(data.postName) +
+    "<br>";
+
+    review +=
+    "<strong>Address:</strong> " +
+    escapeHTML(
+        data.village +
+        ", " +
+        data.postOffice +
+        ", " +
+        data.tehsil +
+        ", " +
+        data.district +
+        ", " +
+        data.state +
+        " - " +
+        data.pincode
+    ) +
+    "<br><br>";
+
+    review +=
+    "<strong>Application Fee:</strong> ₹100";
+
+
+    document.getElementById(
+        "reviewBox"
+    ).innerHTML =
+    review;
+
+
+    currentStep = 5;
+
+    showStep(5);
+
+}
+
+
+/* =====================================================
+   RAZORPAY PAYMENT
+===================================================== */
+
+function payNow(){
+
+    if(
+        RAZORPAY_KEY_ID ===
+        "YOUR_RAZORPAY_KEY_ID"
+    ){
+
+        alert(
+            "पहले code में अपना Razorpay Key ID डालें।"
+        );
+
+        return;
+
+    }
+
+
+    const data =
+    getData();
+
+
+    const options = {
+
+        key:
+        RAZORPAY_KEY_ID,
+
+        amount:
+        APPLICATION_FEE * 100,
+
+        currency:
+        "INR",
+
+        name:
+        ORGANIZATION_NAME,
+
+        description:
+        "Recruitment Application Fee",
+
+        image:
+        "",
+
+        prefill:{
+
+            name:
+            data.name,
+
+            email:
+            data.email,
+
+            contact:
+            data.mobile
+
+        },
+
+        notes:{
+
+            application:
+            "Recruitment Application",
+
+            post:
+            data.postName
+
+        },
+
+        theme:{
+
+            color:
+            "#1769aa"
+
+        },
+
+
+        handler:
+        function(response){
+
+            /*
+             * Frontend-only payment callback.
+             *
+             * IMPORTANT:
+             * Real production systems should verify
+             * this payment on a server.
+             */
+
+            paymentCompleted =
+            true;
+
+            paymentId =
+            response.razorpay_payment_id ||
+            "";
+
+
+            registrationNumber =
+            generateRegistrationNumber();
+
+
+            document.getElementById(
+                "paymentStatus"
+            ).innerHTML =
+            "<strong style='color:green'>" +
+            "Payment Successful ✓" +
+            "</strong>";
+
+
+            saveApplication();
+
+
+            setTimeout(
+                function(){
+
+                    showSuccess();
+
+                },
+                500
+            );
+
+        },
+
+
+        modal:{
+
+            ondismiss:
+            function(){
+
+                document.getElementById(
+                    "paymentStatus"
+                ).innerHTML =
+                "Payment window बंद किया गया।";
+
+            }
+
+        }
+
+    };
+
+
+    const razorpay =
+    new Razorpay(
+        options
+    );
+
+
+    razorpay.on(
+        "payment.failed",
+        function(response){
+
+            paymentCompleted =
+            false;
+
+            document.getElementById(
+                "paymentStatus"
+            ).innerHTML =
+            "<span style='color:red'>" +
+            "Payment Failed. Application submit नहीं हुआ।" +
+            "</span>";
+
+            alert(
+                "Payment failed. कृपया दोबारा प्रयास करें।"
+            );
+
+        }
+    );
+
+
+    razorpay.open();
+
+}
+
+
+/* =====================================================
+   REGISTRATION NUMBER
+===================================================== */
+
+function generateRegistrationNumber(){
+
+    const date =
+    new Date();
+
+
+    const year =
+    date.getFullYear();
+
+
+    const month =
+    String(
+        date.getMonth()+1
+    ).padStart(2,"0");
+
+
+    const day =
+    String(
+        date.getDate()
+    ).padStart(2,"0");
+
+
+    const random =
+    Math.floor(
+        100000 +
+        Math.random() * 900000
+    );
+
+
+    return (
+        "REG-" +
+        year +
+        month +
+        day +
+        "-" +
+        random
+    );
+
+}
+
+
+/* =====================================================
+   SAVE LOCAL APPLICATION
+===================================================== */
+
+function saveApplication(){
+
+    if(!paymentCompleted){
+
+        return;
+
+    }
+
+
+    const data =
+    getData();
+
+
+    const application = {
+
+        ...data,
+
+        registrationNumber:
+        registrationNumber,
+
+        paymentId:
+        paymentId,
+
+        paymentStatus:
+        "PAID",
+
+        amount:
+        APPLICATION_FEE,
+
+        photo:
+        photoData,
+
+        signature:
+        signatureData,
+
+        organization:
+        ORGANIZATION_NAME,
+
+        createdAt:
+        new Date().toLocaleString(
+            "en-IN"
+        )
+
+    };
+
+
+    try{
+
+        localStorage.setItem(
+            "lastRecruitmentApplication",
+            JSON.stringify(
+                application
+            )
+        );
+
+    }catch(error){
+
+        console.log(
+            "Local storage unavailable"
+        );
+
+    }
+
+
+    window.currentApplication =
+    application;
+
+}
+
+
+/* =====================================================
+   SUCCESS PAGE
+===================================================== */
+
+function showSuccess(){
+
+    if(!paymentCompleted){
+
+        return;
+
+    }
+
+
+    document.querySelector(
+        ".steps"
+    ).style.display =
+    "none";
+
+
+    document.getElementById(
+        "applicationForm"
+    ).style.display =
+    "none";
+
+
+    document.getElementById(
+        "successBox"
+    ).style.display =
+    "block";
+
+
+    document.getElementById(
+        "registrationNumber"
+    ).innerText =
+    registrationNumber;
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   PREPARE PDF
+===================================================== */
+
+function preparePDF(){
+
+    const data =
+    window.currentApplication ||
+    getData();
+
+
+    document.getElementById(
+        "pdfOrgName"
+    ).innerText =
+    ORGANIZATION_NAME;
+
+
+    document.getElementById(
+        "pdfFooter"
+    ).innerText =
+    ORGANIZATION_ADDRESS +
+    " | " +
+    ORGANIZATION_EMAIL +
+    " | " +
+    ORGANIZATION_PHONE;
+
+
+    document.getElementById(
+        "pdfReg"
+    ).innerText =
+    registrationNumber;
+
+
+    document.getElementById(
+        "pdfDate"
+    ).innerText =
+    data.createdAt ||
+    new Date().toLocaleString(
+        "en-IN"
+    );
+
+
+    document.getElementById(
+        "pdfPost"
+    ).innerText =
+    data.postName;
+
+
+    document.getElementById(
+        "pdfName"
+    ).innerText =
+    data.name;
+
+
+    document.getElementById(
+        "pdfFather"
+    ).innerText =
+    data.father;
+
+
+    document.getElementById(
+        "pdfMother"
+    ).innerText =
+    data.mother;
+
+
+    document.getElementById(
+        "pdfMobile"
+    ).innerText =
+    data.mobile;
+
+
+    document.getElementById(
+        "pdfEmail"
+    ).innerText =
+    data.email;
+
+
+    document.getElementById(
+        "pdfGender"
+    ).innerText =
+    data.gender;
+
+
+    document.getElementById(
+        "pdfDob"
+    ).innerText =
+    data.dob;
+
+
+    document.getElementById(
+        "pdfCategory"
+    ).innerText =
+    data.category;
+
+
+    document.getElementById(
+        "pdfVillage"
+    ).innerText =
+    data.village;
+
+
+    document.getElementById(
+        "pdfPostOffice"
+    ).innerText =
+    data.postOffice;
+
+
+    document.getElementById(
+        "pdfTehsil"
+    ).innerText =
+    data.tehsil;
+
+
+    document.getElementById(
+        "pdfDistrict"
+    ).innerText =
+    data.district;
+
+
+    document.getElementById(
+        "pdfState"
+    ).innerText =
+    data.state;
+
+
+    document.getElementById(
+        "pdfPincode"
+    ).innerText =
+    data.pincode;
+
+
+    document.getElementById(
+        "pdfPermanent"
+    ).innerText =
+    data.permanentAddress;
+
+
+    document.getElementById(
+        "pdfCorrespondence"
+    ).innerText =
+    data.correspondenceAddress ||
+    "-";
+
+
+    document.getElementById(
+        "pdfHsBoard"
+    ).innerText =
+    data.hsBoard;
+
+
+    document.getElementById(
+        "pdfHsSchool"
+    ).innerText =
+    data.hsSchool;
+
+
+    document.getElementById(
+        "pdfHsYear"
+    ).innerText =
+    data.hsYear;
+
+
+    document.getElementById(
+        "pdfHsObtained"
+    ).innerText =
+    data.hsObtained || "-";
+
+
+    document.getElementById(
+        "pdfHsTotal"
+    ).innerText =
+    data.hsTotal || "-";
+
+
+    document.getElementById(
+        "pdfHsPercentage"
+    ).innerText =
+    data.hsPercentage ?
+    data.hsPercentage + "%" :
+    "-";
+
+
+    document.getElementById(
+        "pdfInterBoard"
+    ).innerText =
+    data.interBoard || "-";
+
+
+    document.getElementById(
+        "pdfInterCollege"
+    ).innerText =
+    data.interCollege || "-";
+
+
+    document.getElementById(
+        "pdfInterYear"
+    ).innerText =
+    data.interYear || "-";
+
+
+    document.getElementById(
+        "pdfInterObtained"
+    ).innerText =
+    data.interObtained || "-";
+
+
+    document.getElementById(
+        "pdfInterTotal"
+    ).innerText =
+    data.interTotal || "-";
+
+
+    document.getElementById(
+        "pdfInterPercentage"
+    ).innerText =
+    data.interPercentage ?
+    data.interPercentage + "%" :
+    "-";
+
+
+    document.getElementById(
+        "pdfPaymentId"
+    ).innerText =
+    paymentId || "-";
+
+
+    document.getElementById(
+        "pdfPhoto"
+    ).src =
+    data.photo;
+
+
+    document.getElementById(
+        "pdfSignature"
+    ).src =
+    data.signature;
+
+}
+
+
+/* =====================================================
+   DOWNLOAD PDF
+===================================================== */
+
+async function downloadPDF(){
+
+    if(!paymentCompleted){
+
+        alert(
+            "Payment successful होने के बाद ही PDF उपलब्ध होगी।"
+        );
+
+        return;
+
+    }
+
+
+    preparePDF();
+
+
+    const pdfArea =
+    document.getElementById(
+        "pdfArea"
+    );
+
+
+    try{
+
+        const canvas =
+        await html2canvas(
+            pdfArea,
+            {
+                scale:2,
+                useCORS:true,
+                backgroundColor:"#ffffff"
+            }
+        );
+
+
+        const image =
+        canvas.toDataURL(
+            "image/jpeg",
+            0.95
+        );
+
+
+        const {
+            jsPDF
+        } =
+        window.jspdf;
+
+
+        const pdf =
+        new jsPDF(
+            "p",
+            "mm",
+            "a4"
+        );
+
+
+        const pageWidth =
+        210;
+
+
+        const pageHeight =
+        297;
+
+
+        const margin =
+        10;
+
+
+        const usableWidth =
+        pageWidth -
+        margin * 2;
+
+
+        const imageHeight =
+        canvas.height *
+        usableWidth /
+        canvas.width;
+
+
+        let heightLeft =
+        imageHeight;
+
+
+        let position =
+        margin;
+
+
+        pdf.addImage(
+            image,
+            "JPEG",
+            margin,
+            position,
+            usableWidth,
+            imageHeight
+        );
+
+
+        heightLeft -=
+        pageHeight -
+        margin * 2;
+
+
+        while(
+            heightLeft > 0
+        ){
+
+            position =
+            -(imageHeight -
+            heightLeft) +
+            margin;
+
+
+            pdf.addPage();
+
+
+            pdf.addImage(
+                image,
+                "JPEG",
+                margin,
+                position,
+                usableWidth,
+                imageHeight
+            );
+
+
+            heightLeft -=
+            pageHeight -
+            margin * 2;
+
+        }
+
+
+        pdf.save(
+            registrationNumber +
+            "_Application.pdf"
+        );
+
+
+    }catch(error){
+
+        console.error(
+            error
+        );
+
+        alert(
+            "PDF बनाने में समस्या हुई। कृपया दोबारा प्रयास करें।"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(
+        value || ""
+    )
+    .replaceAll(
+        "&",
+        "&amp;"
+    )
+    .replaceAll(
+        "<",
+        "&lt;"
+    )
+    .replaceAll(
+        ">",
+        "&gt;"
+    )
+    .replaceAll(
+        '"',
+        "&quot;"
+    )
+    .replaceAll(
+        "'",
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   PREVENT ACCIDENTAL FORM SUBMISSION
+===================================================== */
+
+document.getElementById(
+"applicationForm"
+).addEventListener(
+"submit",
+function(event){
+
+    event.preventDefault();
+
+});
+
+
+/* =====================================================
+   INITIAL STEP
+===================================================== */
+
+showStep(1);
+
+</script>
+
+</body>
+</html>
