@@ -1,0 +1,295 @@
+🛬 Airport DIGITA
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LEKHPAL DIGITAL SERVICES | Digital Service & Online Assistance</title>
+<meta name="description" content="LEKHPAL DIGITAL SERVICES - Online form filling, document assistance, certificate application assistance, transport services, utility services, recharge, typing, printing and digital service support.">
+<style>
+:root{
+ --navy:#071d3d;--blue:#1456a0;--cyan:#12a6c9;--orange:#ff6a2a;
+ --green:#13a878;--gold:#f5b942;--bg:#f4f8fc;--text:#17263b;--muted:#66768b;
+ --white:#fff;--line:#dce6f0;--shadow:0 18px 55px rgba(8,35,70,.12);
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none;color:inherit}
+.topbar{background:linear-gradient(90deg,var(--navy),#0b3971);color:#fff;text-align:center;padding:8px 15px;font-size:13px}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{max-width:1200px;margin:auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:54px;height:54px;border-radius:17px;background:linear-gradient(145deg,#0b3971,#12a6c9 65%,#13a878);display:grid;place-items:center;color:white;font-weight:900;font-size:25px;box-shadow:0 9px 25px rgba(20,86,160,.28);position:relative}
+.logo:after{content:"✓";position:absolute;right:-5px;bottom:-5px;width:20px;height:20px;border-radius:50%;background:var(--orange);display:grid;place-items:center;font-size:12px;border:2px solid white}
+.brand h1{margin:0;font-size:19px;color:var(--navy)}
+.brand small{color:var(--muted);font-size:11px}
+nav{display:flex;gap:17px;align-items:center;font-weight:700;font-size:13px;color:#25466f}
+nav a:hover{color:var(--orange)}
+.menu{display:none;background:var(--navy);color:white;border:0;border-radius:8px;padding:9px}
+.hero{background:
+ radial-gradient(circle at 80% 20%,rgba(18,166,201,.16),transparent 28%),
+ radial-gradient(circle at 15% 80%,rgba(19,168,120,.12),transparent 30%),
+ linear-gradient(135deg,#eaf5ff,#fff 55%,#eafcf7);
+padding:72px 20px}
+.hero-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:38px;align-items:center}
+.badge{display:inline-block;padding:8px 13px;border-radius:999px;background:#fff;border:1px solid #dbe8f4;color:#0b5a79;font-weight:800;font-size:12px;box-shadow:0 8px 25px #123f7a12}
+.hero h2{font-size:48px;line-height:1.05;margin:18px 0 15px;color:var(--navy)}
+.hero h2 span{color:var(--orange)}
+.hero p{font-size:17px;line-height:1.75;color:#526276}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn{display:inline-block;padding:13px 19px;border-radius:11px;font-weight:800}
+.btn-primary{background:linear-gradient(135deg,var(--orange),#e74d19);color:#fff}
+.btn-secondary{background:var(--navy);color:#fff}
+.btn-green{background:var(--green);color:#fff}
+.hero-card{background:#fff;border:1px solid #dce7f2;border-radius:25px;padding:28px;box-shadow:var(--shadow)}
+.hero-card h3{margin-top:0;color:var(--navy)}
+.hero-card li{margin:13px 0;color:#526276}
+section{padding:65px 20px}
+.wrap{max-width:1200px;margin:auto}
+.section-head{text-align:center;margin-bottom:36px}
+.section-head h2{font-size:32px;color:var(--navy);margin:0 0 9px}
+.section-head p{color:var(--muted);margin:0}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.service{background:#fff;border:1px solid var(--line);border-radius:18px;padding:21px;box-shadow:0 9px 30px rgba(10,45,80,.055);transition:.2s}
+.service:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(10,45,80,.11)}
+.icon{font-size:27px}
+.service h3{font-size:16px;color:#173e72;margin:10px 0 7px}
+.service p{font-size:13px;line-height:1.55;color:var(--muted);margin:0}
+.service .tag{display:inline-block;margin-top:10px;font-size:11px;color:#0b6d55;background:#e7f8f2;padding:5px 8px;border-radius:20px;font-weight:700}
+.dark{background:var(--navy);color:#fff}
+.dark .section-head h2,.dark .section-head p{color:#fff}
+.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.price{background:#fff;color:var(--text);border-radius:18px;padding:22px;text-align:center}
+.price h3{font-size:15px;color:#23456e}
+.price strong{display:block;font-size:31px;color:var(--orange);margin:8px}
+.price p{font-size:12px;color:var(--muted)}
+.booking-area{background:linear-gradient(135deg,#edf8ff,#f7fffc)}
+.booking{max-width:950px;margin:auto;background:#fff;border:1px solid var(--line);border-radius:24px;padding:27px;box-shadow:var(--shadow)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.full{grid-column:1/-1}
+label{display:block;font-weight:800;color:#28496f;font-size:13px;margin:0 0 7px}
+input,select,textarea{width:100%;padding:13px 14px;border:1px solid #d6e1ed;border-radius:10px;background:#fbfdff;font:inherit;color:#1e2d40}
+input:focus,select:focus,textarea:focus{outline:2px solid #b8ddf1;border-color:#1595bd}
+.notice{margin:18px 0;padding:15px;background:#fff8e8;border:1px solid #f2d494;border-radius:12px;color:#6b4d17;font-size:13px;line-height:1.6}
+.submit{width:100%;border:0;padding:15px;border-radius:11px;background:linear-gradient(135deg,var(--green),#087f60);color:white;font-weight:900;font-size:16px;cursor:pointer}
+.small{font-size:12px;color:#758398;line-height:1.55}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.info-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
+.info-card h3{color:var(--navy);margin-top:0}
+.info-card p,.info-card li{color:#5e6d80;line-height:1.7;font-size:14px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.contact-card{background:#fff;border-radius:20px;border:1px solid var(--line);padding:25px}
+.contact-item{padding:14px 0;border-bottom:1px solid #edf1f5}
+.contact-item:last-child{border-bottom:0}
+.contact-item b{color:#173e72}
+footer{background:#06172f;color:#cbd9e9;padding:38px 20px}
+.footer-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+.footer-grid h3{color:#fff}
+.footer-grid a{display:block;margin:9px 0}
+.copyright{max-width:1200px;margin:25px auto 0;border-top:1px solid #ffffff1c;padding-top:17px;text-align:center;font-size:12px}
+.disclaimer{background:#fff2ed;border-top:1px solid #ffd2c1;border-bottom:1px solid #ffd2c1;padding:13px 20px;text-align:center;color:#7b3c24;font-size:12px;line-height:1.55}
+@media(max-width:900px){
+ nav{display:none}.menu{display:block}.hero-inner{grid-template-columns:1fr}.services,.prices{grid-template-columns:repeat(2,1fr)}.hero h2{font-size:39px}
+}
+@media(max-width:600px){
+ .services,.prices,.info-grid,.contact-grid,.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.hero{padding:48px 16px}.hero h2{font-size:32px}section{padding:48px 16px}.footer-grid{grid-template-columns:1fr}.brand h1{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">LEKHPAL DIGITAL SERVICES • Digital Service & Online Assistance • Uttar Pradesh</div>
+
+<header>
+<div class="nav">
+ <a class="brand" href="#home">
+  <div class="logo">L</div>
+  <div><h1>LEKHPAL DIGITAL SERVICES</h1><small>Online Digital & Documentation Assistance</small></div>
+ </a>
+ <nav>
+  <a href="#home">Home</a><a href="#services">Services</a><a href="#booking">Book Service</a>
+  <a href="#charges">Charges</a><a href="#about">About</a><a href="#contact">Contact</a>
+ </nav>
+ <button class="menu" onclick="document.querySelector('nav').style.display=document.querySelector('nav').style.display==='flex'?'none':'flex'">☰</button>
+</div>
+</header>
+
+<main id="home">
+<section class="hero">
+<div class="hero-inner">
+ <div>
+  <span class="badge">PROFESSIONAL DIGITAL ASSISTANCE</span>
+  <h2>आपका काम, <span>डिजिटल तरीके से</span></h2>
+  <p>Online forms, documents, applications, typing, printing, transport-related assistance, recharge, utility services और अन्य डिजिटल कार्यों के लिए एक ही जगह पर सहायता।</p>
+  <div class="cta">
+   <a class="btn btn-primary" href="#booking">Service Book करें</a>
+   <a class="btn btn-green" href="https://wa.me/917819019217?text=Hello%20LEKHPAL%20DIGITAL%20SERVICES%2C%20mujhe%20service%20ki%20jankari%20chahiye.">WhatsApp करें</a>
+  </div>
+  <p class="small">हम सहायता/ऑनलाइन आवेदन सेवा प्रदान करते हैं। किसी सरकारी प्रमाणपत्र, लाइसेंस या दस्तावेज़ की अंतिम स्वीकृति/जारी करने का अधिकार संबंधित विभाग का होता है।</p>
+ </div>
+ <div class="hero-card">
+  <h3>एक ही जगह पर डिजिटल सहायता</h3>
+  <ul>
+   <li>Online Form & Application Assistance</li>
+   <li>Certificate & Document Assistance</li>
+   <li>Driving Licence / RC related assistance</li>
+   <li>Typing, Printing, Scanning & Photo Services</li>
+   <li>Mobile / DTH Recharge & Utility Assistance</li>
+   <li>TV & AC Installation Booking</li>
+  </ul>
+ </div>
+</div>
+</section>
+
+<section id="services">
+<div class="wrap">
+ <div class="section-head"><h2>हमारी सेवाएँ</h2><p>ग्राहक अपनी जरूरत के अनुसार सेवा चुनकर ऑनलाइन booking request भेज सकता है।</p></div>
+ <div class="services">
+  <div class="service"><div class="icon">📝</div><h3>Online Form Filling</h3><p>विभिन्न ऑनलाइन forms और applications में data-entry सहायता।</p><span class="tag">Digital Assistance</span></div>
+  <div class="service"><div class="icon">📄</div><h3>Application Assistance</h3><p>उपलब्ध ऑनलाइन सेवाओं के लिए application preparation और submission सहायता।</p><span class="tag">Online Support</span></div>
+  <div class="service"><div class="icon">🏛️</div><h3>आय / जाति / निवास</h3><p>उत्तर प्रदेश में पात्र आवेदकों के certificate application process में सहायता।</p><span class="tag">UP Services</span></div>
+  <div class="service"><div class="icon">📜</div><h3>Certificate Assistance</h3><p>उपलब्ध birth, death तथा अन्य certificate application processes में सहायता।</p><span class="tag">Application Support</span></div>
+  <div class="service"><div class="icon">🪪</div><h3>PAN / ID Assistance</h3><p>PAN तथा अन्य eligible identity-document application/correction process में सहायता।</p><span class="tag">Document Support</span></div>
+  <div class="service"><div class="icon">🆔</div><h3>Aadhaar Assistance</h3><p>उपलब्ध Aadhaar-related online information/application assistance; final update authorized centre पर।</p><span class="tag">Assistance</span></div>
+  <div class="service"><div class="icon">🚗</div><h3>Driving Licence</h3><p>उत्तर प्रदेश में eligible driving licence application, renewal और related online process assistance।</p><span class="tag">Transport</span></div>
+  <div class="service"><div class="icon">📋</div><h3>RC / Vehicle Services</h3><p>Eligible RC और vehicle-related online application/process assistance।</p><span class="tag">Transport</span></div>
+  <div class="service"><div class="icon">🗳️</div><h3>Voter Services</h3><p>Voter-related eligible online application और correction process में सहायता।</p><span class="tag">Online Assistance</span></div>
+  <div class="service"><div class="icon">🍚</div><h3>Ration Card Assistance</h3><p>Eligible ration-card application/correction process में digital assistance।</p><span class="tag">Online Support</span></div>
+  <div class="service"><div class="icon">🏦</div><h3>Government Scheme Assistance</h3><p>उपलब्ध सरकारी योजनाओं की online application प्रक्रिया में सहायता।</p><span class="tag">Scheme Support</span></div>
+  <div class="service"><div class="icon">🖨️</div><h3>Print / Scan / PDF</h3><p>Printing, scanning, PDF conversion और digital document preparation।</p><span class="tag">Document</span></div>
+  <div class="service"><div class="icon">⌨️</div><h3>Typing & Letter</h3><p>Hindi/English typing, applications, letters और basic document drafting।</p><span class="tag">Typing</span></div>
+  <div class="service"><div class="icon">📸</div><h3>Photo / Digital Photo</h3><p>Document-size photo preparation और basic digital photo service।</p><span class="tag">Photo Service</span></div>
+  <div class="service"><div class="icon">📱</div><h3>Mobile Recharge</h3><p>Supported operators के mobile recharge में assistance।</p><span class="tag">Recharge</span></div>
+  <div class="service"><div class="icon">📺</div><h3>TV / DTH Recharge</h3><p>Supported DTH/TV services के recharge में assistance।</p><span class="tag">Recharge</span></div>
+  <div class="service"><div class="icon">💡</div><h3>Utility Bill Assistance</h3><p>Eligible electricity तथा अन्य digital utility payment assistance।</p><span class="tag">Utility</span></div>
+  <div class="service"><div class="icon">🔧</div><h3>TV Installation</h3><p>TV installation service booking. Service charge ₹1,100.</p><span class="tag">Home Service</span></div>
+  <div class="service"><div class="icon">❄️</div><h3>AC Installation</h3><p>AC installation service booking. Service charge ₹1,200.</p><span class="tag">Home Service</span></div>
+  <div class="service"><div class="icon">📑</div><h3>Online Registration</h3><p>Eligible online registration, appointment और application processes में सहायता।</p><span class="tag">Registration</span></div>
+  <div class="service"><div class="icon">🧾</div><h3>Document Formatting</h3><p>Documents को साफ format करना, PDF बनाना और digital file preparation।</p><span class="tag">Documentation</span></div>
+ </div>
+</div>
+</section>
+
+<section class="dark" id="charges">
+<div class="wrap">
+ <div class="section-head"><h2>Service Charges</h2><p>नीचे कुछ सामान्य assistance/service charges हैं। लागू सरकारी/third-party fees अलग हो सकती हैं।</p></div>
+ <div class="prices">
+  <div class="price"><h3>Document Assistance</h3><strong>₹49</strong><p>Basic document assistance</p></div>
+  <div class="price"><h3>Form Filling</h3><strong>₹100</strong><p>Basic online form assistance</p></div>
+  <div class="price"><h3>Application Assistance</h3><strong>₹199</strong><p>Online application support</p></div>
+  <div class="price"><h3>Digital Service</h3><strong>₹399</strong><p>Extended digital assistance</p></div>
+  <div class="price"><h3>TV Installation</h3><strong>₹1,100</strong><p>Service booking charge</p></div>
+  <div class="price"><h3>AC Installation</h3><strong>₹1,200</strong><p>Service booking charge</p></div>
+ </div>
+</div>
+</section>
+
+<section class="booking-area" id="booking">
+<div class="wrap">
+ <div class="section-head"><h2>Service Booking</h2><p>नाम, मोबाइल, ईमेल और पूरा पता भरें। Submit करने पर WhatsApp में booking message खुल जाएगा।</p></div>
+ <form class="booking" id="bookingForm">
+  <div class="form-grid">
+   <div><label>Customer Name *</label><input id="name" required placeholder="पूरा नाम"></div>
+   <div><label>Mobile Number *</label><input id="phone" required type="tel" inputmode="numeric" maxlength="10" placeholder="10 अंकों का मोबाइल नंबर"></div>
+   <div><label>Email ID</label><input id="email" type="email" placeholder="example@email.com"></div>
+   <div><label>Select Service *</label>
+    <select id="service" required>
+     <option value="">-- सेवा चुनें --</option>
+     <option>Document Assistance - ₹49</option><option>Online Form Filling - ₹100</option>
+     <option>Application Assistance - ₹199</option><option>Digital Service - ₹399</option>
+     <option>आय / जाति / निवास Assistance</option><option>Certificate Assistance</option>
+     <option>PAN / ID Assistance</option><option>Aadhaar Assistance</option><option>Driving Licence Assistance</option>
+     <option>RC / Vehicle Services</option><option>Voter Services</option><option>Ration Card Assistance</option>
+     <option>Government Scheme Assistance</option><option>Print / Scan / PDF</option><option>Typing & Letter</option>
+     <option>Photo / Digital Photo</option><option>Mobile Recharge</option><option>TV / DTH Recharge</option>
+     <option>Utility Bill Assistance</option><option>TV Installation - ₹1,100</option><option>AC Installation - ₹1,200</option>
+     <option>Online Registration</option><option>Document Formatting</option>
+    </select>
+   </div>
+   <div><label>Preferred Date</label><input id="date" type="date"></div>
+   <div class="full"><label>पूरा Address *</label><textarea id="address" required rows="3" placeholder="मकान/गाँव, पोस्ट, तहसील, जिला, राज्य, पिनकोड"></textarea></div>
+   <div class="full"><label>काम/सर्विस का विवरण</label><textarea id="details" rows="3" placeholder="आपको किस काम की आवश्यकता है?"></textarea></div>
+  </div>
+  <div class="notice">
+   <b>₹100 Booking / Advance:</b> यदि आपकी चुनी हुई सेवा पर ₹100 advance लागू है, तो WhatsApp पर booking details भेजने के बाद payment instructions/link दिया जाएगा। Payment करने से पहले service और final amount की पुष्टि करें।
+  </div>
+  <button class="submit" type="submit">Booking Submit करें → WhatsApp</button>
+  <p class="small">Submit करने पर WhatsApp आपके मोबाइल में खुलेगा और message में आपकी booking details दिखाई देंगी। ग्राहक स्वयं Send दबाकर message भेज सकता है।</p>
+ </form>
+</div>
+</section>
+
+<section id="about">
+<div class="wrap">
+ <div class="section-head"><h2>About LEKHPAL DIGITAL SERVICES</h2><p>Individual digital service business</p></div>
+ <div class="info-grid">
+  <div class="info-card"><h3>हमारे बारे में</h3><p>LEKHPAL DIGITAL SERVICES एक individual digital service business है जो online application, documentation, typing, printing, scanning और अन्य digital assistance प्रदान करता है।</p><p>हम किसी सरकारी विभाग के नाम से कार्य करने का दावा नहीं करते। संबंधित विभाग/अधिकृत संस्था ही अंतिम approval, issuance या update करती है।</p></div>
+  <div class="info-card"><h3>Customer Guidelines</h3><ul><li>ग्राहक सही और वैध जानकारी दें।</li><li>जहाँ लागू हो, सरकारी/third-party fee अलग हो सकती है।</li><li>Application approval संबंधित authority पर निर्भर है।</li><li>Service शुरू होने से पहले applicable charge की पुष्टि करें।</li></ul></div>
+ </div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+ <div class="section-head"><h2>Policies</h2><p>ग्राहकों के लिए स्पष्ट service terms</p></div>
+ <div class="info-grid">
+  <div class="info-card"><h3>Terms & Conditions</h3><p>Services selected by the customer are provided according to the service description. Customer is responsible for accurate information/documents. Government or third-party approval is not guaranteed.</p></div>
+  <div class="info-card"><h3>Refund & Cancellation</h3><p>Cancellation/refund requests are considered according to work status. Completed work and non-refundable third-party/government charges may not be refundable. Contact support with booking details.</p></div>
+  <div class="info-card"><h3>Privacy Policy</h3><p>Customer details are used for providing the requested service and customer support, subject to applicable law. We do not intentionally sell customer information.</p></div>
+  <div class="info-card"><h3>Grievance & Support</h3><p>For complaints, corrections or service questions, contact us by phone, email or WhatsApp. Please keep your booking details available.</p></div>
+ </div>
+</div>
+</section>
+
+<section id="contact" style="background:#edf5fc">
+<div class="wrap">
+ <div class="section-head"><h2>Contact & WhatsApp Booking</h2><p>Service enquiry और booking के लिए सीधे संपर्क करें।</p></div>
+ <div class="contact-grid">
+  <div class="contact-card">
+   <div class="contact-item"><b>Business Name</b><br>LEKHPAL DIGITAL SERVICES</div>
+   <div class="contact-item"><b>Address</b><br>Aimanpur, Post Kirthua, Karhal, Mainpuri, Uttar Pradesh – 205264</div>
+   <div class="contact-item"><b>Phone / WhatsApp</b><br><a href="tel:7819019217">7819019217</a></div>
+   <div class="contact-item"><b>Email</b><br><a href="mailto:kmpooja0851997@gmail.com">kmpooja0851997@gmail.com</a></div>
+  </div>
+  <div class="contact-card">
+   <h3>Quick Contact</h3>
+   <p class="small">अगर booking form नहीं भरना चाहते हैं तो WhatsApp पर सीधे enquiry भेज सकते हैं।</p>
+   <div class="cta">
+    <a class="btn btn-green" href="https://wa.me/917819019217?text=Hello%20LEKHPAL%20DIGITAL%20SERVICES%2C%20mujhe%20service%20book%20karni%20hai.">WhatsApp Now</a>
+    <a class="btn btn-primary" href="tel:7819019217">Call Now</a>
+   </div>
+  </div>
+ </div>
+</div>
+</section>
+
+<div class="disclaimer">LEKHPAL DIGITAL SERVICES स्वतंत्र digital assistance business है। यह वेबसाइट किसी सरकारी विभाग/CSC/UIDAI/RTO अथवा अन्य authority की official website नहीं है। Government/third-party services की final approval, issuance और processing संबंधित authority के नियमों के अनुसार होती है।</div>
+</main>
+
+<footer>
+<div class="footer-grid">
+ <div><h3>LEKHPAL DIGITAL SERVICES</h3><p>Online Digital & Documentation Assistance</p><p>Aimanpur, Post Kirthua, Karhal, Mainpuri, Uttar Pradesh – 205264</p></div>
+ <div><h3>Quick Links</h3><a href="#services">Services</a><a href="#booking">Book Service</a><a href="#charges">Charges</a><a href="#contact">Contact</a></div>
+ <div><h3>Support</h3><a href="tel:7819019217">7819019217</a><a href="mailto:kmpooja0851997@gmail.com">kmpooja0851997@gmail.com</a><a href="https://wa.me/917819019217">WhatsApp</a></div>
+</div>
+<div class="copyright">© 2026 LEKHPAL DIGITAL SERVICES. All rights reserved.</div>
+</footer>
+
+<script>
+document.getElementById("bookingForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ const name=document.getElementById("name").value.trim();
+ const phone=document.getElementById("phone").value.trim();
+ const email=document.getElementById("email").value.trim() || "Not provided";
+ const service=document.getElementById("service").value;
+ const date=document.getElementById("date").value || "Not specified";
+ const address=document.getElementById("address").value.trim();
+ const details=document.getElementById("details").value.trim() || "Not provided";
+ if(!/^[0-9]{10}$/.test(phone)){alert("कृपया सही 10 अंकों का मोबाइल नंबर डालें।");return;}
+ const msg=`*LEKHPAL DIGITAL SERVICES - NEW BOOKING*%0A%0ACustomer Name: ${encodeURIComponent(name)}%0AMobile: ${encodeURIComponent(phone)}%0AEmail: ${encodeURIComponent(email)}%0AService: ${encodeURIComponent(service)}%0APreferred Date: ${encodeURIComponent(date)}%0AAddress: ${encodeURIComponent(address)}%0AWork Details: ${encodeURIComponent(details)}%0A%0ABooking/Advance: ₹100 (if applicable)%0A%0APlease confirm service availability, final charges and payment instructions.`;
+ window.location.href="https://wa.me/917819019217?text="+msg;
+});
+</script>
+</body>
+</html>'''
+
