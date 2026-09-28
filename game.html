@@ -1,76 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>गेमज़ोन प्रो</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        #app-container { background-color: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); width: 350px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); }
-        h1 { margin-bottom: 20px; font-weight: 300; letter-spacing: 2px; }
-        button { background: linear-gradient(90deg, #4cc9f0, #4361ee); color: white; padding: 12px 25px; border: none; border-radius: 25px; cursor: pointer; font-size: 16px; transition: transform 0.2s, box-shadow 0.2s; margin-top: 15px; width: 100%; box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4); }
-        button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(76, 201, 240, 0.6); }
-        button:active { transform: translateY(0); }
-        .wallet-box { font-size: 20px; margin-bottom: 20px; background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 15px; color: #4cc9f0; }
-        .hidden { display: none; }
-        #game-area { margin-top: 20px; }
-        .emoji-display { font-size: 50px; margin: 20px 0; min-height: 70px; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Airport Jobs Information Portal</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#eef6fb;color:#17212b}
+.wrap{max-width:1100px;margin:auto;padding:16px}.hero{background:linear-gradient(135deg,#062b4f,#0b5fa5);color:#fff;border-radius:20px;padding:28px;box-shadow:0 10px 30px #062b4f33}
+.badge{display:inline-block;background:#f5b83d;color:#18202a;padding:7px 12px;border-radius:999px;font-weight:700;font-size:13px}
+h1{font-size:34px;margin:14px 0 8px}.sub{font-size:17px}.notice{background:#fff3cd;color:#5f4500;border-left:5px solid #e0a800;padding:13px;border-radius:8px;margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}.card{background:#fff;border-radius:16px;padding:20px;box-shadow:0 7px 22px #062b4f1c}
+.card h2{color:#062b4f}.job{border-top:4px solid #c62828}.job.blue{border-top-color:#0b5fa5}
+ul{line-height:1.8}.btn{display:inline-block;background:#c62828;color:#fff;padding:12px 18px;border-radius:9px;text-decoration:none;font-weight:700;margin-top:8px}
+.bluebtn{background:#0b5fa5}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}.step{background:#fff;padding:15px;border-radius:12px;text-align:center}.num{font-size:26px;font-weight:800;color:#c62828}
+.ad{background:#062b4f;color:#fff;border-radius:16px;padding:20px;margin-top:18px}.ad h2{color:#fff}.thumb{background:linear-gradient(135deg,#c62828,#062b4f);border-radius:14px;padding:28px;text-align:center;color:#fff;font-weight:800;font-size:27px}.small{font-size:12px;color:#64748b;line-height:1.6}
+footer{margin:20px 0;text-align:center;color:#667}
+@media(max-width:700px){.grid,.steps{grid-template-columns:1fr}h1{font-size:27px}}
+</style>
 </head>
 <body>
-    <div id="app-container">
-        <section id="login-section">
-            <h1>गेमज़ोन प्रो</h1>
-            <p>तैयार हैं जीतने के लिए?</p>
-            <button id="google-login">🎮 Google से लॉगिन करें</button>
-        </section>
-        <section id="dashboard-section" class="hidden">
-            <h1>डैशबोर्ड</h1>
-            <div class="wallet-box">
-                आपका वॉलेट: <span id="wallet-balance">₹0</span>
-            </div>
-            <!-- रेज़रपे का फॉर्म यहाँ डालें -->
-            <div id="game-area">
-                <h2>🎮 गेम ज़ोन 🎮</h2>
-                <div class="emoji-display" id="emoji-result">🤔</div>
-                <button class="play-game" data-cost="10">🎲 गेम खेलें (₹10)</button>
-            </div>
-        </section>
-    </div>
-    <script>
-        let balance = 0;
-        // साउंड इफेक्ट्स
-        const winSound = new Audio('https://www.soundjay.com/button/beep-07.wav');
-        const loseSound = new Audio('https://www.soundjay.com/button/beep-09.wav');
+<div class="wrap">
+<section class="hero">
+<span class="badge">AIRPORT JOB INFORMATION</span>
+<h1>Airport Jobs — Recruitment Information Portal</h1>
+<div class="sub">उम्मीदवारों को उपलब्ध/सत्यापित नौकरी अवसरों की जानकारी और आवेदन मार्गदर्शन</div>
+<div class="notice"><b>महत्वपूर्ण:</b> यह पेज Noida International Airport, NIAL या YIAPL की आधिकारिक वेबसाइट नहीं है। यहां किसी भी vacancy को तभी प्रकाशित करें जब संबंधित employer की official notification/link से उसकी पुष्टि हो।</div>
+</section>
 
-        document.getElementById('google-login').addEventListener('click', () => {
-            document.getElementById('login-section').classList.add('hidden');
-            document.getElementById('dashboard-section').classList.remove('hidden');
-        });
+<section class="grid">
+<article class="card job">
+<h2>1. Customer Service / Passenger Support</h2>
+<p><b>स्थिति:</b> Employer द्वारा vacancy की पुष्टि होने पर ही आवेदन खोलें।</p>
+<ul><li>Passenger assistance / customer support</li><li>Shift-based airport environment</li><li>Eligibility, salary और vacancies official notification के अनुसार</li></ul>
+<a class="btn" href="#apply">Verified Application</a>
+</article>
 
-        document.querySelector('.play-game').addEventListener('click', (e) => {
-            const cost = parseInt(e.target.dataset.cost);
-            const emojiDisplay = document.getElementById('emoji-result');
-            
-            if (balance >= cost) {
-                balance -= cost;
-                document.getElementById('wallet-balance').innerText = `₹${balance}`;
-                
-                const isWin = Math.random() < 0.5;
-                if (isWin) {
-                    balance += cost * 2;
-                    document.getElementById('wallet-balance').innerText = `₹${balance}`;
-                    emojiDisplay.innerHTML = '🎉 जीत गए! 💰';
-                    winSound.play();
-                } else {
-                    emojiDisplay.innerHTML = '😢 हार गए! 💔';
-                    loseSound.play();
-                }
-            } else {
-                emojiDisplay.innerHTML = '⚠️';
-                alert('कृपया बैलेंस जोड़ें।');
-            }
-        });
-    </script>
+<article class="card job blue">
+<h2>2. Ground Support / Housekeeping / Loader</h2>
+<p><b>स्थिति:</b> Employer द्वारा vacancy की पुष्टि होने पर ही आवेदन खोलें।</p>
+<ul><li>Ground support और facility assistance</li><li>Shift-based operational work</li><li>Eligibility, salary और vacancies official notification के अनुसार</li></ul>
+<a class="btn bluebtn" href="#apply">Verified Application</a>
+</article>
+</section>
+
+<section class="steps">
+<div class="step"><div class="num">01</div><b>Notification पढ़ें</b><br><span class="small">Employer और vacancy verify करें</span></div>
+<div class="step"><div class="num">02</div><b>Eligibility देखें</b><br><span class="small">Age, qualification आदि</span></div>
+<div class="step"><div class="num">03</div><b>Official/Verified Link</b><br><span class="small">आवेदन से पहले destination जांचें</span></div>
+<div class="step"><div class="num">04</div><b>Application Status</b><br><span class="small">Receipt/reference सुरक्षित रखें</span></div>
+</section>
+
+<section class="ad">
+<h2>विज्ञापन का सुरक्षित प्रारूप</h2>
+<p><b>✈ AIRPORT JOB UPDATE ✈</b></p>
+<p>Customer Service और Ground Support category में अवसरों की जानकारी।</p>
+<p>📌 Eligibility: संबंधित employer की notification के अनुसार<br>
+📌 Salary: केवल official notification के अनुसार<br>
+📌 Last Date: official notification के अनुसार<br>
+📌 Apply: केवल verified employer/recruiter link से</p>
+<p>⚠️ यह विज्ञापन Noida International Airport/NIAL/YIAPL की official recruitment notification तभी माना जाए जब official website पर वही vacancy प्रकाशित हो।</p>
+</section>
+
+<section class="card" id="apply">
+<h2>Application / Verification</h2>
+<p>यहां अपना application form लगाने से पहले employer की लिखित अनुमति/अधिकृत recruitment notice और वास्तविक vacancy details जोड़ें।</p>
+<div class="thumb">AIRPORT JOBS<br><span style="font-size:18px">VERIFIED VACANCY • APPLY SAFELY</span></div>
+<p class="small">किसी applicant से fee लेने पर fee amount, purpose, refund rules, legal entity, receipt और payment terms स्पष्ट रूप से प्रकाशित करें। केवल “payment successful” पर नौकरी की गारंटी न दें।</p>
+</section>
+
+<section class="card">
+<h2>Official verification</h2>
+<p>Noida International Airport की वास्तविक careers information के लिए उम्मीदवार official careers page देखें:</p>
+<p><b>https://www.niairport.in/en/company/careers</b></p>
+<p class="small">Official website पर vacancy उपलब्ध होने के बाद ही उस vacancy का exact title, eligibility, deadline और application link इस page में भरें।</p>
+</section>
+
+<footer>Airport Jobs Information Portal • Transparent recruitment information only</footer>
+</div>
 </body>
 </html>
