@@ -3,82 +3,365 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Cat Masti — Virtual Pet</title>
+<meta name="theme-color" content="#10182d">
+<title>Cat Masti • 3D Virtual Pet</title>
 <style>
-:root{--bg:#f4f6fb;--card:#fff;--ink:#202437;--muted:#70758a;--primary:#7657e8;--pink:#ef5fa7;--line:#e9eaf2;--good:#55c59b;--blue:#5b8def}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#eef1ff,#f8f9fc);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink)}
-button{border:0;font:inherit;cursor:pointer;touch-action:manipulation}button:active{transform:scale(.98)}
-.app{max-width:760px;margin:auto;padding:14px 12px 40px}.top{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:22px;padding:12px 14px;box-shadow:0 8px 28px #3b3f5d10;position:sticky;top:8px;z-index:10}
-.brand{display:flex;align-items:center;gap:9px;font-weight:900;font-size:19px}.brandmark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#7861f2,#ef66ae);color:#fff;font-size:25px;box-shadow:0 7px 16px #7657e833}.brand span{color:var(--pink)}
-.coins{background:#fff6cf;border:1px solid #f4df83;padding:8px 12px;border-radius:999px;font-weight:900}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;margin-top:12px;padding:14px;box-shadow:0 8px 26px #3b3f5d0b}.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat{background:#fafaff;border:1px solid var(--line);border-radius:15px;padding:9px}.stat-top{display:flex;justify-content:space-between;font-size:12px;font-weight:800}.bar{height:7px;background:#e9e9f1;border-radius:20px;overflow:hidden;margin-top:6px}.fill{height:100%;width:80%;border-radius:20px;background:linear-gradient(90deg,#7b62ee,#ef65ab);transition:width .35s}
-.scene{height:270px;border-radius:21px;margin-top:12px;position:relative;overflow:hidden;background:linear-gradient(#dff5ff 0 65%,#b9e79e 65%);display:grid;place-items:center}.sun{position:absolute;right:25px;top:17px;font-size:39px}.cloud{position:absolute;left:25px;top:38px;font-size:31px;opacity:.7}.mood{position:absolute;top:12px;background:#fff;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:800;box-shadow:0 4px 12px #00000010}.cat{font-size:126px;line-height:1;filter:drop-shadow(0 12px 8px #0002);user-select:none;animation:float 2.2s ease-in-out infinite;cursor:pointer}.cat.jump{animation:jump .48s ease}.scene.speaking .cat{animation:talk .24s ease-in-out infinite alternate}@keyframes float{50%{transform:translateY(-7px)}}@keyframes jump{40%{transform:translateY(-20px) scale(1.1) rotate(-4deg)}100%{transform:translateY(0) scale(1)}}@keyframes talk{to{transform:translateY(-4px) scale(1.03)}}
-.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.action,.pill,.big{background:#f2efff;border:1px solid #e3ddff;border-radius:15px;padding:11px 7px;color:var(--ink);font-weight:800}.action b{display:block;font-size:25px}.action small{font-size:11px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.tab{padding:11px;border-radius:14px;background:#fff;border:1px solid var(--line);font-weight:800}.tab.active{background:#7657e8;color:#fff}.panel{display:none}.panel.active{display:block}.items{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.item,.shop{background:#fafaff;border:1px solid var(--line);border-radius:17px;padding:10px;text-align:center}.icon{font-size:39px}.item button,.shop button{width:100%;margin-top:7px;background:#ffeaf5;border-radius:12px;padding:8px;font-weight:800}.shopgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.shop .icon{font-size:43px}.gamebox,.reward{background:linear-gradient(135deg,#f6f2ff,#fff1f8);border:1px solid var(--line);border-radius:18px;padding:14px;text-align:center}.big{width:100%;margin-top:7px;background:#f0ecff}.big.primary{background:#7657e8;color:#fff}.big.gold{background:#fff0ae}.voice{background:linear-gradient(135deg,#ffeaf6,#f0ebff)}.heard{min-height:24px;margin-top:9px;text-align:center;font-weight:800;color:#575b70}.status{min-height:23px;text-align:center;font-weight:800;color:#5d6073;margin-top:7px}.notice{font-size:12px;color:var(--muted);line-height:1.5}.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#202437;color:#fff;padding:11px 16px;border-radius:999px;font-weight:800;z-index:50;transition:.2s;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}footer{text-align:center;color:#85899b;font-size:11px;padding:18px 5px}
-@media(max-width:430px){.actions{grid-template-columns:1fr 1fr}.items{grid-template-columns:1fr 1fr}.scene{height:250px}.cat{font-size:112px}}
+:root{
+ --bg:#eef3ff;--ink:#172033;--muted:#69738a;--card:rgba(255,255,255,.88);
+ --purple:#7657f3;--pink:#ff5da9;--cyan:#39c9df;--gold:#ffc94d;
+ --line:#e8eaf4;--shadow:0 18px 50px rgba(36,46,90,.13)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+ background:
+ radial-gradient(circle at 10% 5%,#dce9ff 0 14%,transparent 30%),
+ radial-gradient(circle at 92% 12%,#ffe0f1 0 13%,transparent 29%),
+ linear-gradient(180deg,#f7f9ff,#edf3ff 55%,#f9f5ff);
+ min-height:100vh}
+button{border:0;font:inherit;cursor:pointer;touch-action:manipulation}
+button:active{transform:scale(.97)}
+.app{width:min(900px,100%);margin:auto;padding:12px 12px 45px}
+.top{position:sticky;top:8px;z-index:30;display:flex;align-items:center;justify-content:space-between;
+ padding:11px 13px;border:1px solid rgba(255,255,255,.85);border-radius:24px;
+ background:rgba(255,255,255,.82);backdrop-filter:blur(18px);box-shadow:var(--shadow)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:950;font-size:20px;letter-spacing:-.3px}
+.brandmark{width:43px;height:43px;border-radius:15px;display:grid;place-items:center;
+ background:linear-gradient(135deg,#6b5cf5,#ff63ad);box-shadow:0 9px 22px #7657f34a;font-size:25px}
+.brand span{color:var(--pink)}
+.coin{padding:9px 13px;border-radius:999px;background:#fff6ce;border:1px solid #f3df8a;font-weight:900}
+.hero{margin-top:12px;padding:13px;border-radius:30px;background:linear-gradient(135deg,#171d35,#303b69);
+ color:#fff;box-shadow:0 24px 70px #202b562d;overflow:hidden;position:relative}
+.hero:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#8d7aff22;right:-50px;top:-70px}
+.herohead{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative;z-index:2}
+.mood{font-size:12px;font-weight:850;padding:8px 11px;border-radius:999px;background:#ffffff18;border:1px solid #ffffff20}
+.voicebox{display:flex;align-items:center;gap:6px}
+.voicebtn{background:#ffffff18;color:#fff;border:1px solid #ffffff26;border-radius:999px;padding:8px 10px;font-weight:900}
+.voicebtn.on{background:#39c9df;color:#06202a}
+.scene{height:380px;margin-top:9px;border-radius:25px;position:relative;overflow:hidden;
+ background:linear-gradient(180deg,#aee9ff 0%,#d9f6ff 55%,#a7e59b 55%,#7ed47c 100%);
+ box-shadow:inset 0 0 0 1px #ffffff33}
+.scene:after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;
+ background:linear-gradient(180deg,transparent,#5eaf62);opacity:.28}
+.sun{position:absolute;right:27px;top:20px;width:58px;height:58px;border-radius:50%;
+ background:radial-gradient(circle,#fffbd5,#ffd54e);box-shadow:0 0 45px #ffe36eaa;animation:sun 4s ease-in-out infinite}
+.cloud{position:absolute;font-size:48px;opacity:.58;animation:cloud 12s linear infinite}
+.c1{left:28px;top:54px}.c2{right:130px;top:88px;transform:scale(.7);animation-delay:-6s}
+.catStage{position:absolute;inset:78px 0 0;display:grid;place-items:center;z-index:5}
+.cat3d{width:260px;height:275px;position:relative;filter:drop-shadow(0 22px 12px #244c2b55);
+ transform-origin:center bottom;cursor:pointer;user-select:none;touch-action:manipulation;animation:idle 2.8s ease-in-out infinite}
+.cat3d.touched{animation:touch .45s ease}
+.cat3d.talk{animation:talk .25s ease-in-out infinite alternate}
+.body{position:absolute;width:154px;height:122px;left:53px;top:125px;border-radius:52% 52% 44% 44%;
+ background:radial-gradient(circle at 35% 25%,#fff9b9 0 5%,#ffc52f 25%,#ff9f1c 75%);
+ box-shadow:inset -14px -15px 22px #d76e0c66,inset 9px 8px 15px #fff8aa88}
+.belly{position:absolute;width:84px;height:72px;left:35px;top:35px;border-radius:50%;background:#ffe8a1aa}
+.head{position:absolute;width:174px;height:158px;left:43px;top:35px;border-radius:47% 47% 45% 45%;
+ background:radial-gradient(circle at 35% 25%,#fff8a8 0 7%,#ffc62e 28%,#ff9b17 76%);
+ box-shadow:inset -14px -18px 24px #d36a0c66,inset 11px 8px 16px #fff7a766}
+.ear{position:absolute;width:67px;height:78px;top:2px;background:#ffad1d;clip-path:polygon(50% 0,100% 100%,0 100%);
+ filter:drop-shadow(0 6px 3px #c66a1e55)}
+.ear:after{content:"";position:absolute;inset:15px 18px 18px;background:#ff6f9f;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.e1{left:7px;transform:rotate(-8deg)}.e2{right:7px;transform:rotate(8deg)}
+.eye{position:absolute;width:19px;height:27px;top:79px;border-radius:50%;background:#171521;
+ box-shadow:0 0 0 5px #ffffff22}.eye:after{content:"";position:absolute;width:6px;height:8px;border-radius:50%;background:#fff;left:4px;top:4px}
+.eye1{left:43px}.eye2{right:43px}
+.nose{position:absolute;left:78px;top:108px;width:19px;height:14px;background:#f06a87;clip-path:polygon(50% 100%,0 0,100% 0);border-radius:5px}
+.mouth{position:absolute;left:76px;top:119px;width:23px;height:14px;border-bottom:3px solid #28212a;border-radius:0 0 50% 50%}
+.whisker{position:absolute;height:2px;width:57px;background:#ffffffaa;top:120px}
+.w1{left:-39px;transform:rotate(8deg)}.w2{left:-42px;top:130px;transform:rotate(-4deg)}
+.w3{right:-39px;transform:rotate(-8deg)}.w4{right:-42px;top:130px;transform:rotate(4deg)}
+.paw{position:absolute;width:48px;height:35px;border-radius:45%;background:#ffb72a;bottom:7px;box-shadow:inset -7px -7px 10px #d66d1766}
+.p1{left:43px}.p2{right:43px}
+.tail{position:absolute;width:95px;height:95px;right:-25px;top:145px;border:18px solid #ffad1d;border-left-color:transparent;border-bottom-color:transparent;
+ border-radius:50%;transform:rotate(22deg);filter:drop-shadow(0 8px 4px #c66a1e44);animation:tail 2.2s ease-in-out infinite}
+.bubble{position:absolute;left:50%;top:25px;transform:translateX(-50%);background:#fff;color:#283047;
+ padding:9px 14px;border-radius:17px;font-size:12px;font-weight:900;box-shadow:0 9px 25px #31405c25;z-index:8;white-space:nowrap}
+.bubble:after{content:"";position:absolute;left:50%;bottom:-8px;border:8px solid transparent;border-top-color:#fff;border-bottom:0;transform:translateX(-50%)}
+.spark{position:absolute;font-size:24px;opacity:0;z-index:9;pointer-events:none}
+.s1{left:23%;top:46%}.s2{right:23%;top:40%}.s3{left:35%;top:24%}
+.scene.sparkle .spark{animation:spark .65s ease forwards}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.stat{background:#ffffff12;border:1px solid #ffffff18;border-radius:16px;padding:8px 9px}
+.stat-top{display:flex;justify-content:space-between;font-size:11px;font-weight:900}.bar{height:7px;background:#ffffff18;border-radius:20px;overflow:hidden;margin-top:6px}
+.fill{height:100%;width:80%;border-radius:20px;background:linear-gradient(90deg,#6de0ff,#ff65b1);transition:.35s}
+.card{background:var(--card);border:1px solid #fff;border-radius:24px;margin-top:12px;padding:14px;box-shadow:var(--shadow)}
+.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.action{background:linear-gradient(135deg,#f5f0ff,#ffeef7);border:1px solid #e7ddff;border-radius:17px;padding:10px 7px;color:var(--ink);font-weight:900}
+.action b{display:block;font-size:25px}.action small{font-size:11px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.tab{padding:11px;border-radius:16px;background:#fff;border:1px solid var(--line);font-weight:900}
+.tab.active{background:linear-gradient(135deg,#7258f3,#b25df2);color:#fff;box-shadow:0 10px 22px #7657f333}
+.panel{display:none}.panel.active{display:block}
+.items{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.item,.shop{background:#fafaff;border:1px solid var(--line);border-radius:18px;padding:10px;text-align:center}
+.icon{font-size:39px}.item button,.shop button{width:100%;margin-top:7px;background:#ffeaf5;border-radius:12px;padding:8px;font-weight:900}
+.shopgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.gamebox,.reward,.voicepanel{background:linear-gradient(135deg,#f6f2ff,#fff0f8);border:1px solid var(--line);border-radius:19px;padding:14px;text-align:center}
+.big{width:100%;margin-top:7px;background:#f0ecff;border-radius:14px;padding:11px;font-weight:900}
+.primary{background:linear-gradient(135deg,#7258f3,#a65cf0);color:#fff}
+.gold{background:#fff0ad}.heard{min-height:24px;margin-top:9px;font-weight:850;color:#575b70}
+.status{min-height:22px;text-align:center;font-weight:850;color:#5d6073;margin-top:7px}.notice{font-size:12px;color:var(--muted);line-height:1.5}
+.voice-options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:9px}
+.voiceopt{padding:10px 5px;border-radius:15px;background:#fff;border:1px solid var(--line);font-weight:900}
+.voiceopt.active{background:#222b48;color:#fff}
+footer{text-align:center;color:#85899b;font-size:11px;padding:18px 5px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,25px);opacity:0;pointer-events:none;background:#202437;color:#fff;padding:11px 16px;border-radius:999px;font-weight:850;z-index:60;transition:.22s;max-width:92%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@keyframes idle{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(-1deg)}}
+@keyframes touch{35%{transform:translateY(-20px) scale(1.07) rotate(-4deg)}70%{transform:translateY(0) scale(.98) rotate(3deg)}}
+@keyframes talk{to{transform:translateY(-4px) scale(1.025)}}
+@keyframes tail{50%{transform:rotate(35deg) translateY(-4px)}}
+@keyframes cloud{50%{transform:translateX(70px)}}
+@keyframes sun{50%{transform:scale(1.06)}}
+@keyframes spark{0%{opacity:0;transform:scale(.4) translateY(20px)}35%{opacity:1}100%{opacity:0;transform:scale(1.25) translateY(-35px)}}
+@media(max-width:650px){.scene{height:355px}.stats{grid-template-columns:1fr 1fr}.cat3d{transform:scale(.92)}}
+@media(max-width:430px){.app{padding-left:9px;padding-right:9px}.scene{height:330px}.cat3d{transform:scale(.78)}.items{grid-template-columns:1fr 1fr}.actions{grid-template-columns:1fr 1fr}.voice-options{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand"><div class="brandmark">🐾</div><div>Cat <span>Masti</span></div></div><div class="coins">🪙 <span id="coins">100</span></div></header>
+<header class="top">
+ <div class="brand"><div class="brandmark">🐾</div><div>Cat <span>Masti</span></div></div>
+ <div class="coin">🪙 <span id="coins">100</span></div>
+</header>
 
-<section class="card">
-<div class="stats">
-<div class="stat"><div class="stat-top"><span>🍗 भूख</span><span id="hungerText">80</span></div><div class="bar"><div class="fill" id="hungerFill"></div></div></div>
-<div class="stat"><div class="stat-top"><span>😺 खुशी</span><span id="happyText">80</span></div><div class="bar"><div class="fill" id="happyFill"></div></div></div>
-<div class="stat"><div class="stat-top"><span>⚡ ऊर्जा</span><span id="energyText">80</span></div><div class="bar"><div class="fill" id="energyFill"></div></div></div>
-<div class="stat"><div class="stat-top"><span>🧼 सफाई</span><span id="hygieneText">80</span></div><div class="bar"><div class="fill" id="hygieneFill"></div></div></div>
-</div>
-<div class="scene" id="scene"><div class="sun">☀️</div><div class="cloud">☁️</div><div class="mood" id="mood">😺 मैं बहुत खुश हूँ!</div><div class="cat" id="cat">🐱</div></div>
-<div class="actions"><button class="action" id="feedBtn"><b>🍗</b><small>खिलाओ</small></button><button class="action" id="groomBtn"><b>🧼</b><small>साफ करो</small></button><button class="action" id="sleepBtn"><b>😴</b><small>सुलाओ</small></button><button class="action" id="bathBtn"><b>🚽</b><small>बाथरूम</small></button></div>
+<section class="hero">
+ <div class="herohead">
+  <div class="mood" id="mood">😺 मैं खुश हूँ!</div>
+  <div class="voicebox"><button class="voicebtn" id="voiceToggle">🔊 OFF</button></div>
+ </div>
+ <div class="scene" id="scene">
+  <div class="sun"></div><div class="cloud c1">☁️</div><div class="cloud c2">☁️</div>
+  <div class="bubble" id="bubble">म्याऊ! मुझे प्यार करो 😽</div>
+  <div class="catStage">
+   <div class="cat3d" id="cat" aria-label="Cat">
+    <div class="tail"></div><div class="body"><div class="belly"></div></div>
+    <div class="head"><div class="ear e1"></div><div class="ear e2"></div>
+     <div class="eye eye1"></div><div class="eye eye2"></div><div class="nose"></div><div class="mouth"></div>
+     <div class="whisker w1"></div><div class="whisker w2"></div><div class="whisker w3"></div><div class="whisker w4"></div>
+    </div>
+    <div class="paw p1"></div><div class="paw p2"></div>
+   </div>
+  </div>
+  <div class="spark s1">✨</div><div class="spark s2">💖</div><div class="spark s3">⭐</div>
+  <div class="stats">
+   <div class="stat"><div class="stat-top"><span>🍗 भूख</span><span id="hungerText">80</span></div><div class="bar"><div class="fill" id="hungerFill"></div></div></div>
+   <div class="stat"><div class="stat-top"><span>😺 खुशी</span><span id="happyText">80</span></div><div class="bar"><div class="fill" id="happyFill"></div></div></div>
+   <div class="stat"><div class="stat-top"><span>⚡ ऊर्जा</span><span id="energyText">80</span></div><div class="bar"><div class="fill" id="energyFill"></div></div></div>
+   <div class="stat"><div class="stat-top"><span>🧼 सफाई</span><span id="hygieneText">80</span></div><div class="bar"><div class="fill" id="hygieneFill"></div></div></div>
+  </div>
+ </div>
+ <div class="actions" style="margin-top:10px">
+  <button class="action" id="feedBtn"><b>🍗</b><small>खिलाओ</small></button>
+  <button class="action" id="groomBtn"><b>🧼</b><small>साफ करो</small></button>
+  <button class="action" id="sleepBtn"><b>😴</b><small>सुलाओ</small></button>
+  <button class="action" id="bathBtn"><b>🚽</b><small>बाथरूम</small></button>
+ </div>
 </section>
 
 <div class="tabs"><button class="tab active" data-tab="custom">🎨 Look</button><button class="tab" data-tab="shop">🛍️ Shop</button><button class="tab" data-tab="game">🎮 Game</button></div>
 
-<section id="custom" class="card panel active"><h3>🎨 Cat Customization</h3><div class="items"><div class="item"><div class="icon">🐱</div><b>Normal</b><button data-cat="🐱">Use</button></div><div class="item"><div class="icon">😺</div><b>Happy</b><button data-cat="😺">Use</button></div><div class="item"><div class="icon">😻</div><b>Lovely</b><button data-cat="😻">Use</button></div><div class="item"><div class="icon">😸</div><b>Smile</b><button data-cat="😸">Use</button></div><div class="item"><div class="icon">😼</div><b>Cool</b><button data-cat="😼">Use</button></div><div class="item"><div class="icon">😹</div><b>Funny</b><button data-cat="😹">Use</button></div></div></section>
+<section id="custom" class="card panel active">
+ <h3>🎨 Cat Look</h3>
+ <div class="items">
+  <div class="item"><div class="icon">🐱</div><b>Normal</b><button data-cat="normal">Use</button></div>
+  <div class="item"><div class="icon">😺</div><b>Happy</b><button data-cat="happy">Use</button></div>
+  <div class="item"><div class="icon">😻</div><b>Lovely</b><button data-cat="lovely">Use</button></div>
+  <div class="item"><div class="icon">😸</div><b>Smile</b><button data-cat="smile">Use</button></div>
+  <div class="item"><div class="icon">😼</div><b>Cool</b><button data-cat="cool">Use</button></div>
+  <div class="item"><div class="icon">😹</div><b>Funny</b><button data-cat="funny">Use</button></div>
+ </div>
+</section>
 
-<section id="shop" class="card panel"><h3>🛍️ Cat Shop</h3><div class="shopgrid"><div class="shop"><div class="icon">🍣</div><b>Special Food</b><p>+20 भूख</p><button id="foodShop">🪙 20</button></div><div class="shop"><div class="icon">🎀</div><b>Pink Bow</b><p>Premium look</p><button data-item="🎀" data-cost="50">🪙 50</button></div><div class="shop"><div class="icon">👑</div><b>Royal Crown</b><p>Premium look</p><button data-item="👑" data-cost="100">🪙 100</button></div><div class="shop"><div class="icon">🕶️</div><b>Cool Glasses</b><p>Premium look</p><button data-item="🕶️" data-cost="75">🪙 75</button></div></div></section>
+<section id="shop" class="card panel"><h3>🛍️ Cat Shop</h3>
+ <div class="shopgrid">
+  <div class="shop"><div class="icon">🍣</div><b>Special Food</b><p>+20 भूख</p><button id="foodShop">🪙 20</button></div>
+  <div class="shop"><div class="icon">🎀</div><b>Pink Bow</b><p>Premium look</p><button data-item="bow" data-cost="50">🪙 50</button></div>
+  <div class="shop"><div class="icon">👑</div><b>Royal Crown</b><p>Premium look</p><button data-item="crown" data-cost="100">🪙 100</button></div>
+  <div class="shop"><div class="icon">🕶️</div><b>Cool Glasses</b><p>Premium look</p><button data-item="glasses" data-cost="75">🪙 75</button></div>
+ </div>
+</section>
 
-<section id="game" class="card panel"><h3>🎮 Coin Catch</h3><div class="gamebox"><p>15 सेकंड में जितने coins पकड़ सकें, पकड़ें!</p><div style="font-size:32px">🪙 <span id="score">0</span></div><button class="big gold" id="startGame">▶️ Start Mini Game</button><button class="big" id="catchBtn" disabled>🐾 Catch Coin!</button><div class="status" id="gameStatus"></div></div></section>
+<section id="game" class="card panel"><h3>🎮 Mini Games</h3>
+ <div class="gamebox"><p>15 सेकंड में जितने coins पकड़ सकें!</p><div style="font-size:32px">🪙 <span id="score">0</span></div>
+ <button class="big gold" id="startGame">▶️ Start Coin Catch</button><button class="big" id="catchBtn" disabled>🐾 Coin पकड़ो!</button><div class="status" id="gameStatus"></div></div>
+ <div class="gamebox" style="margin-top:10px"><p>10 सेकंड में मछलियाँ पकड़ो!</p><div style="font-size:44px" id="fish">🐟</div><div style="font-size:23px;font-weight:900">Score: <span id="fishScore">0</span></div>
+ <button class="big primary" id="startFish">▶️ Start Fish Tap</button><button class="big" id="fishBtn" disabled>🐾 🐟 पकड़ो!</button><div class="status" id="fishStatus"></div></div>
+</section>
+
+<section class="card">
+ <h3>🎤 Smart Cat Voice</h3>
+ <div class="voicepanel">
+  <p class="notice">🎤 माइक दबाकर सामान्य भाषा में बात करें। Voice ON रहने पर Cat अपने जवाब बोलती रहेगी। ब्राउज़र की उपलब्ध आवाज़ के अनुसार आवाज़ का टोन बदलेगा।</p>
+  <button class="big primary" id="voiceBtn">🎤 बोलें</button>
+  <div class="voice-options">
+   <button class="voiceopt active" data-voice="cat">🐱 Cat</button>
+   <button class="voiceopt" data-voice="girl">👧 Cute Girl</button>
+   <button class="voiceopt" data-voice="boy">👦 Boy</button>
+  </div>
+  <div class="heard" id="heard"></div><div class="status" id="voiceStatus">Voice OFF — ऊपर 🔊 ON करें</div>
+ </div>
+</section>
 
 <section class="card"><h3>🎁 Daily Reward</h3><div class="reward"><div style="font-size:42px">🎁</div><b id="rewardText">आज का reward तैयार है!</b><button class="big gold" id="rewardBtn">🪙 25 Coins लें</button></div></section>
-<section class="card"><h3>🐟 Fish Tap</h3><div class="gamebox"><p>10 सेकंड में जितनी मछलियाँ पकड़ सकें!</p><div style="font-size:44px" id="fish">🐟</div><div style="font-size:23px;font-weight:900">Score: <span id="fishScore">0</span></div><button class="big primary" id="startFish">▶️ Start</button><button class="big" id="fishBtn" disabled>🐾 🐟 पकड़ो!</button><div class="status" id="fishStatus"></div></div></section>
-<section class="card"><h3>🎤 Cat से बात करें</h3><div class="voice"><p class="notice">माइक दबाएँ और साफ आवाज़ में बोलें। Cat आपकी बात सुनेगी और बोलकर जवाब देगी।</p><button class="big primary" id="voiceBtn">🎤 बोलें</button><button class="big" id="soundBtn">🔊 Cat की आवाज़ टेस्ट करें</button><div class="heard" id="heard"></div><div class="status" id="voiceStatus"></div></div></section>
-<section class="card"><h3>💰 Rewards</h3><p class="notice">यह फोन टेस्ट वर्ज़न है। असली AdMob और Google Play purchase बाद के Android build में जोड़े जाएँगे।</p><button class="big gold" id="adBtn">📺 Reward Demo → +30 Coins</button></section>
-<footer>Cat Masti • Pro Live Test v1.5 • आपका progress इस browser में save होता है</footer>
-</div><div class="toast" id="toast"></div>
+<section class="card"><h3>💰 Reward Demo</h3><p class="notice">यह लाइव टेस्ट वर्ज़न है। असली AdMob और Google Play purchase बाद के Android build में लगाए जाएँगे।</p><button class="big gold" id="adBtn">📺 Reward Demo → +30 Coins</button></section>
+<footer>Cat Masti • 3D Pro Live Test v1.6 • Progress इस browser में save होता है</footer>
+</div>
+<div class="toast" id="toast"></div>
 
 <script>
 (function(){
-'use strict';
+"use strict";
 const $=id=>document.getElementById(id);
-const KEY='catMastiV15';
-const base={coins:100,hunger:80,happy:80,energy:80,hygiene:80,cat:'🐱'};
-let state;try{state=JSON.parse(localStorage.getItem(KEY))||base}catch(e){state={...base}};
-let audioCtx=null,recognition=null,gameTimer=null,fishTimer=null,gameOn=false,fishOn=false,gameScore=0,fishScore=0;
+const KEY="catMastiV16";
+const base={coins:100,hunger:80,happy:80,energy:80,hygiene:80,voiceOn:false,voice:"cat",look:"normal"};
+let state;
+try{state=Object.assign({},base,JSON.parse(localStorage.getItem(KEY)||"{}"))}catch(e){state={...base}}
+let recognition=null, listening=false, gameTimer=null, fishTimer=null, gameOn=false, fishOn=false, gameScore=0, fishScore=0;
+
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
 function clamp(n){return Math.max(0,Math.min(100,n))}
-function toast(t){const el=$('toast');el.textContent=t;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),1800)}
-function render(){['hunger','happy','energy','hygiene'].forEach(k=>{$(k+'Text').textContent=Math.round(state[k]);$(k+'Fill').style.width=state[k]+'%'});$('coins').textContent=state.coins;$('cat').textContent=state.cat;let m=state.hunger<25?'😿 मुझे भूख लगी है!':state.energy<25?'🥱 मुझे नींद आ रही है!':state.hygiene<25?'🙀 मुझे साफ करो!':state.happy>75?'😺 मैं बहुत खुश हूँ!':'😸 मेरे साथ खेलो!';$('mood').textContent=m;save();updateDaily()}
-function jump(){const c=$('cat');c.classList.remove('jump');void c.offsetWidth;c.classList.add('jump')}
-function audio(){try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;if(!audioCtx)audioCtx=new C();if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx}catch(e){return null}}
-function beep(freq=660){const a=audio();if(!a)return;const o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.value=freq;g.gain.value=.045;o.connect(g);g.connect(a.destination);o.start();g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.18);o.stop(a.currentTime+.18)}
-function act(type){audio();jump();if(type==='feed'){state.hunger=clamp(state.hunger+25);state.happy=clamp(state.happy+3);beep(720);toast('🍗 यम्मी! Cat ने खाना खा लिया')}if(type==='groom'){state.hygiene=clamp(state.hygiene+28);state.happy=clamp(state.happy+4);state.energy=clamp(state.energy-2);beep(610);toast('🧼 अब Cat साफ है!')}if(type==='sleep'){state.energy=clamp(state.energy+40);state.happy=clamp(state.happy+5);state.hunger=clamp(state.hunger-8);beep(420);toast('😴 Cat सो रही है...')}if(type==='bath'){state.hygiene=clamp(state.hygiene+20);state.happy=clamp(state.happy+2);beep(540);toast('🚽 काम हो गया!')}render()}
-$('feedBtn').onclick=()=>act('feed');$('groomBtn').onclick=()=>act('groom');$('sleepBtn').onclick=()=>act('sleep');$('bathBtn').onclick=()=>act('bath');$('cat').onclick=()=>{state.happy=clamp(state.happy+5);jump();beep(760);toast('🐾 म्याऊ! मुझे प्यार मिला 😽');render()};
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active')});
-document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{state.cat=b.dataset.cat;beep(700);toast('🎨 नया look लगा दिया!');render()});
-$('foodShop').onclick=()=>{if(state.coins<20)return toast('🪙 Coins कम हैं');state.coins-=20;state.hunger=clamp(state.hunger+20);toast('🍣 Special Food मिल गया');render()};
-document.querySelectorAll('[data-item]').forEach(b=>b.onclick=()=>{const cost=Number(b.dataset.cost);if(state.coins<cost)return toast('🪙 Coins कम हैं');state.coins-=cost;state.cat=b.dataset.item;toast('✨ Item खरीदकर लगा दिया');render()});
-$('startGame').onclick=()=>{if(gameOn)return;gameOn=true;gameScore=0;$('score').textContent='0';$('catchBtn').disabled=false;let left=15;$('gameStatus').textContent='⏱️ '+left+' सेकंड';clearInterval(gameTimer);gameTimer=setInterval(()=>{left--;$('gameStatus').textContent='⏱️ '+left+' सेकंड';if(left<=0){clearInterval(gameTimer);gameOn=false;$('catchBtn').disabled=true;state.coins+=gameScore;beep(900);$('gameStatus').textContent='🎉 खत्म! +'+gameScore+' Coins';render()}},1000)};
-$('catchBtn').onclick=()=>{if(!gameOn)return;gameScore++;$('score').textContent=gameScore;jump();beep(880)};
-$('startFish').onclick=()=>{if(fishOn)return;fishOn=true;fishScore=0;$('fishScore').textContent='0';$('fishBtn').disabled=false;let left=10;$('fishStatus').textContent='⏱️ '+left+' सेकंड';clearInterval(fishTimer);fishTimer=setInterval(()=>{left--;$('fishStatus').textContent='⏱️ '+left+' सेकंड';if(left<=0){clearInterval(fishTimer);fishOn=false;$('fishBtn').disabled=true;state.coins+=fishScore;beep(950);$('fishStatus').textContent='🎉 खत्म! +'+fishScore+' Coins';render()}},1000)};
-$('fishBtn').onclick=()=>{if(!fishOn)return;fishScore++;$('fishScore').textContent=fishScore;$('fish').textContent=Math.random()>.5?'🐟':'🐠';jump();beep(820)};
-function updateDaily(){const d=new Date().toISOString().slice(0,10);const done=localStorage.getItem('catMastiDaily15')===d;$('rewardBtn').disabled=done;$('rewardText').textContent=done?'आज का reward मिल चुका है!':'आज का reward तैयार है!'}
-$('rewardBtn').onclick=()=>{const d=new Date().toISOString().slice(0,10);if(localStorage.getItem('catMastiDaily15')===d)return toast('🎁 आज का reward पहले ही लिया');localStorage.setItem('catMastiDaily15',d);state.coins+=25;state.happy=clamp(state.happy+5);beep(980);toast('🎁 +25 Coins मिले!');render()};
-function speak(text){if(!('speechSynthesis' in window)){toast('🔊 इस browser में बोलने की सुविधा नहीं मिली');return false}try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='hi-IN';u.rate=.92;u.pitch=1.25;u.volume=1;u.onstart=()=>{$('scene').classList.add('speaking')};u.onend=()=>{$('scene').classList.remove('speaking')};u.onerror=()=>{$('scene').classList.remove('speaking');toast('🔊 आवाज़ चल नहीं पाई')};speechSynthesis.speak(u);return true}catch(e){return false}}
-$('soundBtn').onclick=()=>{audio();const ok=speak('म्याऊ! नमस्ते दोस्त, मैं Cat Masti हूँ!');if(ok)toast('🔊 Cat बोल रही है...')};
-function reply(text){const x=text.toLowerCase();let r;if(/खाना|भूख|feed|खिला/.test(x)){act('feed');r='म्याऊ! खाना बहुत स्वादिष्ट था, धन्यवाद!'}else if(/साफ|नहा|गंद/.test(x)){act('groom');r='अब मैं एकदम साफ हूँ!'}else if(/सो|नींद|सुल/.test(x)){act('sleep');r='ठीक है, मैं थोड़ी देर सोती हूँ।'}else if(/बाथरूम|टॉयलेट/.test(x)){act('bath');r='बाथरूम का काम हो गया!'}else if(/नाम/.test(x)){r='मेरा नाम Cat Masti है!'}else if(/कैसे हो|कैसी हो/.test(x)){r=state.happy>60?'मैं बहुत खुश हूँ! 😺':'मुझे थोड़ा प्यार चाहिए। 🥺'}else if(/हेलो|हाय|नमस्ते/.test(x)){r='म्याऊ! नमस्ते दोस्त! 🐾'}else if(/प्यार|प्यारा|अच्छा/.test(x)){state.happy=clamp(state.happy+8);render();r='म्याऊऊ! आप भी बहुत अच्छे हैं! 😽'}else{r=['म्याऊ! मैंने सुना। 😺','हम्म... मज़ेदार बात है! 🐾','मेरे साथ खेलोगे? 🎮','मुझे प्यार चाहिए! ❤️'][Math.floor(Math.random()*4)]}toast('🐱 '+r);speak(r)}
-function startVoice(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$('voiceStatus').textContent='यह browser voice recognition सपोर्ट नहीं करता। Android Chrome में इस पेज को HTTPS पर खोलें।';return}if(recognition){try{recognition.abort()}catch(e){}}recognition=new SR();recognition.lang='hi-IN';recognition.interimResults=false;recognition.maxAlternatives=1;recognition.onstart=()=>{$('voiceBtn').textContent='👂 सुन रहा हूँ...';$('voiceStatus').textContent='अब बोलिए...'};recognition.onresult=e=>{const text=e.results[0][0].transcript;$('heard').textContent='आप: “'+text+'”';$('voiceStatus').textContent='Cat जवाब दे रही है...';reply(text)};recognition.onerror=e=>{$('voiceBtn').textContent='🎤 बोलें';$('voiceStatus').textContent=e.error==='not-allowed'?'माइक Permission Allow करें।':'आवाज़ नहीं मिली, फिर कोशिश करें।'};recognition.onend=()=>{$('voiceBtn').textContent='🎤 बोलें'};try{audio();recognition.start()}catch(e){$('voiceStatus').textContent='माइक शुरू नहीं हुआ। दोबारा दबाएँ।'}}
-$('voiceBtn').onclick=startVoice;$('adBtn').onclick=()=>{state.coins+=30;beep(1000);toast('📺 Demo Reward: +30 Coins');render()};
-setInterval(()=>{state.hunger=clamp(state.hunger-1);state.hygiene=clamp(state.hygiene-.5);state.energy=clamp(state.energy-.2);if(state.hunger<30||state.hygiene<30)state.happy=clamp(state.happy-.5);render()},30000);
+function toast(t){const e=$("toast");e.textContent=t;e.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("show"),1900)}
+function beep(freq=650,dur=.12){try{const C=AudioContext||webkitAudioContext,a=new C(),o=a.createOscillator(),g=a.createGain();o.type="sine";o.frequency.value=freq;g.gain.value=.035;o.connect(g);g.connect(a.destination);o.start();g.gain.exponentialRampToValueAtTime(.001,a.currentTime+dur);o.stop(a.currentTime+dur)}catch(e){}}
+function spark(){const s=$("scene");s.classList.remove("sparkle");void s.offsetWidth;s.classList.add("sparkle")}
+function touch(reaction){
+ const c=$("cat");c.classList.remove("touched");void c.offsetWidth;c.classList.add("touched");spark();beep(760);
+ $("bubble").textContent=reaction||randomTouch();setTimeout(()=>{if(!$("scene").classList.contains("talk")) $("bubble").textContent=moodText()},1200);
+}
+function moodText(){return state.hunger<25?"😿 मुझे भूख लगी है!":state.energy<25?"🥱 मुझे नींद आ रही है!":state.hygiene<25?"🙀 मुझे साफ करो!":state.happy>75?"😺 मैं बहुत खुश हूँ!":"😸 मेरे साथ खेलो!"}
+function render(){
+ ["hunger","happy","energy","hygiene"].forEach(k=>{$(k+"Text").textContent=Math.round(state[k]);$(k+"Fill").style.width=state[k]+"%"});
+ $("coins").textContent=state.coins;$("mood").textContent=moodText();save();updateDaily();
+ $("voiceToggle").textContent=state.voiceOn?"🔊 ON":"🔇 OFF";
+ $("voiceToggle").classList.toggle("on",state.voiceOn);
+ $("voiceStatus").textContent=state.voiceOn?"🔊 Voice ON — अब जवाब बोलकर आएँगे":"Voice OFF — ऊपर 🔊 ON करें";
+}
+function act(type){
+ let r="";
+ if(type==="feed"){state.hunger=clamp(state.hunger+25);state.happy=clamp(state.happy+4);r="यम्मी! मुझे बहुत स्वादिष्ट खाना मिला! 😋"}
+ if(type==="groom"){state.hygiene=clamp(state.hygiene+28);state.happy=clamp(state.happy+4);r="वाह! अब मैं बहुत साफ और सुंदर हूँ! ✨"}
+ if(type==="sleep"){state.energy=clamp(state.energy+40);state.happy=clamp(state.happy+3);state.hunger=clamp(state.hunger-7);r="म्म्म... मुझे नींद आ रही थी। अब मैं फ्रेश हूँ! 😴"}
+ if(type==="bath"){state.hygiene=clamp(state.hygiene+20);state.happy=clamp(state.happy+2);r="हो गया! अब कोई बदबू नहीं! 😹"}
+ touch(r);render();maybeSpeak(r);
+}
+function randomTouch(){return ["म्याऊ! मुझे प्यार मिला! 😽","हीही! फिर से छुओ! 🐾","अरे! गुदगुदी हो रही है! 😹","म्याऊऊ... तुम अच्छे हो! 💖","पंजा-पंजा! खेलोगे? 🎮","ओह! मेरी मूंछ मत खींचो! 😼","मुझे सहलाना बहुत पसंद है! 🥰"][Math.floor(Math.random()*7)]}
+function maybeSpeak(t){if(state.voiceOn)speak(t)}
+$("cat").addEventListener("pointerdown",()=>{const r=randomTouch();touch(r);state.happy=clamp(state.happy+2);render();maybeSpeak(r)});
+
+$("feedBtn").onclick=()=>act("feed");$("groomBtn").onclick=()=>act("groom");$("sleepBtn").onclick=()=>act("sleep");$("bathBtn").onclick=()=>act("bath");
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));b.classList.add("active");$(b.dataset.tab).classList.add("active")});
+
+const looks={
+ normal:["🐱","म्याऊ! मेरा normal look कैसा है? 😺"],
+ happy:["😺","मैं आज बहुत खुश हूँ! 😺"],
+ lovely:["😻","ओह! मैं कितनी प्यारी लग रही हूँ! 💖"],
+ smile:["😸","देखो मेरी प्यारी smile! 😸"],
+ cool:["😼","Cool Cat आ गई! 😎"],
+ funny:["😹","हाहाहा! मुझे देखकर हँसी आ रही है ना? 😹"]
+};
+document.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{const k=b.dataset.cat;state.look=k;state.happy=clamp(state.happy+4);const [face,msg]=looks[k];document.querySelector(".head").style.setProperty("--face",face);toast("✨ Look बदल गया!");touch(msg);render();maybeSpeak(msg)});
+
+$("foodShop").onclick=()=>{if(state.coins<20)return toast("🪙 Coins कम हैं");state.coins-=20;state.hunger=clamp(state.hunger+20);act("feed")};
+document.querySelectorAll("[data-item]").forEach(b=>b.onclick=()=>{const cost=+b.dataset.cost;if(state.coins<cost)return toast("🪙 Coins कम हैं");state.coins-=cost;state.happy=clamp(state.happy+8);const item=b.dataset.item==="bow"?"🎀":b.dataset.item==="crown"?"👑":"🕶️";$("bubble").textContent=item+" नया accessory लग गया!";toast("✨ Accessory खरीदा");render();maybeSpeak("मेरा नया accessory देखो! "+item)});
+
+$("startGame").onclick=()=>{if(gameOn)return;gameOn=true;gameScore=0;$("score").textContent=0;$("catchBtn").disabled=false;let left=15;$("gameStatus").textContent="⏱️ "+left+" सेकंड";clearInterval(gameTimer);gameTimer=setInterval(()=>{left--;$("gameStatus").textContent="⏱️ "+left+" सेकंड";if(left<=0){clearInterval(gameTimer);gameOn=false;$("catchBtn").disabled=true;state.coins+=gameScore;toast("🎉 +"+gameScore+" Coins");maybeSpeak("वाह! तुमने "+gameScore+" coins जीते!");render()}},1000)}
+$("catchBtn").onclick=()=>{if(!gameOn)return;gameScore++;$("score").textContent=gameScore;touch("पकड़ लिया! 🪙");}
+$("startFish").onclick=()=>{if(fishOn)return;fishOn=true;fishScore=0;$("fishScore").textContent=0;$("fishBtn").disabled=false;let left=10;$("fishStatus").textContent="⏱️ "+left+" सेकंड";clearInterval(fishTimer);fishTimer=setInterval(()=>{left--;$("fishStatus").textContent="⏱️ "+left+" सेकंड";if(left<=0){clearInterval(fishTimer);fishOn=false;$("fishBtn").disabled=true;state.coins+=fishScore;toast("🐟 +"+fishScore+" Coins");maybeSpeak("मछली पकड़ने में मज़ा आया!");render()}},1000)}
+$("fishBtn").onclick=()=>{if(!fishOn)return;fishScore++;$("fishScore").textContent=fishScore;$("fish").textContent=Math.random()>.5?"🐟":"🐠";touch("मछली पकड़ ली! 🐟")};
+
+function updateDaily(){const d=new Date().toISOString().slice(0,10),done=localStorage.getItem("catMastiDaily16")===d;$("rewardBtn").disabled=done;$("rewardText").textContent=done?"आज का reward मिल चुका है!":"आज का reward तैयार है!"}
+$("rewardBtn").onclick=()=>{const d=new Date().toISOString().slice(0,10);if(localStorage.getItem("catMastiDaily16")===d)return;localStorage.setItem("catMastiDaily16",d);state.coins+=25;state.happy=clamp(state.happy+5);toast("🎁 +25 Coins");render();maybeSpeak("वाह! आज का reward मिल गया!")};
+$("adBtn").onclick=()=>{state.coins+=30;toast("📺 Demo Reward: +30 Coins");render();maybeSpeak("Reward मिल गया! तीस coins और!")};
+
+const voiceSettings={cat:{rate:.86,pitch:1.55},girl:{rate:.98,pitch:1.28},boy:{rate:.92,pitch:.82}};
+function pickVoice(lang){
+ const vs=window.speechSynthesis?.getVoices?.()||[];
+ const hi=vs.filter(v=>/^hi/i.test(v.lang)), en=vs.filter(v=>/^en/i.test(v.lang));
+ return hi[0]||en.find(v=>/female|woman|girl|samantha|google us english/i.test(v.name))||vs[0]||null;
+}
+function speak(text){
+ if(!("speechSynthesis" in window))return toast("🔊 आपके browser में speech उपलब्ध नहीं है");
+ try{
+  speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text),cfg=voiceSettings[state.voice]||voiceSettings.cat;
+  const v=pickVoice();if(v)u.voice=v;u.lang=v?.lang||"hi-IN";u.rate=cfg.rate;u.pitch=cfg.pitch;u.volume=1;
+  $("scene").classList.add("talk");u.onend=()=>$("scene").classList.remove("talk");u.onerror=()=>$("scene").classList.remove("talk");
+  speechSynthesis.speak(u);
+ }catch(e){toast("आवाज़ शुरू नहीं हुई")}
+}
+speechSynthesis?.getVoices?.();
+$("voiceToggle").onclick=()=>{
+ state.voiceOn=!state.voiceOn;render();
+ if(state.voiceOn){const t="म्याऊ! अब मेरी आवाज़ हमेशा ON रहेगी। मुझसे बात करो!";touch(t);speak(t)}
+ else speechSynthesis?.cancel();
+};
+document.querySelectorAll(".voiceopt").forEach(b=>b.onclick=()=>{state.voice=b.dataset.voice;document.querySelectorAll(".voiceopt").forEach(x=>x.classList.remove("active"));b.classList.add("active");const names={cat:"Cat voice",girl:"Cute Girl voice",boy:"Boy voice"};toast("🎙️ "+names[state.voice]+" चुनी गई");if(state.voiceOn)speak("म्याऊ! नई आवाज़ तैयार है!")});
+$("voiceBtn").onclick=startVoice;
+
+const stopWords=["क्या","क्यों","कैसे","कहाँ","कब","कौन","कितना","कितनी","तुम","आप","मुझे","मैं","हम","हेलो","हाय","नमस्ते"];
+const topicMap=[
+ {re:/^(हेलो|हाय|नमस्ते|hello|hi)/i,rs:["म्याऊ! नमस्ते दोस्त! आज हम क्या करेंगे? 🐾","हेलो! मैं तुम्हें सुन रही हूँ। 😺"]},
+ {re:/(क्या कर रही|क्या कर रहे|कर रही|कर रहे)/i,rs:["मैं अभी तुम्हारे साथ मस्ती कर रही हूँ! 😺","मैं तुम्हारा इंतज़ार कर रही थी। अब बताओ, क्या करें? 🐾"]},
+ {re:/(कैसी हो|कैसे हो|हाल चाल)/i,rs:["मैं एकदम मस्त हूँ! तुम बताओ? 💖","मेरी energy अच्छी है और mood भी super है! 😺"]},
+ {re:/(नाम|कौन हो)/i,rs:["मेरा नाम Cat Masti है। मैं तुम्हारी virtual pet हूँ! 🐱"]},
+ {re:/(उम्र|कितने साल)/i,rs:["मैं virtual cat हूँ, इसलिए मेरी उम्र game के साथ चलती रहती है! 😹"]},
+ {re:/(भूख|खाना|खिलाओ|खाई)/i,rs:["मुझे थोड़ी भूख लगी है! क्या तुम मुझे कुछ yummy खिलाओगे? 🍗","यम्मी food का नाम सुनते ही मेरी पूँछ हिलने लगी! 😋"]},
+ {re:/(पानी|प्यास)/i,rs:["म्याऊ! पानी बहुत जरूरी है। मेरे लिए fresh पानी रखो! 💧"]},
+ {re:/(सो|नींद|थकी|आराम)/i,rs:["थोड़ी नींद अच्छी रहेगी। मेरे लिए soft bed लाओ! 😴"]},
+ {re:/(खुश|उदास|रो|दुख)/i,rs:["तुम मेरे साथ हो तो मैं खुश हूँ! मुझे एक cuddle दो। 💖","चलो खेलते हैं, mood अच्छा हो जाएगा! 🐾"]},
+ {re:/(प्यार|love|kiss|किस)/i,rs:["म्याऊऊ! मुझे भी तुम बहुत अच्छे लगते हो! 😽","एक virtual cuddle वापस! 🤗🐱"]},
+ {re:/(खेल|game|खेलोगी|खेलोगे)/i,rs:["हाँ! Coin Catch या Fish Tap खेलते हैं! 🎮","मैं ready हूँ! जल्दी से game शुरू करो! 🐾"]},
+ {re:/(सुंदर|प्यारी|cute|अच्छी लग)/i,rs:["ओह! धन्यवाद! मैं blush कर रही हूँ। 😻","तुम्हारी तारीफ से मेरी happiness बढ़ गई! 💖"]},
+ {re:/(गुस्सा|नाराज़)/i,rs:["नहीं नहीं, मैं नाराज़ नहीं हूँ। मुझे बस प्यार से सहलाओ। 😽"]},
+ {re:/(मौसम|बारिश|धूप)/i,rs:["मेरे game-world में आज बहुत प्यारी धूप है! ☀️🐱"]},
+ {re:/(स्कूल|पढ़ाई|होमवर्क)/i,rs:["पहले थोड़ा पढ़ लो, फिर मेरे साथ game खेलना! 📚🐾"]},
+ {re:/(दोस्त|friend)/i,rs:["हाँ! अब तुम मेरे दोस्त हो। High paw! 🐾"]},
+ {re:/(धन्यवाद|थैंक|thanks)/i,rs:["म्याऊ! Welcome दोस्त! 💖","तुम्हारे लिए हमेशा! 😺"]},
+ {re:/(गुड नाइट|शुभ रात्री|good night)/i,rs:["Good night! अच्छे सपने देखना। मैं भी सोने जा रही हूँ। 🌙😴"]},
+ {re:/(गुड मॉर्निंग|सुप्रभात|good morning)/i,rs:["Good morning! आज बहुत सारी मस्ती करेंगे! ☀️🐱"]},
+ {re:/(तुम्हें क्या पसंद|पसंद)/i,rs:["मुझे fish, प्यार, खेल और तुम्हारे साथ बातें करना बहुत पसंद है! 🐟💖"]},
+ {re:/(कहाँ रहती|कहाँ हो)/i,rs:["मैं Cat Masti के इस छोटे से magical world में रहती हूँ! ✨"]},
+ {re:/(सच|झूठ)/i,rs:["मैं game की virtual cat हूँ, इसलिए मेरी बातें इसी दुनिया की हैं। 😺"]},
+ {re:/(मदद|help)/i,rs:["ज़रूर! Feed, Groom, Sleep, Bathroom या कोई game—बस बताओ। 🐾"]},
+ {re:/(म्याऊ|meow)/i,rs:["म्याऊऊऊ! 😽","म्याऊ! मैंने भी सुन लिया! 🐱"]},
+ {re:/(शरारत|नटखट)/i,rs:["मेरी थोड़ी शरारत तो बनती है! 😹🐾"]},
+ {re:/(डांस|नाच)/i,rs:["देखो मेरी tail! 💃🐱 म्याऊ-म्याऊ dance!"]},
+ {re:/(गाना|song)/i,rs:["म्याऊ म्याऊ म्याऊ... यही मेरा cat song है! 🎵🐱"]},
+ {re:/(अच्छा|ठीक|ok|okay)/i,rs:["म्याऊ! फिर तय रहा। अब अगली बात बताओ। 😺"]},
+ {re:/(बोर|boring)/i,rs:["बोर मत हो! Fish Tap शुरू करो और मुझे पकड़ने दो! 🐟🎮"]}
+];
+function genericReply(q){
+ const words=q.trim().split(/\s+/).filter(Boolean);
+ if(words.length===0)return "म्याऊ! कुछ बोलो ना, मैं सुन रही हूँ। 🐾";
+ const tails=["मैंने तुम्हारी बात सुनी। इसके बारे में थोड़ा और बताओ ना! 🐱","हम्म... दिलचस्प! मैं तुम्हारे साथ हूँ। 💖","म्याऊ! मुझे यह बात अच्छी लगी। अब अगला सवाल पूछो! 😺","ओह! यह नया सवाल है। चलो इसे साथ में explore करते हैं! 🔎🐾"];
+ return tails[Math.floor(Math.random()*tails.length)];
+}
+function findReply(q){
+ for(const t of topicMap)if(t.re.test(q))return t.rs[Math.floor(Math.random()*t.rs.length)];
+ return genericReply(q);
+}
+function reply(q){
+ const x=q.toLowerCase().trim();let r=findReply(x);
+ if(/खिला|खाना|भूख/.test(x))act("feed");
+ else if(/साफ|नहा|गंद/.test(x))act("groom");
+ else if(/सो|नींद|आराम/.test(x))act("sleep");
+ else if(/बाथरूम|टॉयलेट/.test(x))act("bath");
+ else {state.happy=clamp(state.happy+2);render();touch(r)}
+ $("bubble").textContent=r;$("voiceStatus").textContent="Cat: "+r;maybeSpeak(r);
+}
+function startVoice(){
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SR){$("voiceStatus").textContent="इस browser में mic recognition उपलब्ध नहीं है। Android Chrome में HTTPS page पर खोलें।";return}
+ if(listening){try{recognition.stop()}catch(e){}return}
+ recognition=new SR();recognition.lang="hi-IN";recognition.interimResults=false;recognition.maxAlternatives=3;
+ recognition.onstart=()=>{listening=true;$("voiceBtn").textContent="👂 सुन रही हूँ...";$("voiceStatus").textContent="अब आराम से बोलिए...";};
+ recognition.onresult=e=>{const q=e.results[0][0].transcript;$("heard").textContent="आप: “"+q+"”";reply(q)};
+ recognition.onerror=e=>{$("voiceStatus").textContent=e.error==="not-allowed"?"🎤 Microphone Permission Allow करें।":"आवाज़ साफ नहीं मिली, फिर बोलें।";listening=false};
+ recognition.onend=()=>{listening=false;$("voiceBtn").textContent="🎤 बोलें";};
+ try{recognition.start()}catch(e){$("voiceStatus").textContent="Mic शुरू नहीं हुआ, दोबारा दबाएँ।"}
+}
+setInterval(()=>{state.hunger=clamp(state.hunger-.5);state.hygiene=clamp(state.hygiene-.2);state.energy=clamp(state.energy-.1);if(state.hunger<25||state.hygiene<25)state.happy=clamp(state.happy-.2);render()},30000);
+
 render();
 })();
 </script>
