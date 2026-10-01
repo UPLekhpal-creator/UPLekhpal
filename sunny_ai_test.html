@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sunny AI — Test</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#0b1020;color:#fff}
+.wrap{max-width:760px;margin:auto;padding:18px}.card{background:#151d33;border:1px solid #2b3858;border-radius:22px;padding:18px;box-shadow:0 15px 50px #0006}
+h1{margin:0 0 4px}.sub{color:#aeb9d5;margin-bottom:16px}.chat{height:430px;overflow:auto;background:#0b1224;border-radius:16px;padding:14px}
+.msg{padding:11px 13px;margin:9px 0;border-radius:15px;max-width:88%;white-space:pre-wrap}.u{margin-left:auto;background:#315be8}.a{background:#222c45}
+.row{display:flex;gap:8px;margin-top:10px}input{flex:1;padding:13px;border-radius:13px;border:1px solid #405071;background:#0e1528;color:#fff}button{border:0;border-radius:13px;padding:12px 15px;font-weight:700;cursor:pointer;background:#4d75ff;color:white}
+.small{font-size:12px;color:#9eabc7;margin-top:10px}.pill{display:inline-block;padding:5px 9px;border-radius:99px;background:#203052;color:#bcd0ff;margin-right:5px}
+</style>
+</head>
+<body><div class="wrap"><div class="card">
+<h1>🤖 Sunny AI</h1>
+<div class="sub">आपका निजी AI Assistant • Hindi • Memory-ready • Web/App compatible</div>
+<div><span class="pill">Creator: Sunny Lekhpal</span><span class="pill">Revenue Department • Lekhpal</span></div>
+<div id="chat" class="chat" aria-live="polite"></div>
+<div class="row">
+<input id="q" placeholder="सनी से कुछ पूछें..." autocomplete="off">
+<button id="mic">🎙️</button><button id="send">भेजें</button>
+</div>
+<div class="small">यह अभी browser में local test mode है। असली ChatGPT-जैसी AI के लिए secure backend endpoint जोड़ना होगा। API key इस HTML में नहीं रखी गई है।</div>
+</div></div>
+<script>
+const ENDPOINT = ""; // बाद में: https://YOUR-BACKEND/api/chat
+const PROFILE = {
+ name:"सनी", creator:"सनी लेखपाल", owner:"सनी लेखपाल",
+ intro:"वे Revenue Department में लेखपाल हैं।"
+};
+const chat=document.querySelector("#chat"), q=document.querySelector("#q");
+function add(text, who="a"){const d=document.createElement("div");d.className="msg "+who;d.textContent=text;chat.appendChild(d);chat.scrollTop=chat.scrollHeight}
+function localReply(t){
+ const s=t.toLowerCase().trim();
+ if(/(किसने बनाया|किसने बनाया है|creator|निर्माता|बनाने वाला)/i.test(s))
+   return `मुझे ${PROFILE.creator} ने बनाया है।`;
+ if(/(owner|ओनर|मालिक)/i.test(s))
+   return `मेरे Owner ${PROFILE.owner} हैं। ${PROFILE.intro}`;
+ if(/(सनी कौन|तुम कौन|आप कौन|तुम्हारा नाम)/i.test(s))
+   return `मेरा नाम ${PROFILE.name} है। मैं आपका AI Assistant हूँ।`;
+ if(/(लेखपाल|revenue department|रेवेन्यू)/i.test(s))
+   return `${PROFILE.creator} ${PROFILE.intro}`;
+ if(/(नमस्ते|हेलो|hello|hi)/i.test(s))
+   return "नमस्ते! मैं सनी हूँ। बताइए, मैं आपकी क्या मदद करूँ?";
+ if(/(मेमोरी|memory|याद)/i.test(s))
+   return "Memory का मतलब है कि उपयोगी जानकारी को भविष्य की बातचीत में याद रखना। असली server-side memory backend में जोड़ी जाएगी।";
+ if(/(धन्यवाद|thanks)/i.test(s))
+   return "आपका स्वागत है! 😊";
+ return "मैं अभी Test Mode में हूँ। इस जवाब के लिए local demo चल रहा है। जब secure AI backend जोड़ेंगे, तब मैं सामान्य AI की तरह खुले सवालों के जवाब दे सकूँगा।";
+}
+async function ask(){
+ const t=q.value.trim(); if(!t)return;
+ add(t,"u"); q.value="";
+ if(!ENDPOINT){ add(localReply(t)); speak(localReply(t)); return; }
+ try{
+   const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:t})});
+   const data=await r.json(); const reply=data.reply||data.message||"मुझे उत्तर नहीं मिला।";
+   add(reply); speak(reply);
+ }catch(e){add("AI backend अभी उपलब्ध नहीं है।");}
+}
+function speak(t){if("speechSynthesis" in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="hi-IN";u.rate=.95;u.pitch=1.25;speechSynthesis.speak(u)}}
+document.querySelector("#send").onclick=ask;q.addEventListener("keydown",e=>{if(e.key==="Enter")ask()});
+document.querySelector("#mic").onclick=()=>{
+ const R=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!R){add("इस browser में voice input उपलब्ध नहीं है। Chrome में कोशिश करें।");return}
+ const r=new R();r.lang="hi-IN";r.interimResults=false;r.onresult=e=>{q.value=e.results[0][0].transcript;ask()};r.onerror=()=>add("Microphone permission या voice recognition में समस्या हुई।");r.start();
+};
+add("नमस्ते! मैं सनी हूँ। मुझे पूछकर देखें — “तुम्हें किसने बनाया?”, “तुम्हारा Owner कौन है?” या कोई सामान्य सवाल।");
+</script></body></html>
