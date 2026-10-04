@@ -1,0 +1,2965 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>उत्तर प्रदेश वन विभाग भर्ती 2026 | Application Assistance</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+:root{
+  --green:#075b32;
+  --darkgreen:#063d24;
+  --lightgreen:#eaf7ef;
+  --forest:#128044;
+  --lime:#7caf2d;
+  --blue:#075b91;
+  --red:#c62828;
+  --gold:#e6ad24;
+  --dark:#17231c;
+  --gray:#64748b;
+  --border:#cdded4;
+}
+
+body{
+  margin:0;
+  color:var(--dark);
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:
+    linear-gradient(180deg,#e7f6ec 0%,#f7fbf8 45%,#eef4f0 100%);
+  min-height:100vh;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:14px;
+}
+
+.header,
+.card{
+  background:#ffffffee;
+  border-radius:18px;
+  box-shadow:0 8px 30px rgba(6,61,36,.13);
+  margin-bottom:16px;
+  padding:20px;
+  border:1px solid #d7e7dc;
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  color:white;
+  padding:0!important;
+  background:
+    linear-gradient(125deg,#063d24,#08713e 58%,#128c4c);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:360px;
+  height:360px;
+  right:-120px;
+  top:-170px;
+  border-radius:50%;
+  background:rgba(255,255,255,.07);
+}
+
+.hero-inner{
+  padding:25px;
+  position:relative;
+  z-index:2;
+}
+
+.forest-symbol{
+  position:absolute;
+  right:4%;
+  top:5px;
+  font-size:125px;
+  opacity:.13;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.brand-logo{
+  width:82px;
+  height:82px;
+  min-width:82px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#fff;
+  color:var(--green);
+  border:5px solid #d5eddd;
+  box-shadow:0 4px 15px rgba(0,0,0,.15);
+  font-size:42px;
+}
+
+.brand-text small{
+  display:block;
+  font-size:12px;
+  opacity:.9;
+  margin-bottom:4px;
+}
+
+.hero h1{
+  margin:0;
+  font-size:31px;
+}
+
+.hero h2{
+  margin:7px 0 0;
+  font-size:17px;
+  font-weight:500;
+}
+
+.hero-note{
+  margin-top:18px;
+  background:#fff;
+  color:#17231c;
+  padding:14px;
+  border-radius:10px;
+  font-size:13px;
+  border-left:5px solid var(--gold);
+  line-height:1.7;
+}
+
+.application-period{
+  margin-top:14px;
+  display:inline-block;
+  background:#fff;
+  color:var(--green);
+  font-weight:bold;
+  padding:10px 15px;
+  border-radius:8px;
+}
+
+.forest-strip{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:17px;
+}
+
+.badge{
+  background:#ffffff18;
+  border:1px solid #ffffff55;
+  border-radius:999px;
+  padding:8px 13px;
+  font-size:13px;
+}
+
+/* VISUAL CARDS */
+
+.visual-cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:14px 0;
+}
+
+.visual-card{
+  border-radius:13px;
+  padding:17px;
+  color:#fff;
+  min-height:125px;
+  box-shadow:0 5px 16px rgba(6,61,36,.15);
+}
+
+.visual-card.green{
+  background:linear-gradient(135deg,#07562f,#13924e);
+}
+
+.visual-card.blue{
+  background:linear-gradient(135deg,#064b72,#087eaa);
+}
+
+.visual-card.gold{
+  background:linear-gradient(135deg,#896000,#dca72c);
+}
+
+.visual-icon{
+  font-size:42px;
+}
+
+.visual-card b{
+  display:block;
+  margin-top:6px;
+  font-size:17px;
+}
+
+.visual-card span{
+  font-size:13px;
+}
+
+/* INFORMATION */
+
+.notice{
+  background:#fff9df;
+  border:1px solid #ecd486;
+  border-left:5px solid #d49d00;
+  padding:14px;
+  border-radius:10px;
+  line-height:1.7;
+  font-size:13px;
+  margin-bottom:16px;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-bottom:18px;
+}
+
+.info-box{
+  background:var(--lightgreen);
+  border:1px solid #c9e5d1;
+  padding:13px;
+  text-align:center;
+  border-radius:11px;
+}
+
+.info-box b{
+  display:block;
+  color:var(--green);
+  font-size:17px;
+  margin-top:4px;
+}
+
+/* STEPS */
+
+.steps{
+  display:flex;
+  gap:7px;
+  margin:15px 0;
+  overflow:auto;
+}
+
+.stepnav{
+  flex:1;
+  min-width:125px;
+  padding:11px;
+  text-align:center;
+  border-radius:10px;
+  background:#dfe9e3;
+  font-weight:bold;
+  font-size:13px;
+}
+
+.stepnav.active{
+  background:var(--green);
+  color:#fff;
+}
+
+.stepnav.done{
+  background:#16834b;
+  color:#fff;
+}
+
+.step{
+  display:none;
+}
+
+.step.active{
+  display:block;
+}
+
+h2{
+  color:var(--darkgreen);
+}
+
+h3{
+  border-bottom:2px solid #e3eee6;
+  padding-bottom:7px;
+  margin-top:25px;
+  color:#075c36;
+}
+
+/* FORM */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+}
+
+label{
+  font-weight:bold;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:11px;
+  border:1px solid #b8c8be;
+  border-radius:9px;
+  font:inherit;
+  background:#fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  outline:none;
+  border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(18,128,68,.1);
+}
+
+textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+small{
+  color:var(--gray);
+  margin-top:4px;
+}
+
+.error{
+  color:#b00020;
+  font-size:13px;
+  min-height:18px;
+  margin-top:4px;
+}
+
+.preview{
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+
+.preview img{
+  width:120px;
+  height:150px;
+  object-fit:cover;
+  border:2px solid #d8e3dc;
+  border-radius:9px;
+  background:#f7faf8;
+}
+
+.preview .sig{
+  height:80px;
+  object-fit:contain;
+}
+
+/* BUTTONS */
+
+.actions{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:25px;
+}
+
+button{
+  border:0;
+  border-radius:9px;
+  padding:12px 20px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.next{
+  background:var(--green);
+  color:#fff;
+}
+
+.back{
+  background:#5d6b63;
+  color:#fff;
+}
+
+.pay{
+  background:#16834b;
+  color:#fff;
+}
+
+.verify{
+  background:#075b91;
+  color:#fff;
+  width:100%;
+  margin-top:12px;
+}
+
+.final{
+  background:#075b32;
+  color:#fff;
+  width:100%;
+  margin-top:12px;
+}
+
+.download{
+  background:#075b91;
+  color:#fff;
+}
+
+/* REVIEW */
+
+.review{
+  background:#f5faf7;
+  border:1px solid #d8e5dc;
+  padding:15px;
+  border-radius:10px;
+  line-height:1.9;
+}
+
+.payment{
+  text-align:center;
+  border:2px dashed #9fb7a8;
+  padding:25px;
+  border-radius:12px;
+  background:#fbfefc;
+}
+
+.price{
+  font-size:40px;
+  font-weight:bold;
+  color:var(--green);
+  margin:10px;
+}
+
+.payment-link{
+  display:inline-block;
+  background:var(--green);
+  color:#fff;
+  text-decoration:none;
+  padding:14px 25px;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:17px;
+  margin:10px 0;
+}
+
+.payment-id-box{
+  margin-top:20px;
+  text-align:left;
+  background:#f1f7f3;
+  padding:18px;
+  border-radius:10px;
+}
+
+.status{
+  margin-top:12px;
+  padding:10px;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+.status.pending{
+  background:#fff4d6;
+  color:#8a5b00;
+}
+
+.status.success{
+  background:#e8f6eb;
+  color:#176b3e;
+}
+
+.final-box{
+  margin-top:18px;
+  padding:18px;
+  background:#eef8f1;
+  border:1px solid #b7dabe;
+  border-radius:10px;
+}
+
+/* SUCCESS */
+
+.success{
+  display:none;
+  text-align:center;
+  padding:25px;
+}
+
+.reg{
+  font-size:25px;
+  font-weight:bold;
+  background:#e8f6eb;
+  border:1px solid #9bd0a6;
+  border-radius:9px;
+  display:inline-block;
+  padding:13px 18px;
+  margin:12px;
+}
+
+/* FOOTER */
+
+.footer{
+  font-size:13px;
+  color:#5e6c64;
+  line-height:1.8;
+}
+
+/* PDF */
+
+#pdfArea{
+  position:absolute;
+  left:-10000px;
+  top:0;
+  width:794px;
+  background:#fff;
+  padding:35px;
+  color:#111;
+}
+
+.pdfhead{
+  text-align:center;
+  border-bottom:2px solid #17643a;
+  padding-bottom:12px;
+}
+
+.pdfhead h1{
+  margin:0;
+  font-size:23px;
+  color:#075b32;
+}
+
+.pdft{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+  font-size:12px;
+}
+
+.pdft td,
+.pdft th{
+  border:1px solid #555;
+  padding:6px;
+  vertical-align:top;
+}
+
+.label{
+  font-weight:bold;
+  width:29%;
+}
+
+.section{
+  background:#e7f2ea;
+  padding:6px;
+  margin-top:16px;
+  font-weight:bold;
+}
+
+.photo{
+  width:110px;
+  height:140px;
+  object-fit:cover;
+}
+
+.signature{
+  width:145px;
+  height:65px;
+  object-fit:contain;
+}
+
+.pdf-logo{
+  font-size:50px;
+  color:#075b32;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .info-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:700px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .actions button{
+    width:100%;
+  }
+
+  .hero h1{
+    font-size:23px;
+  }
+
+  .hero h2{
+    font-size:15px;
+  }
+
+  .brand-logo{
+    width:68px;
+    height:68px;
+    min-width:68px;
+    font-size:34px;
+  }
+
+  .visual-cards{
+    grid-template-columns:1fr;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .forest-symbol{
+    font-size:80px;
+  }
+
+}
+
+@media(max-width:430px){
+
+  .container{
+    padding:8px;
+  }
+
+  .header,
+  .card{
+    padding:14px;
+    border-radius:14px;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .brand{
+    align-items:flex-start;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ================= HERO ================= -->
+
+<div class="header hero">
+
+  <div class="forest-symbol">🌳</div>
+
+  <div class="hero-inner">
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        🌳
+      </div>
+
+      <div class="brand-text">
+        <small>UTTAR PRADESH • FOREST THEME</small>
+
+        <h1>उत्तर प्रदेश वन विभाग भर्ती 2026</h1>
+
+        <h2>Private Application Assistance Portal</h2>
+      </div>
+
+    </div>
+
+    <div class="forest-strip">
+
+      <span class="badge">🌳 वन विभाग</span>
+      <span class="badge">🌲 Forest Services</span>
+      <span class="badge">📄 Online Application</span>
+      <span class="badge">💳 सहायता शुल्क ₹100</span>
+
+    </div>
+
+    <div class="application-period">
+      📅 सहायता आवेदन अवधि: 01 अक्टूबर 2026 से 10 अक्टूबर 2026
+    </div>
+
+    <div class="hero-note">
+
+      <b>महत्वपूर्ण सूचना:</b>
+      यह एक निजी Application Assistance Portal है।
+      यह उत्तर प्रदेश सरकार या किसी सरकारी विभाग की आधिकारिक वेबसाइट नहीं है।
+      यहाँ ₹100 केवल निजी आवेदन-सहायता सेवा शुल्क है।
+      इसे सरकारी भर्ती शुल्क न समझें।
+
+      <br><br>
+
+      <b>भर्ती संबंधी सूचना:</b>
+      वास्तविक पद, पात्रता, आयु सीमा, चयन प्रक्रिया और आधिकारिक आवेदन तिथियों की पुष्टि
+      संबंधित सरकारी/भर्ती प्राधिकरण की आधिकारिक सूचना से करें।
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= VISUAL CARDS ================= -->
+
+<div class="visual-cards">
+
+  <div class="visual-card green">
+    <div class="visual-icon">🌳</div>
+    <b>वन विभाग</b>
+    <span>Forest & Wildlife themed application assistance</span>
+  </div>
+
+  <div class="visual-card blue">
+    <div class="visual-icon">📋</div>
+    <b>ऑनलाइन आवेदन</b>
+    <span>Application form filling assistance</span>
+  </div>
+
+  <div class="visual-card gold">
+    <div class="visual-icon">🎓</div>
+    <b>योग्यता</b>
+    <span>हाई स्कूल एवं इंटरमीडिएट विवरण</span>
+  </div>
+
+</div>
+
+
+<!-- ================= INFORMATION ================= -->
+
+<div class="header">
+
+  <div class="notice">
+
+    <b>⚠ जरूरी सूचना</b><br>
+
+    यह पेज केवल निजी आवेदन-सहायता के लिए बनाया गया है।
+    किसी भी सरकारी भर्ती में आवेदन करने से पहले संबंधित विभाग की आधिकारिक
+    विज्ञप्ति, वेबसाइट और पात्रता अवश्य जांचें।
+
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-box">
+      📅
+      <b>01 Oct 2026</b>
+      सहायता प्रारंभ
+    </div>
+
+    <div class="info-box">
+      ⏰
+      <b>10 Oct 2026</b>
+      सहायता अंतिम तिथि
+    </div>
+
+    <div class="info-box">
+      🎓
+      <b>10वीं + 12वीं</b>
+      Qualification
+    </div>
+
+    <div class="info-box">
+      💳
+      <b>₹100</b>
+      Assistance Fee
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= STEPS ================= -->
+
+<div class="steps">
+
+  <div class="stepnav active" id="nav1">
+    1. Personal
+  </div>
+
+  <div class="stepnav" id="nav2">
+    2. Other Details
+  </div>
+
+  <div class="stepnav" id="nav3">
+    3. Address
+  </div>
+
+  <div class="stepnav" id="nav4">
+    4. Qualification
+  </div>
+
+  <div class="stepnav" id="nav5">
+    5. Payment & Submit
+  </div>
+
+</div>
+
+
+<!-- ================= FORM ================= -->
+
+<div class="card">
+
+<form id="applicationForm" onsubmit="return false;">
+
+
+<!-- STEP 1 -->
+
+<section class="step active" id="step1">
+
+<h2>Step 1 — Personal Details</h2>
+
+<div class="grid">
+
+  <div class="field">
+    <label>Applicant Full Name *</label>
+    <input id="name" type="text" autocomplete="name">
+    <div class="error" id="e_name"></div>
+  </div>
+
+  <div class="field">
+    <label>Father's Name *</label>
+    <input id="father" type="text">
+    <div class="error" id="e_father"></div>
+  </div>
+
+  <div class="field">
+    <label>Mother's Name *</label>
+    <input id="mother" type="text">
+    <div class="error" id="e_mother"></div>
+  </div>
+
+  <div class="field">
+    <label>Mobile Number *</label>
+    <input id="mobile"
+           type="tel"
+           maxlength="10"
+           inputmode="numeric"
+           autocomplete="tel">
+    <div class="error" id="e_mobile"></div>
+  </div>
+
+  <div class="field">
+    <label>Email ID *</label>
+    <input id="email"
+           type="email"
+           autocomplete="email">
+    <div class="error" id="e_email"></div>
+  </div>
+
+  <div class="field">
+
+    <label>Gender *</label>
+
+    <select id="gender">
+      <option value="">Select Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+
+    <div class="error" id="e_gender"></div>
+
+  </div>
+
+
+  <div class="field full">
+
+    <label>Application Category *</label>
+
+    <select id="postName">
+
+      <option value="">
+        Select Application Category
+      </option>
+
+      <option>
+        Forest Department Recruitment Assistance
+      </option>
+
+      <option>
+        Forest / Wildlife Related Application Assistance
+      </option>
+
+    </select>
+
+    <div class="error" id="e_postName"></div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>Passport Size Photo *</label>
+
+    <input
+      id="photo"
+      type="file"
+      accept=".jpg,.jpeg,.png,image/jpeg,image/png">
+
+    <small>
+      JPG/JPEG/PNG — 5 KB से 1 MB
+    </small>
+
+    <div class="error" id="e_photo"></div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>Signature *</label>
+
+    <input
+      id="signature"
+      type="file"
+      accept=".jpg,.jpeg,.png,image/jpeg,image/png">
+
+    <small>
+      JPG/JPEG/PNG — 5 KB से 1 MB
+    </small>
+
+    <div class="error" id="e_signature"></div>
+
+  </div>
+
+</div>
+
+
+<div class="preview">
+
+  <div>
+    <b>Photo Preview</b><br>
+    <img id="photoPreview" style="display:none">
+  </div>
+
+  <div>
+    <b>Signature Preview</b><br>
+    <img id="signaturePreview"
+         class="sig"
+         style="display:none">
+  </div>
+
+</div>
+
+
+<div class="actions">
+
+  <span></span>
+
+  <button
+    type="button"
+    class="next"
+    onclick="nextStep()">
+
+    Next →
+
+  </button>
+
+</div>
+
+</section>
+
+
+<!-- STEP 2 -->
+
+<section class="step" id="step2">
+
+<h2>Step 2 — Other Details</h2>
+
+<div class="grid">
+
+  <div class="field">
+
+    <label>Date of Birth *</label>
+
+    <input id="dob" type="date">
+
+    <div class="error" id="e_dob"></div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>Category *</label>
+
+    <select id="category">
+
+      <option value="">
+        Select Category
+      </option>
+
+      <option>General</option>
+      <option>OBC</option>
+      <option>SC</option>
+      <option>ST</option>
+
+    </select>
+
+    <div class="error" id="e_category"></div>
+
+  </div>
+
+</div>
+
+
+<div class="actions">
+
+  <button
+    type="button"
+    class="back"
+    onclick="prevStep()">
+
+    ← Back
+
+  </button>
+
+  <button
+    type="button"
+    class="next"
+    onclick="nextStep()">
+
+    Next →
+
+  </button>
+
+</div>
+
+</section>
+
+
+<!-- STEP 3 -->
+
+<section class="step" id="step3">
+
+<h2>Step 3 — Address Details</h2>
+
+<div class="grid">
+
+  <div class="field">
+
+    <label>Village / Town *</label>
+    <input id="village">
+    <div class="error" id="e_village"></div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>Post Office *</label>
+    <input id="postOffice">
+    <div class="error" id="e_postOffice"></div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>Tehsil *</label>
+    <input id="tehsil">
+    <div class="error" id="e_tehsil"></div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>District *</label>
+    <input id="district">
+    <div class="error" id="e_district"></div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>State *</label>
+
+    <input
+      id="state"
+      value="Uttar Pradesh">
+
+    <div class="error" id="e_state"></div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>PIN Code *</label>
+
+    <input
+      id="pincode"
+      maxlength="6"
+      inputmode="numeric">
+
+    <div class="error" id="e_pincode"></div>
+
+  </div>
+
+
+  <div class="field full">
+
+    <label>Permanent Address *</label>
+
+    <textarea id="permanentAddress"></textarea>
+
+    <div class="error"
+         id="e_permanentAddress"></div>
+
+  </div>
+
+
+  <div class="field full">
+
+    <label>Correspondence Address</label>
+
+    <textarea id="correspondenceAddress"></textarea>
+
+  </div>
+
+</div>
+
+
+<div class="actions">
+
+  <button
+    type="button"
+    class="back"
+    onclick="prevStep()">
+
+    ← Back
+
+  </button>
+
+  <button
+    type="button"
+    class="next"
+    onclick="nextStep()">
+
+    Next →
+
+  </button>
+
+</div>
+
+</section>
+
+
+<!-- STEP 4 -->
+
+<section class="step" id="step4">
+
+<h2>Step 4 — Qualification Details</h2>
+
+
+<h3>High School / 10th</h3>
+
+<div class="grid">
+
+  <div class="field">
+    <label>Board *</label>
+    <input id="hsBoard">
+    <div class="error" id="e_hsBoard"></div>
+  </div>
+
+  <div class="field">
+    <label>School Name *</label>
+    <input id="hsSchool">
+    <div class="error" id="e_hsSchool"></div>
+  </div>
+
+  <div class="field">
+    <label>Passing Year *</label>
+    <input
+      id="hsYear"
+      maxlength="4"
+      inputmode="numeric">
+    <div class="error" id="e_hsYear"></div>
+  </div>
+
+  <div class="field">
+    <label>Roll Number</label>
+    <input id="hsRoll">
+  </div>
+
+  <div class="field">
+    <label>Marksheet Number</label>
+    <input id="hsMarksheet">
+  </div>
+
+  <div class="field">
+    <label>Total Marks</label>
+    <input id="hsTotal" type="number">
+  </div>
+
+  <div class="field">
+    <label>Obtained Marks</label>
+    <input id="hsObtained" type="number">
+  </div>
+
+  <div class="field">
+    <label>Percentage</label>
+    <input
+      id="hsPercentage"
+      type="number"
+      step="0.01">
+  </div>
+
+</div>
+
+
+<h3>Intermediate / 12th</h3>
+
+<div class="grid">
+
+  <div class="field">
+    <label>Board</label>
+    <input id="interBoard">
+  </div>
+
+  <div class="field">
+    <label>School / College Name</label>
+    <input id="interCollege">
+  </div>
+
+  <div class="field">
+    <label>Passing Year</label>
+    <input
+      id="interYear"
+      maxlength="4"
+      inputmode="numeric">
+  </div>
+
+  <div class="field">
+    <label>Roll Number</label>
+    <input id="interRoll">
+  </div>
+
+  <div class="field">
+    <label>Marksheet Number</label>
+    <input id="interMarksheet">
+  </div>
+
+  <div class="field">
+    <label>Total Marks</label>
+    <input id="interTotal" type="number">
+  </div>
+
+  <div class="field">
+    <label>Obtained Marks</label>
+    <input id="interObtained" type="number">
+  </div>
+
+  <div class="field">
+    <label>Percentage</label>
+    <input
+      id="interPercentage"
+      type="number"
+      step="0.01">
+  </div>
+
+</div>
+
+
+<h3>Declaration</h3>
+
+<label>
+
+  <input
+    type="checkbox"
+    id="declaration">
+
+  मैं घोषणा करता/करती हूँ कि मेरे द्वारा दी गई जानकारी
+  मेरी जानकारी के अनुसार सही है।
+
+</label>
+
+<div class="error" id="e_declaration"></div>
+
+
+<div class="actions">
+
+  <button
+    type="button"
+    class="back"
+    onclick="prevStep()">
+
+    ← Back
+
+  </button>
+
+  <button
+    type="button"
+    class="next"
+    onclick="openPayment()">
+
+    Review & Payment →
+
+  </button>
+
+</div>
+
+</section>
+
+
+<!-- STEP 5 -->
+
+<section class="step" id="step5">
+
+<h2>Step 5 — Payment & Final Submission</h2>
+
+
+<div class="review" id="reviewBox"></div>
+
+
+<div class="payment">
+
+  <h3>Private Application Assistance Fee</h3>
+
+  <div class="price">₹100</div>
+
+  <p>
+    ₹100 केवल निजी application-assistance/service fee है।
+    यह किसी सरकारी विभाग या सरकारी भर्ती की official recruitment fee नहीं है।
+  </p>
+
+
+  <!-- PAYMENT LINK -->
+
+  <a
+    class="payment-link"
+    href="https://rzp.io/rzp/jcchAQR"
+    target="_blank"
+    rel="noopener noreferrer">
+
+    💳 Pay ₹100
+
+  </a>
+
+
+  <div class="payment-id-box">
+
+    <h3 style="margin-top:0">
+      Payment ID दर्ज करें
+    </h3>
+
+    <p style="font-size:13px;color:#555">
+
+      Payment पूरा करने के बाद Razorpay द्वारा दिखाई गई
+      Payment ID यहाँ दर्ज करें।
+
+    </p>
+
+
+    <label for="paymentId">
+      Razorpay Payment ID *
+    </label>
+
+    <input
+      id="paymentId"
+      type="text"
+      placeholder="pay_xxxxxxxxxxxxxx">
+
+    <div
+      class="error"
+      id="e_paymentId">
+    </div>
+
+
+    <button
+      type="button"
+      class="verify"
+      onclick="manualVerifyPayment()">
+
+      ✓ Payment Verification के लिए Submit करें
+
+    </button>
+
+
+    <div id="paymentStatus"></div>
+
+  </div>
+
+
+  <div class="final-box">
+
+    <b>Manual Verification</b>
+
+    <p style="font-size:13px;line-height:1.6">
+
+      Static HTML अपने आप Razorpay transaction verify नहीं करता।
+      Payment की राशि और successful status को Razorpay dashboard में
+      manually verify करने के बाद ही Final Submit करें।
+
+    </p>
+
+
+    <label>
+
+      <input
+        type="checkbox"
+        id="adminVerified">
+
+      मैंने Payment ID और ₹100 successful payment को
+      manually verify कर लिया है।
+
+    </label>
+
+    <div
+      class="error"
+      id="e_adminVerified">
+    </div>
+
+
+    <button
+      type="button"
+      class="final"
+      onclick="finalSubmit()">
+
+      ✓ Final Submit
+
+    </button>
+
+  </div>
+
+</div>
+
+</section>
+
+</form>
+
+
+<!-- SUCCESS -->
+
+<div class="success" id="successBox">
+
+  <div style="font-size:65px">
+    🌳
+  </div>
+
+  <h2>
+    Application Submitted Successfully ✓
+  </h2>
+
+  <p>
+    Private Application Assistance Submission
+  </p>
+
+  <p>
+    Manual Payment Verification:
+    <b style="color:green">CONFIRMED</b>
+  </p>
+
+  <div class="reg" id="regNo"></div>
+
+  <p>
+    आपका Registration Number ऊपर दिया गया है।
+  </p>
+
+
+  <button
+    type="button"
+    class="download"
+    onclick="downloadPDF()">
+
+    📄 Download Filled Application PDF
+
+  </button>
+
+</div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<div class="header footer">
+
+  <b>उत्तर प्रदेश वन विभाग भर्ती 2026 — Application Assistance</b>
+
+  <br>
+
+  Private Application Assistance Service
+
+  <br>
+
+  Assistance Fee: ₹100
+
+  <br><br>
+
+  यह वेबसाइट उत्तर प्रदेश सरकार या किसी सरकारी विभाग की official website नहीं है।
+  किसी भी भर्ती के लिए official notification और official website की जानकारी
+  स्वयं सत्यापित करें।
+
+  <br><br>
+
+  आवेदन की सहायता अवधि:
+  <b>01 अक्टूबर 2026 से 10 अक्टूबर 2026</b>
+
+</div>
+
+</div>
+
+
+<!-- ================= PDF AREA ================= -->
+
+<div id="pdfArea">
+
+  <div class="pdfhead">
+
+    <div class="pdf-logo">🌳</div>
+
+    <h1>
+      उत्तर प्रदेश वन विभाग भर्ती 2026
+    </h1>
+
+    <div>
+      PRIVATE APPLICATION ASSISTANCE
+    </div>
+
+  </div>
+
+
+  <table class="pdft">
+
+    <tr>
+
+      <td class="label">
+        Registration No.
+      </td>
+
+      <td id="p_reg"></td>
+
+      <td rowspan="4"
+          style="text-align:center">
+
+        <img
+          id="p_photo"
+          class="photo">
+
+      </td>
+
+    </tr>
+
+
+    <tr>
+
+      <td class="label">
+        Application Date
+      </td>
+
+      <td id="p_date"></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td class="label">
+        Application Category
+      </td>
+
+      <td id="p_post"></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td class="label">
+        Assistance Fee
+      </td>
+
+      <td>₹100</td>
+
+    </tr>
+
+  </table>
+
+
+  <div class="section">
+    Personal Details
+  </div>
+
+
+  <table class="pdft">
+
+    <tr>
+      <td class="label">Name</td>
+      <td id="p_name"></td>
+    </tr>
+
+    <tr>
+      <td class="label">Father's Name</td>
+      <td id="p_father"></td>
+    </tr>
+
+    <tr>
+      <td class="label">Mother's Name</td>
+      <td id="p_mother"></td>
+    </tr>
+
+    <tr>
+      <td class="label">Mobile</td>
+      <td id="p_mobile"></td>
+    </tr>
+
+    <tr>
+      <td class="label">Email</td>
+      <td id="p_email"></td>
+    </tr>
+
+    <tr>
+      <td class="label">Gender</td>
+      <td id="p_gender"></td>
+    </tr>
+
+    <tr>
+      <td class="label">Date of Birth</td>
+      <td id="p_dob"></td>
+    </tr>
+
+    <tr>
+      <td class="label">Category</td>
+      <td id="p_category"></td>
+    </tr>
+
+  </table>
+
+
+  <div class="section">
+    Address
+  </div>
+
+
+  <table class="pdft">
+
+    <tr>
+      <td class="label">Village/Town</td>
+      <td id="p_village"></td>
+    </tr>
+
+    <tr>
+      <td class="label">Post Office</td>
+      <td id="p_postoffice"></td>
+    </tr>
+
+    <tr>
+      <td class="label">Tehsil</td>
+      <td id="p_tehsil"></td>
+    </tr>
+
+    <tr>
+      <td class="label">District</td>
+      <td id="p_district"></td>
+    </tr>
+
+    <tr>
+      <td class="label">State</td>
+      <td id="p_state"></td>
+    </tr>
+
+    <tr>
+      <td class="label">PIN</td>
+      <td id="p_pin"></td>
+    </tr>
+
+    <tr>
+      <td class="label">Permanent Address</td>
+      <td id="p_perm"></td>
+    </tr>
+
+    <tr>
+      <td class="label">Correspondence Address</td>
+      <td id="p_corr"></td>
+    </tr>
+
+  </table>
+
+
+  <div class="section">
+    Qualification
+  </div>
+
+
+  <table class="pdft">
+
+    <tr>
+      <th>Qualification</th>
+      <th>Board</th>
+      <th>School/College</th>
+      <th>Year</th>
+      <th>Marks</th>
+      <th>%</th>
+    </tr>
+
+
+    <tr>
+
+      <td>10th</td>
+
+      <td id="p_hsb"></td>
+
+      <td id="p_hss"></td>
+
+      <td id="p_hsy"></td>
+
+      <td>
+        <span id="p_hso"></span>
+        /
+        <span id="p_hst"></span>
+      </td>
+
+      <td id="p_hsp"></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td>12th</td>
+
+      <td id="p_ib"></td>
+
+      <td id="p_ic"></td>
+
+      <td id="p_iy"></td>
+
+      <td>
+        <span id="p_io"></span>
+        /
+        <span id="p_it"></span>
+      </td>
+
+      <td id="p_ip"></td>
+
+    </tr>
+
+  </table>
+
+
+  <div class="section">
+    Payment
+  </div>
+
+
+  <table class="pdft">
+
+    <tr>
+
+      <td class="label">
+        Assistance Fee
+      </td>
+
+      <td>
+        ₹100
+      </td>
+
+    </tr>
+
+
+    <tr>
+
+      <td class="label">
+        Payment ID
+      </td>
+
+      <td id="p_paymentId"></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td class="label">
+        Verification
+      </td>
+
+      <td>
+        CONFIRMED BY ADMIN
+      </td>
+
+    </tr>
+
+  </table>
+
+
+  <div style="margin-top:25px;text-align:right">
+
+    Applicant Signature
+
+    <br>
+
+    <img
+      id="p_sig"
+      class="signature">
+
+  </div>
+
+
+  <div
+    style="
+      margin-top:30px;
+      font-size:10px;
+      color:#666;
+      text-align:center;
+    ">
+
+    Private application-assistance document.
+    Not an official government recruitment document.
+
+  </div>
+
+</div>
+
+
+<!-- PDF LIBRARIES -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+<script>
+
+/* =========================================================
+   APPLICATION SYSTEM
+========================================================= */
+
+let currentStep = 1;
+
+let photoData = "";
+let signatureData = "";
+
+let paid = false;
+
+let registrationNumber = "";
+
+let applicationData = null;
+
+
+/* SHORTCUT */
+
+function $(id){
+  return document.getElementById(id);
+}
+
+
+function val(id){
+
+  const e = $(id);
+
+  return e ? e.value.trim() : "";
+
+}
+
+
+/* ERROR */
+
+function clearErrors(){
+
+  document
+    .querySelectorAll(".error")
+    .forEach(x => x.textContent = "");
+
+}
+
+
+function error(id,message){
+
+  const x = $("e_"+id);
+
+  if(x){
+    x.textContent = message;
+  }
+
+}
+
+
+/* =========================================================
+   STEP CONTROL
+========================================================= */
+
+function showStep(n){
+
+  currentStep = n;
+
+  document
+    .querySelectorAll(".step")
+    .forEach(x => x.classList.remove("active"));
+
+  $("step"+n).classList.add("active");
+
+
+  for(let i=1;i<=5;i++){
+
+    const nav = $("nav"+i);
+
+    nav.classList.remove("active","done");
+
+    if(i<n){
+      nav.classList.add("done");
+    }
+
+    if(i===n){
+      nav.classList.add("active");
+    }
+
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================================================
+   VALIDATION
+========================================================= */
+
+function validateStep(n){
+
+  clearErrors();
+
+  let ok = true;
+
+
+  if(n===1){
+
+    if(!val("name")){
+      error("name","नाम भरें");
+      ok=false;
+    }
+
+    if(!val("father")){
+      error("father","पिता का नाम भरें");
+      ok=false;
+    }
+
+    if(!val("mother")){
+      error("mother","माता का नाम भरें");
+      ok=false;
+    }
+
+    if(!/^[6-9]\d{9}$/.test(val("mobile"))){
+
+      error(
+        "mobile",
+        "सही 10 digit mobile number भरें"
+      );
+
+      ok=false;
+    }
+
+
+    if(
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      .test(val("email"))
+    ){
+
+      error(
+        "email",
+        "सही email भरें"
+      );
+
+      ok=false;
+    }
+
+
+    if(!val("gender")){
+
+      error(
+        "gender",
+        "Gender चुनें"
+      );
+
+      ok=false;
+    }
+
+
+    if(!val("postName")){
+
+      error(
+        "postName",
+        "Application Category चुनें"
+      );
+
+      ok=false;
+    }
+
+
+    if(!photoData){
+
+      error(
+        "photo",
+        "Photo upload करें"
+      );
+
+      ok=false;
+    }
+
+
+    if(!signatureData){
+
+      error(
+        "signature",
+        "Signature upload करें"
+      );
+
+      ok=false;
+    }
+
+  }
+
+
+  if(n===2){
+
+    if(!val("dob")){
+
+      error(
+        "dob",
+        "Date of Birth चुनें"
+      );
+
+      ok=false;
+    }
+
+
+    if(!val("category")){
+
+      error(
+        "category",
+        "Category चुनें"
+      );
+
+      ok=false;
+    }
+
+  }
+
+
+  if(n===3){
+
+    [
+      "village",
+      "postOffice",
+      "tehsil",
+      "district",
+      "state",
+      "permanentAddress"
+    ].forEach(id=>{
+
+      if(!val(id)){
+
+        error(
+          id,
+          "यह field जरूरी है"
+        );
+
+        ok=false;
+      }
+
+    });
+
+
+    if(!/^\d{6}$/.test(val("pincode"))){
+
+      error(
+        "pincode",
+        "6 digit PIN code भरें"
+      );
+
+      ok=false;
+    }
+
+  }
+
+
+  if(n===4){
+
+    if(!val("hsBoard")){
+
+      error(
+        "hsBoard",
+        "High School Board भरें"
+      );
+
+      ok=false;
+    }
+
+
+    if(!val("hsSchool")){
+
+      error(
+        "hsSchool",
+        "School Name भरें"
+      );
+
+      ok=false;
+    }
+
+
+    if(!/^\d{4}$/.test(val("hsYear"))){
+
+      error(
+        "hsYear",
+        "सही 4 digit passing year भरें"
+      );
+
+      ok=false;
+    }
+
+
+    if(!$("declaration").checked){
+
+      error(
+        "declaration",
+        "Declaration स्वीकार करें"
+      );
+
+      ok=false;
+    }
+
+  }
+
+
+  return ok;
+
+}
+
+
+/* NEXT */
+
+function nextStep(){
+
+  if(validateStep(currentStep)){
+
+    if(currentStep < 5){
+
+      showStep(currentStep + 1);
+
+    }
+
+  }
+
+}
+
+
+/* BACK */
+
+function prevStep(){
+
+  if(currentStep > 1){
+
+    showStep(currentStep - 1);
+
+  }
+
+}
+
+
+/* =========================================================
+   FILE PREVIEW
+========================================================= */
+
+function setupImagePreview(inputId,previewId,type){
+
+  $(inputId).addEventListener(
+    "change",
+    function(){
+
+      const file = this.files[0];
+
+      if(!file){
+        return;
+      }
+
+
+      if(
+        file.size < 5*1024 ||
+        file.size > 1024*1024
+      ){
+
+        error(
+          type,
+          "File size 5 KB से 1 MB के बीच होना चाहिए"
+        );
+
+        this.value = "";
+
+        return;
+      }
+
+
+      if(
+        !["image/jpeg","image/png"]
+        .includes(file.type)
+      ){
+
+        error(
+          type,
+          "केवल JPG, JPEG या PNG file स्वीकार है"
+        );
+
+        this.value = "";
+
+        return;
+      }
+
+
+      const reader = new FileReader();
+
+
+      reader.onload = function(e){
+
+        if(type==="photo"){
+
+          photoData = e.target.result;
+
+        }
+
+        if(type==="signature"){
+
+          signatureData = e.target.result;
+
+        }
+
+
+        $(previewId).src =
+          e.target.result;
+
+        $(previewId).style.display =
+          "block";
+
+      };
+
+
+      reader.readAsDataURL(file);
+
+    }
+  );
+
+}
+
+
+setupImagePreview(
+  "photo",
+  "photoPreview",
+  "photo"
+);
+
+
+setupImagePreview(
+  "signature",
+  "signaturePreview",
+  "signature"
+);
+
+
+/* =========================================================
+   REVIEW
+========================================================= */
+
+function openPayment(){
+
+  if(!validateStep(4)){
+    return;
+  }
+
+
+  const html = `
+
+    <b>नाम:</b> ${escapeHtml(val("name"))}<br>
+
+    <b>पिता का नाम:</b> ${escapeHtml(val("father"))}<br>
+
+    <b>मोबाइल:</b> ${escapeHtml(val("mobile"))}<br>
+
+    <b>ईमेल:</b> ${escapeHtml(val("email"))}<br>
+
+    <b>आवेदन श्रेणी:</b>
+    ${escapeHtml(val("postName"))}<br>
+
+    <b>जन्म तिथि:</b>
+    ${escapeHtml(val("dob"))}<br>
+
+    <b>श्रेणी:</b>
+    ${escapeHtml(val("category"))}<br>
+
+    <b>जिला:</b>
+    ${escapeHtml(val("district"))}<br>
+
+    <b>राज्य:</b>
+    ${escapeHtml(val("state"))}<br>
+
+    <b>10वीं:</b>
+    ${escapeHtml(val("hsBoard"))}
+    —
+    ${escapeHtml(val("hsYear"))}<br>
+
+    <b>12वीं:</b>
+    ${escapeHtml(val("interBoard"))}
+    —
+    ${escapeHtml(val("interYear"))}
+
+  `;
+
+
+  $("reviewBox").innerHTML = html;
+
+  showStep(5);
+
+}
+
+
+/* =========================================================
+   PAYMENT
+========================================================= */
+
+function manualVerifyPayment(){
+
+  const paymentId =
+    val("paymentId");
+
+  $("paymentStatus").innerHTML = "";
+
+
+  if(!paymentId){
+
+    error(
+      "paymentId",
+      "Payment ID दर्ज करें"
+    );
+
+    return;
+  }
+
+
+  if(paymentId.length < 6){
+
+    error(
+      "paymentId",
+      "सही Payment ID दर्ज करें"
+    );
+
+    return;
+  }
+
+
+  paid = true;
+
+
+  $("paymentStatus").innerHTML = `
+
+    <div class="status pending">
+
+      ✓ Payment ID प्राप्त हो गई है।
+      इसे manual verification के लिए भेजा गया है।
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   FINAL SUBMIT
+========================================================= */
+
+function finalSubmit(){
+
+  clearErrors();
+
+
+  if(!paid){
+
+    error(
+      "paymentId",
+      "पहले Payment ID submit करें"
+    );
+
+    return;
+  }
+
+
+  if(!$("adminVerified").checked){
+
+    error(
+      "adminVerified",
+      "Payment को manually verify करके checkbox चुनें"
+    );
+
+    return;
+  }
+
+
+  registrationNumber =
+    "UPFD-" +
+    new Date().getFullYear() +
+    "-" +
+    Math.floor(
+      100000 + Math.random()*900000
+    );
+
+
+  applicationData = {
+
+    registrationNumber:
+      registrationNumber,
+
+    date:
+      new Date().toLocaleDateString("hi-IN"),
+
+    name:
+      val("name"),
+
+    father:
+      val("father"),
+
+    mother:
+      val("mother"),
+
+    mobile:
+      val("mobile"),
+
+    email:
+      val("email"),
+
+    gender:
+      val("gender"),
+
+    post:
+      val("postName"),
+
+    dob:
+      val("dob"),
+
+    category:
+      val("category"),
+
+    village:
+      val("village"),
+
+    postOffice:
+      val("postOffice"),
+
+    tehsil:
+      val("tehsil"),
+
+    district:
+      val("district"),
+
+    state:
+      val("state"),
+
+    pincode:
+      val("pincode"),
+
+    permanentAddress:
+      val("permanentAddress"),
+
+    correspondenceAddress:
+      val("correspondenceAddress"),
+
+    hsBoard:
+      val("hsBoard"),
+
+    hsSchool:
+      val("hsSchool"),
+
+    hsYear:
+      val("hsYear"),
+
+    hsRoll:
+      val("hsRoll"),
+
+    hsMarksheet:
+      val("hsMarksheet"),
+
+    hsTotal:
+      val("hsTotal"),
+
+    hsObtained:
+      val("hsObtained"),
+
+    hsPercentage:
+      val("hsPercentage"),
+
+    interBoard:
+      val("interBoard"),
+
+    interCollege:
+      val("interCollege"),
+
+    interYear:
+      val("interYear"),
+
+    interRoll:
+      val("interRoll"),
+
+    interMarksheet:
+      val("interMarksheet"),
+
+    interTotal:
+      val("interTotal"),
+
+    interObtained:
+      val("interObtained"),
+
+    interPercentage:
+      val("interPercentage"),
+
+    paymentId:
+      val("paymentId")
+
+  };
+
+
+  $("applicationForm").style.display =
+    "none";
+
+  document
+    .querySelector(".steps")
+    .style.display = "none";
+
+  $("successBox").style.display =
+    "block";
+
+  $("regNo").textContent =
+    registrationNumber;
+
+  fillPDFData();
+
+}
+
+
+/* =========================================================
+   PDF DATA
+========================================================= */
+
+function setText(id,text){
+
+  const e = $(id);
+
+  if(e){
+    e.textContent =
+      text || "";
+  }
+
+}
+
+
+function fillPDFData(){
+
+  if(!applicationData){
+    return;
+  }
+
+
+  setText(
+    "p_reg",
+    applicationData.registrationNumber
+  );
+
+  setText(
+    "p_date",
+    applicationData.date
+  );
+
+  setText(
+    "p_post",
+    applicationData.post
+  );
+
+
+  setText(
+    "p_name",
+    applicationData.name
+  );
+
+  setText(
+    "p_father",
+    applicationData.father
+  );
+
+  setText(
+    "p_mother",
+    applicationData.mother
+  );
+
+  setText(
+    "p_mobile",
+    applicationData.mobile
+  );
+
+  setText(
+    "p_email",
+    applicationData.email
+  );
+
+  setText(
+    "p_gender",
+    applicationData.gender
+  );
+
+  setText(
+    "p_dob",
+    applicationData.dob
+  );
+
+  setText(
+    "p_category",
+    applicationData.category
+  );
+
+
+  setText(
+    "p_village",
+    applicationData.village
+  );
+
+  setText(
+    "p_postoffice",
+    applicationData.postOffice
+  );
+
+  setText(
+    "p_tehsil",
+    applicationData.tehsil
+  );
+
+  setText(
+    "p_district",
+    applicationData.district
+  );
+
+  setText(
+    "p_state",
+    applicationData.state
+  );
+
+  setText(
+    "p_pin",
+    applicationData.pincode
+  );
+
+  setText(
+    "p_perm",
+    applicationData.permanentAddress
+  );
+
+  setText(
+    "p_corr",
+    applicationData.correspondenceAddress
+  );
+
+
+  setText(
+    "p_hsb",
+    applicationData.hsBoard
+  );
+
+  setText(
+    "p_hss",
+    applicationData.hsSchool
+  );
+
+  setText(
+    "p_hsy",
+    applicationData.hsYear
+  );
+
+  setText(
+    "p_hso",
+    applicationData.hsObtained
+  );
+
+  setText(
+    "p_hst",
+    applicationData.hsTotal
+  );
+
+  setText(
+    "p_hsp",
+    applicationData.hsPercentage
+  );
+
+
+  setText(
+    "p_ib",
+    applicationData.interBoard
+  );
+
+  setText(
+    "p_ic",
+    applicationData.interCollege
+  );
+
+  setText(
+    "p_iy",
+    applicationData.interYear
+  );
+
+  setText(
+    "p_io",
+    applicationData.interObtained
+  );
+
+  setText(
+    "p_it",
+    applicationData.interTotal
+  );
+
+  setText(
+    "p_ip",
+    applicationData.interPercentage
+  );
+
+
+  setText(
+    "p_paymentId",
+    applicationData.paymentId
+  );
+
+
+  $("p_photo").src =
+    photoData || "";
+
+
+  $("p_sig").src =
+    signatureData || "";
+
+}
+
+
+/* =========================================================
+   PDF DOWNLOAD
+========================================================= */
+
+async function downloadPDF(){
+
+  if(!applicationData){
+    return;
+  }
+
+
+  fillPDFData();
+
+
+  const area =
+    $("pdfArea");
+
+
+  try{
+
+    const canvas =
+      await html2canvas(
+        area,
+        {
+          scale:2,
+          useCORS:true,
+          backgroundColor:"#ffffff"
+        }
+      );
+
+
+    const imgData =
+      canvas.toDataURL("image/jpeg",0.95);
+
+
+    const {
+      jsPDF
+    } = window.jspdf;
+
+
+    const pdf =
+      new jsPDF(
+        "p",
+        "mm",
+        "a4"
+      );
+
+
+    const pageWidth =
+      pdf.internal.pageSize.getWidth();
+
+    const pageHeight =
+      pdf.internal.pageSize.getHeight();
+
+
+    const imgWidth =
+      pageWidth - 20;
+
+    const imgHeight =
+      canvas.height *
+      imgWidth /
+      canvas.width;
+
+
+    let heightLeft =
+      imgHeight;
+
+    let position = 10;
+
+
+    pdf.addImage(
+      imgData,
+      "JPEG",
+      10,
+      position,
+      imgWidth,
+      imgHeight
+    );
+
+
+    heightLeft -=
+      pageHeight - 20;
+
+
+    while(heightLeft > 0){
+
+      position =
+        heightLeft - imgHeight + 10;
+
+      pdf.addPage();
+
+      pdf.addImage(
+        imgData,
+        "JPEG",
+        10,
+        position,
+        imgWidth,
+        imgHeight
+      );
+
+      heightLeft -=
+        pageHeight - 20;
+
+    }
+
+
+    pdf.save(
+      "UP_Forest_Assistance_" +
+      applicationData.registrationNumber +
+      ".pdf"
+    );
+
+  }
+
+  catch(err){
+
+    alert(
+      "PDF बनाने में समस्या आई। कृपया दोबारा प्रयास करें।"
+    );
+
+    console.error(err);
+
+  }
+
+}
+
+
+/* =========================================================
+   HTML ESCAPE
+========================================================= */
+
+function escapeHtml(value){
+
+  return String(value || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   INPUT RESTRICTIONS
+========================================================= */
+
+$("mobile").addEventListener(
+  "input",
+  function(){
+
+    this.value =
+      this.value.replace(/\D/g,"")
+      .slice(0,10);
+
+  }
+);
+
+
+$("pincode").addEventListener(
+  "input",
+  function(){
+
+    this.value =
+      this.value.replace(/\D/g,"")
+      .slice(0,6);
+
+  }
+);
+
+
+$("hsYear").addEventListener(
+  "input",
+  function(){
+
+    this.value =
+      this.value.replace(/\D/g,"")
+      .slice(0,4);
+
+  }
+);
+
+
+$("interYear").addEventListener(
+  "input",
+  function(){
+
+    this.value =
+      this.value.replace(/\D/g,"")
+      .slice(0,4);
+
+  }
+);
+
+</script>
+
+</body>
+</html>
