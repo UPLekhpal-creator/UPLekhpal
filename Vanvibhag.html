@@ -1354,69 +1354,99 @@ button{
   </p>
 
 
-  <!-- RAZORPAY LIVE CHECKOUT -->
+  <!-- PAYMENT LINK -->
+
+  <a
+    class="payment-link"
+    href="https://rzp.io/rzp/jcchAQR"
+    target="_blank"
+    rel="noopener noreferrer">
+
+    💳 Pay ₹100
+
+  </a>
+
 
   <div class="payment-id-box">
 
     <h3 style="margin-top:0">
-      🔐 Secure Razorpay Payment
+      Payment ID दर्ज करें
     </h3>
 
-    <p style="font-size:13px;color:#555;line-height:1.6">
-      ₹100 का भुगतान Razorpay Checkout से होगा। Payment के बाद
-      आपका transaction server पर Razorpay Live API से verify होगा।
-      केवल verified/captured payment के बाद ही Final Submit खुलेगा।
+    <p style="font-size:13px;color:#555">
+
+      Payment पूरा करने के बाद Razorpay द्वारा दिखाई गई
+      Payment ID यहाँ दर्ज करें।
+
     </p>
 
-    <button
-      type="button"
-      class="verify"
-      id="payNowButton"
-      onclick="startRazorpayPayment()">
 
-      Pay ₹100 Securely
-
-    </button>
-
-    <div id="paymentStatus"></div>
-
-    <label for="paymentId" style="margin-top:14px;display:block">
-      Verified Razorpay Payment ID
+    <label for="paymentId">
+      Razorpay Payment ID *
     </label>
 
     <input
       id="paymentId"
       type="text"
-      placeholder="Payment के बाद स्वतः आएगा"
-      readonly
-      autocomplete="off">
+      placeholder="pay_xxxxxxxxxxxxxx">
 
-    <div class="error" id="e_paymentId"></div>
+    <div
+      class="error"
+      id="e_paymentId">
+    </div>
+
+
+    <button
+      type="button"
+      class="verify"
+      onclick="manualVerifyPayment()">
+
+      ✓ Payment Verification के लिए Submit करें
+
+    </button>
+
+
+    <div id="paymentStatus"></div>
 
   </div>
 
 
   <div class="final-box">
 
-    <b>Final Submission</b>
+    <b>Manual Verification</b>
 
     <p style="font-size:13px;line-height:1.6">
-      ⚠️ Payment verified होने से पहले Final Submit नहीं किया जा सकता।
-      Registration Number भी केवल successful Razorpay verification के बाद
-      server से generate होगा।
+
+      Static HTML अपने आप Razorpay transaction verify नहीं करता।
+      Payment की राशि और successful status को Razorpay dashboard में
+      manually verify करने के बाद ही Final Submit करें।
+
     </p>
 
-    <div class="error" id="e_adminVerified"></div>
+
+    <label>
+
+      <input
+        type="checkbox"
+        id="adminVerified">
+
+      मैंने Payment ID और ₹100 successful payment को
+      manually verify कर लिया है।
+
+    </label>
+
+    <div
+      class="error"
+      id="e_adminVerified">
+    </div>
+
 
     <button
       type="button"
       class="final"
-      id="finalSubmitButton"
-      onclick="finalSubmit()"
-      disabled
-      style="opacity:.55;cursor:not-allowed">
+      onclick="finalSubmit()">
 
-      🔒 Final Submit — पहले Payment Verify करें
+      ✓ Final Submit
 
     </button>
 
@@ -1813,10 +1843,6 @@ button{
 </div>
 
 
-<!-- RAZORPAY CHECKOUT -->
-
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
 <!-- PDF LIBRARIES -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -1836,17 +1862,8 @@ let photoData = "";
 let signatureData = "";
 
 let paid = false;
-let paymentVerified = false;
-let paymentOrderId = "";
-let paymentIdVerified = "";
-let serverRegistrationNumber = "";
 
 let registrationNumber = "";
-
-// IMPORTANT: Razorpay Live Secret must NEVER be placed in this HTML.
-// Set this to the URL of your deployed Render payment API.
-const PAYMENT_BACKEND_URL = "https://uplekhpal-razorpay.onrender.com";
-const PAYMENT_AMOUNT_RUPEES = 100;
 
 let applicationData = null;
 
@@ -2331,186 +2348,50 @@ function openPayment(){
    PAYMENT
 ========================================================= */
 
-async function startRazorpayPayment(){
+function manualVerifyPayment(){
 
-  clearErrors();
+  const paymentId =
+    val("paymentId");
 
-  if(!window.Razorpay){
-    showPaymentStatus("Razorpay Checkout load नहीं हुआ। कृपया page refresh करके दोबारा प्रयास करें।", true);
+  $("paymentStatus").innerHTML = "";
+
+
+  if(!paymentId){
+
+    error(
+      "paymentId",
+      "Payment ID दर्ज करें"
+    );
+
     return;
   }
 
-  const payButton = $("payNowButton");
-  if(payButton){
-    payButton.disabled = true;
-    payButton.style.opacity = ".7";
-    payButton.textContent = "Payment Gateway खोला जा रहा है...";
-  }
 
-  try{
+  if(paymentId.length < 6){
 
-    showPaymentStatus("Secure payment order बनाया जा रहा है...", false);
-
-    const orderResponse = await fetch(
-      PAYMENT_BACKEND_URL + "/api/create-order",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          service: "UP Forest Department Application Assistance",
-          amount: PAYMENT_AMOUNT_RUPEES
-        })
-      }
+    error(
+      "paymentId",
+      "सही Payment ID दर्ज करें"
     );
 
-    const orderData = await orderResponse.json().catch(() => ({}));
-
-    if(!orderResponse.ok || !orderData.ok || !orderData.orderId || !orderData.keyId){
-      throw new Error(orderData.message || "Payment order create नहीं हो सका।");
-    }
-
-    paymentOrderId = orderData.orderId;
-
-    const options = {
-      key: orderData.keyId,
-      amount: orderData.amount,
-      currency: orderData.currency || "INR",
-      name: "LEKHPAL DIGITAL SERVICES",
-      description: "UP Forest Application Assistance Fee",
-      order_id: orderData.orderId,
-      prefill: {
-        name: val("name"),
-        email: val("email"),
-        contact: val("mobile")
-      },
-      notes: {
-        service: "UP Forest Department Application Assistance"
-      },
-      theme: {
-        color: "#176b3a"
-      },
-      handler: async function(response){
-        await verifyRazorpayPayment(response);
-      },
-      modal: {
-        ondismiss: function(){
-          if(!paymentVerified){
-            showPaymentStatus("⚠️ Payment window बंद हो गई। Payment verify हुए बिना Final Submit उपलब्ध नहीं होगा।", true);
-          }
-          resetPayButton();
-        }
-      }
-    };
-
-    const rzp = new Razorpay(options);
-
-    rzp.on("payment.failed", function(response){
-      paymentVerified = false;
-      paid = false;
-      showPaymentStatus("❌ Payment failed/cancelled. Final Submit अभी बंद है।", true);
-      resetPayButton();
-    });
-
-    rzp.open();
-
-  }catch(err){
-    console.error(err);
-    showPaymentStatus("❌ " + (err.message || "Payment शुरू नहीं हो सका।"), true);
-    resetPayButton();
+    return;
   }
-}
 
 
-async function verifyRazorpayPayment(response){
-
-  try{
-
-    showPaymentStatus("⏳ Payment सफल हुआ। अब Razorpay Live API से verification हो रही है...", false);
-
-    const verifyResponse = await fetch(
-      PAYMENT_BACKEND_URL + "/api/verify-payment",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          orderId: response.razorpay_order_id,
-          paymentId: response.razorpay_payment_id,
-          signature: response.razorpay_signature
-        })
-      }
-    );
-
-    const verifyData = await verifyResponse.json().catch(() => ({}));
-
-    if(!verifyResponse.ok || !verifyData.ok || !verifyData.verified || !verifyData.registrationNumber){
-      paymentVerified = false;
-      paid = false;
-      throw new Error(verifyData.message || "Payment verification असफल रही।");
-    }
-
-    paymentVerified = true;
-    paid = true;
-    paymentOrderId = verifyData.orderId || response.razorpay_order_id;
-    paymentIdVerified = verifyData.paymentId || response.razorpay_payment_id;
-    serverRegistrationNumber = verifyData.registrationNumber;
-    registrationNumber = serverRegistrationNumber;
-
-    $("paymentId").value = paymentIdVerified;
-
-    const finalButton = $("finalSubmitButton");
-    if(finalButton){
-      finalButton.disabled = false;
-      finalButton.style.opacity = "1";
-      finalButton.style.cursor = "pointer";
-      finalButton.textContent = "✓ Final Submit & Generate Registration PDF";
-    }
-
-    showPaymentStatus(
-      "✅ ₹100 payment successfully verified. अब Final Submit किया जा सकता है। Registration Number server से सुरक्षित रूप से generate हो चुका है।",
-      false
-    );
-
-    resetPayButton("Payment Verified");
-
-  }catch(err){
-    console.error(err);
-    paymentVerified = false;
-    paid = false;
-    serverRegistrationNumber = "";
-    registrationNumber = "";
-    showPaymentStatus("❌ " + (err.message || "Payment verification failed."), true);
-    resetPayButton();
-  }
-}
+  paid = true;
 
 
-function showPaymentStatus(message, isError){
-  const box = $("paymentStatus");
-  if(!box) return;
+  $("paymentStatus").innerHTML = `
 
-  box.innerHTML = `
-    <div class="status ${isError ? "error" : "pending"}" style="margin-top:12px;line-height:1.6">
-      ${escapeHtml(message)}
+    <div class="status pending">
+
+      ✓ Payment ID प्राप्त हो गई है।
+      इसे manual verification के लिए भेजा गया है।
+
     </div>
+
   `;
-}
 
-
-function resetPayButton(text){
-  const payButton = $("payNowButton");
-  if(!payButton) return;
-
-  if(paymentVerified){
-    payButton.disabled = true;
-    payButton.style.opacity = ".8";
-    payButton.style.cursor = "not-allowed";
-    payButton.textContent = text || "Payment Verified";
-  }else{
-    payButton.disabled = false;
-    payButton.style.opacity = "1";
-    payButton.style.cursor = "pointer";
-    payButton.textContent = "Pay ₹100 Securely";
-  }
 }
 
 
@@ -2523,18 +2404,35 @@ function finalSubmit(){
   clearErrors();
 
 
-  if(!paymentVerified || !paid || !serverRegistrationNumber){
+  if(!paid){
 
     error(
       "paymentId",
-      "पहले Razorpay payment को successfully verify करें। बिना verified payment के Final Submit और Registration Number उपलब्ध नहीं होगा।"
+      "पहले Payment ID submit करें"
     );
 
     return;
   }
 
 
-  registrationNumber = serverRegistrationNumber;
+  if(!$("adminVerified").checked){
+
+    error(
+      "adminVerified",
+      "Payment को manually verify करके checkbox चुनें"
+    );
+
+    return;
+  }
+
+
+  registrationNumber =
+    "UPFD-" +
+    new Date().getFullYear() +
+    "-" +
+    Math.floor(
+      100000 + Math.random()*900000
+    );
 
 
   applicationData = {
@@ -2645,7 +2543,7 @@ function finalSubmit(){
       val("interPercentage"),
 
     paymentId:
-      paymentIdVerified || val("paymentId")
+      val("paymentId")
 
   };
 
