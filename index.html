@@ -1,609 +1,210 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html>
-<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<!doctype html>
+<html lang="hi">
 <head>
-<meta charset='UTF-8'/>
-<meta content='width=device-width, initial-scale=1' name='viewport'/>
-<title><data:blog.pageTitle/></title>
-<meta content='LEKHPAL DIGITAL SERVICES - Online Digital &amp; Documentation Assistance in Mainpuri, Uttar Pradesh' name='description'/>
-<meta content='index,follow' name='robots'/>
-
-<b:skin><![CDATA[
-:root{
- --navy:#071d3d;--blue:#1456a0;--cyan:#12a6c9;--orange:#ff6a2a;
- --green:#13a878;--gold:#f5b942;--bg:#f4f8fc;--text:#17263b;--muted:#66768b;
- --white:#fff;--line:#dce6f0;--shadow:0 18px 55px rgba(8,35,70,.12);
-}
-*{box-sizing:border-box;scroll-behavior:smooth}
-body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:var(--bg);color:var(--text)}
-a{text-decoration:none;color:inherit}
-.topbar{background:linear-gradient(90deg,var(--navy),#0b3971);color:#fff;text-align:center;padding:8px 15px;font-size:13px}
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav{max-width:1200px;margin:auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{width:54px;height:54px;border-radius:17px;background:linear-gradient(145deg,#0b3971,#12a6c9 65%,#13a878);display:grid;place-items:center;color:white;font-weight:900;font-size:25px;box-shadow:0 9px 25px rgba(20,86,160,.28);position:relative}
-.logo:after{content:"✓";position:absolute;right:-5px;bottom:-5px;width:20px;height:20px;border-radius:50%;background:var(--orange);display:grid;place-items:center;font-size:12px;border:2px solid white}
-.brand h1{margin:0;font-size:19px;color:var(--navy)}
-.brand small{color:var(--muted);font-size:11px}
-nav{display:flex;gap:17px;align-items:center;font-weight:700;font-size:13px;color:#25466f}
-nav a:hover{color:var(--orange)}
-.menu{display:none;background:var(--navy);color:white;border:0;border-radius:8px;padding:9px}
-.hero{background:radial-gradient(circle at 80% 20%,rgba(18,166,201,.16),transparent 28%),radial-gradient(circle at 15% 80%,rgba(19,168,120,.12),transparent 30%),linear-gradient(135deg,#eaf5ff,#fff 55%,#eafcf7);padding:72px 20px}
-.hero-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:38px;align-items:center}
-.badge{display:inline-block;padding:8px 13px;border-radius:999px;background:#fff;border:1px solid #dbe8f4;color:#0b5a79;font-weight:800;font-size:12px;box-shadow:0 8px 25px #123f7a12}
-.hero h2{font-size:48px;line-height:1.05;margin:18px 0 15px;color:var(--navy)}
-.hero h2 span{color:var(--orange)}
-.hero p{font-size:17px;line-height:1.75;color:#526276}
-.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
-.btn{display:inline-block;padding:13px 19px;border-radius:11px;font-weight:800}
-.btn-primary{background:linear-gradient(135deg,var(--orange),#e74d19);color:#fff}
-.btn-secondary{background:var(--navy);color:#fff}
-.btn-green{background:var(--green);color:#fff}
-.hero-card{background:#fff;border:1px solid #dce7f2;border-radius:25px;padding:28px;box-shadow:var(--shadow)}
-.hero-card h3{margin-top:0;color:var(--navy)}
-.hero-card li{margin:13px 0;color:#526276}
-section{padding:65px 20px}
-.wrap{max-width:1200px;margin:auto}
-.section-head{text-align:center;margin-bottom:36px}
-.section-head h2{font-size:32px;color:var(--navy);margin:0 0 9px}
-.section-head p{color:var(--muted);margin:0}
-.services{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
-.service{background:#fff;border:1px solid var(--line);border-radius:18px;padding:21px;box-shadow:0 9px 30px rgba(10,45,80,.055);transition:.2s}
-.service:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(10,45,80,.11)}
-.icon{font-size:27px}
-.service h3{font-size:16px;color:#173e72;margin:10px 0 7px}
-.service p{font-size:13px;line-height:1.55;color:var(--muted);margin:0}
-.service .tag{display:inline-block;margin-top:10px;font-size:11px;color:#0b6d55;background:#e7f8f2;padding:5px 8px;border-radius:20px;font-weight:700}
-.dark{background:var(--navy);color:#fff}
-.dark .section-head h2,.dark .section-head p{color:#fff}
-.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
-.price{background:#fff;color:var(--text);border-radius:18px;padding:22px;text-align:center}
-.price h3{font-size:15px;color:#23456e}
-.price strong{display:block;font-size:31px;color:var(--orange);margin:8px}
-.price p{font-size:12px;color:var(--muted)}
-.booking-area{background:linear-gradient(135deg,#edf8ff,#f7fffc)}
-.booking{max-width:950px;margin:auto;background:#fff;border:1px solid var(--line);border-radius:24px;padding:27px;box-shadow:var(--shadow)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}
-.full{grid-column:1/-1}
-label{display:block;font-weight:800;color:#28496f;font-size:13px;margin:0 0 7px}
-input,select,textarea{width:100%;padding:13px 14px;border:1px solid #d6e1ed;border-radius:10px;background:#fbfdff;font:inherit;color:#1e2d40}
-input:focus,select:focus,textarea:focus{outline:2px solid #b8ddf1;border-color:#1595bd}
-.notice{margin:18px 0;padding:15px;background:#fff8e8;border:1px solid #f2d494;border-radius:12px;color:#6b4d17;font-size:13px;line-height:1.6}
-.consent{display:flex;gap:10px;align-items:flex-start;margin:15px 0;color:#526276;font-size:12px;line-height:1.55}
-.consent input{width:auto;margin-top:3px}
-.submit{width:100%;border:0;padding:15px;border-radius:11px;background:linear-gradient(135deg,var(--green),#087f60);color:white;font-weight:900;font-size:16px;cursor:pointer}
-.small{font-size:12px;color:#758398;line-height:1.55}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.info-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
-.info-card h3{color:var(--navy);margin-top:0}
-.info-card p,.info-card li{color:#5e6d80;line-height:1.7;font-size:14px}
-.info-card ul{padding-left:20px}
-.policy-list{padding-left:20px}
-.policy-list li{margin-bottom:8px}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.contact-card{background:#fff;border-radius:20px;border:1px solid var(--line);padding:25px}
-.contact-item{padding:14px 0;border-bottom:1px solid #edf1f5}
-.contact-item:last-child{border-bottom:0}
-.contact-item b{color:#173e72}
-footer{background:#06172f;color:#cbd9e9;padding:38px 20px}
-.footer-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
-.footer-grid h3{color:#fff}
-.footer-grid a{display:block;margin:9px 0}
-.copyright{max-width:1200px;margin:25px auto 0;border-top:1px solid #ffffff1c;padding-top:17px;text-align:center;font-size:12px}
-
-
-.office-gallery{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch;margin-top:28px}
-.office-photo{position:relative;background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
-.office-photo img{width:100%;height:100%;min-height:330px;display:block;object-fit:cover}
-.office-photo .photo-caption{position:absolute;left:15px;right:15px;bottom:15px;background:rgba(7,29,61,.88);color:#fff;border-radius:14px;padding:13px 15px;backdrop-filter:blur(8px)}
-.office-photo .photo-caption strong{display:block;font-size:14px;margin-bottom:3px}
-.office-photo .photo-caption span{font-size:11px;opacity:.88}
-.office-location{background:linear-gradient(145deg,#071d3d,#1456a0);color:#fff;border-radius:24px;padding:30px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center}
-.office-location h3{font-size:25px;margin:0 0 12px}
-.office-location p{line-height:1.7;color:#dbeaff;font-size:14px}
-.location-pin{font-size:38px;margin-bottom:8px}
-.map-btn{display:inline-block;margin-top:12px;background:#fff;color:#0b3971;padding:13px 17px;border-radius:11px;font-weight:900}
-.map-btn:hover{transform:translateY(-2px)}
-.office-badges{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
-.office-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:7px 10px;font-size:11px}
-@media(max-width:800px){.office-gallery{grid-template-columns:1fr}.office-photo img{height:auto;min-height:0}.office-location{min-height:280px}}
-.official-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
-.official-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 9px 30px rgba(10,45,80,.055)}
-.official-card h3{font-size:16px;color:#173e72;margin:0 0 8px}
-.official-card p{font-size:13px;line-height:1.6;color:var(--muted);margin:0 0 14px}
-.official-link{display:inline-block;padding:9px 12px;border-radius:9px;background:#eef6ff;color:#1456a0;font-weight:800;font-size:12px}
-.private-note{background:#f7f2ff;border:1px solid #dfd0ff;border-radius:15px;padding:17px;color:#4b3b6b;line-height:1.65;font-size:13px;margin-top:22px}
-@media(max-width:900px){.official-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.official-grid{grid-template-columns:1fr}}
-.disclaimer{background:#fff2ed;border-top:1px solid #ffd2c1;border-bottom:1px solid #ffd2c1;padding:13px 20px;text-align:center;color:#7b3c24;font-size:12px;line-height:1.55}
-@media(max-width:900px){
- nav{display:none}.menu{display:block}.hero-inner{grid-template-columns:1fr}.services,.prices{grid-template-columns:repeat(2,1fr)}.hero h2{font-size:39px}
-}
-@media(max-width:600px){
- .services,.prices,.info-grid,.contact-grid,.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.hero{padding:48px 16px}.hero h2{font-size:32px}section{padding:48px 16px}.footer-grid{grid-template-columns:1fr}.brand h1{font-size:16px}
-}
-
-/* ===== LEKHPAL HIGH-FI BRANDED VISUAL SYSTEM ===== */
-:root{
- --brand-navy:#061a38;--brand-blue:#0757c9;--brand-cyan:#00b8d9;--brand-orange:#ff5a1f;--brand-green:#0fb981;--brand-purple:#7c3aed;--brand-gold:#f5b82e;
- --glass:rgba(255,255,255,.72);--glass-dark:rgba(6,26,56,.72);
-}
-body{background:radial-gradient(circle at 10% 10%,rgba(0,184,217,.08),transparent 28%),radial-gradient(circle at 90% 30%,rgba(124,58,237,.07),transparent 30%),#f5f9ff;overflow-x:hidden}
-body:before{content:'LDS';position:fixed;inset:auto -50px 8% auto;font-size:240px;font-weight:1000;letter-spacing:-18px;color:rgba(7,87,201,.025);z-index:-1;pointer-events:none;transform:rotate(-8deg)}
-.topbar{background:linear-gradient(90deg,#04152e,#0757c9 48%,#00a878);box-shadow:0 4px 20px rgba(3,35,75,.22);letter-spacing:.15px}
-header{background:rgba(255,255,255,.84);box-shadow:0 8px 35px rgba(4,30,70,.08)}
-.logo{width:58px;height:58px;border-radius:19px;background:conic-gradient(from 220deg,#ff5a1f,#f5b82e,#00b8d9,#0757c9,#7c3aed,#ff5a1f);box-shadow:0 12px 32px rgba(7,87,201,.32);overflow:hidden;isolation:isolate}
-.logo:before{content:'L';position:absolute;inset:5px;border-radius:15px;background:linear-gradient(145deg,#071d3d,#0757c9);display:grid;place-items:center;font-size:27px;font-weight:1000;color:#fff;z-index:-1}
-.logo:after{content:'✓';right:-2px;bottom:-2px;width:21px;height:21px;background:#0fb981;border:2px solid #fff;box-shadow:0 4px 12px rgba(15,185,129,.35)}
-.brand h1{letter-spacing:-.3px}.brand small{font-weight:700}
-nav a{position:relative;transition:.25s ease}nav a:after{content:'';position:absolute;left:0;right:100%;bottom:-7px;height:2px;background:linear-gradient(90deg,#0757c9,#00b8d9);transition:.25s}nav a:hover:after{right:0}
-.hero{position:relative;isolation:isolate;min-height:620px;display:grid;align-items:center;overflow:hidden;background-image:linear-gradient(90deg,rgba(3,18,42,.96),rgba(5,31,70,.76) 52%,rgba(5,31,70,.45));background-size:cover;background-position:center;color:#fff}
-.hero:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 75% 30%,rgba(0,212,255,.25),transparent 23%),radial-gradient(circle at 20% 85%,rgba(255,90,31,.18),transparent 26%);z-index:-1}
-.hero:after{content:'LDS';position:absolute;right:-45px;bottom:-80px;font-size:330px;font-weight:1000;color:rgba(255,255,255,.035);letter-spacing:-25px;z-index:-1;transform:rotate(-8deg)}
-.hero-inner{position:relative;z-index:2}.hero h2{color:#fff;text-shadow:0 4px 25px rgba(0,0,0,.25);font-weight:950}.hero h2 span{background:linear-gradient(90deg,#00d9ff,#67e8f9,#ffb347);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:rgba(255,255,255,.88)}
-.badge{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.25);color:#fff;backdrop-filter:blur(10px);box-shadow:0 12px 30px rgba(0,0,0,.15)}
-.cta .btn{box-shadow:0 10px 28px rgba(0,0,0,.18);transition:.25s}.cta .btn:hover{transform:translateY(-3px) scale(1.015);box-shadow:0 16px 35px rgba(0,0,0,.26)}
-.hero-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(18px);box-shadow:0 25px 70px rgba(0,0,0,.25);color:#fff}.hero-card h3,.hero-card li{color:#fff}.hero-card li:before{content:'✦';color:#00d9ff;margin-right:8px}
-.section-head h2{font-weight:950;letter-spacing:-.6px}.section-head h2:after{content:'';display:block;width:70px;height:4px;border-radius:9px;margin:12px auto 0;background:linear-gradient(90deg,#0757c9,#00b8d9,#0fb981,#ff5a1f)}
-#services{position:relative;overflow:hidden}#services:before{content:'';position:absolute;width:320px;height:320px;border-radius:50%;right:-160px;top:-80px;background:rgba(0,184,217,.09);filter:blur(5px);pointer-events:none}
-.services{grid-template-columns:repeat(4,1fr);gap:20px}
-.service{position:relative;overflow:hidden;min-height:205px;padding:23px;border:1px solid rgba(10,50,100,.08);border-top:4px solid var(--svc,#0757c9);border-radius:22px;background:linear-gradient(145deg,#fff,rgba(255,255,255,.72));box-shadow:0 15px 40px rgba(5,35,75,.075);transition:transform .3s,box-shadow .3s,border-color .3s}
-.service:before{content:'';position:absolute;width:150px;height:150px;border-radius:50%;right:-65px;top:-65px;background:var(--svc-soft,rgba(7,87,201,.09));transition:.3s}.service:after{content:'✦';position:absolute;right:17px;bottom:13px;color:var(--svc,#0757c9);font-size:17px;opacity:.45}.service:hover{transform:translateY(-9px) scale(1.012);box-shadow:0 25px 55px rgba(5,35,75,.15);border-color:var(--svc,#0757c9)}.service:hover:before{transform:scale(1.5);opacity:.75}
-.service .icon{position:relative;z-index:1;width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-size:29px;background:var(--svc-soft,rgba(7,87,201,.1));border:1px solid color-mix(in srgb,var(--svc,#0757c9) 25%,white);box-shadow:0 10px 25px color-mix(in srgb,var(--svc,#0757c9) 18%,transparent);transition:.3s}.service:hover .icon{transform:rotate(-5deg) scale(1.08)}
-.service h3,.service p,.service .tag{position:relative;z-index:1}.service h3{color:#102e55}.service .tag{color:var(--svc,#0757c9);background:var(--svc-soft,rgba(7,87,201,.1));border:1px solid color-mix(in srgb,var(--svc,#0757c9) 16%,white)}
-.service:nth-child(4n+1){--svc:#0757c9;--svc-soft:rgba(7,87,201,.11)}.service:nth-child(4n+2){--svc:#0b9f8c;--svc-soft:rgba(11,159,140,.11)}.service:nth-child(4n+3){--svc:#7c3aed;--svc-soft:rgba(124,58,237,.11)}.service:nth-child(4n+4){--svc:#ff5a1f;--svc-soft:rgba(255,90,31,.11)}
-.service:nth-child(5n){--svc:#e09b00;--svc-soft:rgba(224,155,0,.12)}
-.dark{position:relative;overflow:hidden;background:linear-gradient(135deg,#04152e,#082e68 55%,#063f4d)}.dark:before{content:'₹';position:absolute;right:4%;top:-55px;font-size:280px;font-weight:1000;color:rgba(255,255,255,.035);transform:rotate(8deg)}
-.price{position:relative;border:1px solid rgba(255,255,255,.08);box-shadow:0 15px 35px rgba(0,0,0,.16);transition:.3s}.price:hover{transform:translateY(-7px);box-shadow:0 24px 45px rgba(0,0,0,.23)}
-.booking-area{background:linear-gradient(135deg,#eef9ff,#f9f4ff 50%,#effff8);position:relative}.booking{box-shadow:0 25px 70px rgba(7,48,95,.12)}
-input:focus,select:focus,textarea:focus{outline:3px solid rgba(0,184,217,.14);box-shadow:0 0 0 1px #00a7c7}
-.official-grid{grid-template-columns:repeat(3,1fr);gap:20px}.official-card{position:relative;overflow:hidden;border-radius:22px;transition:.3s;border-top:4px solid var(--portal,#0757c9);box-shadow:0 15px 38px rgba(5,35,75,.08)}.official-card:before{content:'';position:absolute;inset:auto -30px -55px auto;width:150px;height:150px;border-radius:50%;background:var(--portal-soft,rgba(7,87,201,.09))}.official-card:hover{transform:translateY(-7px);box-shadow:0 25px 55px rgba(5,35,75,.14)}.official-card .portal-icon{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-size:29px;background:var(--portal-soft);margin-bottom:14px}.official-card:nth-child(2){--portal:#0b6ddf;--portal-soft:rgba(11,109,223,.12)}.official-card:nth-child(3){--portal:#0b8f74;--portal-soft:rgba(11,143,116,.12)}.official-card:nth-child(4){--portal:#f05a28;--portal-soft:rgba(240,90,40,.12)}.official-card:nth-child(5){--portal:#6d45d9;--portal-soft:rgba(109,69,217,.12)}.official-card:nth-child(6){--portal:#db2e52;--portal-soft:rgba(219,46,82,.12)}
-#office{background:linear-gradient(180deg,#fff,#f4f9ff)!important}.office-gallery{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:22px}.office-photo{position:relative;border-radius:26px;overflow:hidden;box-shadow:0 25px 65px rgba(4,30,70,.16);border:7px solid #fff}.office-photo:after{content:'LEKHPAL DIGITAL SERVICES';position:absolute;left:18px;bottom:18px;padding:9px 12px;border-radius:12px;background:rgba(3,18,42,.72);color:#fff;font-size:11px;font-weight:900;letter-spacing:.5px;backdrop-filter:blur(8px)}.office-photo img{width:100%;height:520px;object-fit:cover;display:block;transition:.6s}.office-photo:hover img{transform:scale(1.035)}
-.office-location{margin-top:22px;padding:22px;border-radius:22px;background:linear-gradient(135deg,#061a38,#0757c9);color:#fff;box-shadow:0 20px 50px rgba(7,55,115,.2)}
-.private-note{box-shadow:0 12px 30px rgba(80,50,140,.07)}
-.floating-wa{position:fixed;right:20px;bottom:22px;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#13c77b,#078b58);color:#fff;font-size:30px;box-shadow:0 14px 35px rgba(10,150,95,.38);z-index:100;animation:waPulse 2.2s infinite}.floating-wa span{font-size:10px;position:absolute;bottom:-17px;white-space:nowrap;color:#075f42;font-weight:900;background:#fff;padding:3px 6px;border-radius:7px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
-.back-top{position:fixed;right:22px;bottom:100px;width:42px;height:42px;border:0;border-radius:14px;background:#061a38;color:#fff;display:none;place-items:center;z-index:99;cursor:pointer;box-shadow:0 10px 25px rgba(0,0,0,.18)}
-@keyframes waPulse{0%,100%{box-shadow:0 14px 35px rgba(10,150,95,.38),0 0 0 0 rgba(19,199,123,.28)}50%{box-shadow:0 14px 35px rgba(10,150,95,.38),0 0 0 13px rgba(19,199,123,0)}}
-@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.hero-card{animation:floatCard 5s ease-in-out infinite}
-@media(max-width:1050px){.services{grid-template-columns:repeat(3,1fr)}.official-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:760px){.services,.official-grid,.office-gallery{grid-template-columns:1fr}.hero{min-height:690px;background-position:62% center}.office-photo img{height:460px}.floating-wa{right:14px;bottom:16px}.back-top{right:14px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-
-]]></b:skin>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07152e">
+  <meta name="description" content="LEKHPAL DIGITAL SERVICES, Mainpuri, Uttar Pradesh — online form filling, digital documentation assistance, PAN, Aadhaar, e-District and citizen service booking.">
+  <meta name="robots" content="index,follow">
+  <title>LEKHPAL DIGITAL SERVICES | Digital & Documentation Assistance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#07152e;--navy2:#0d2347;--blue:#1769ff;--cyan:#20d3e8;--orange:#ff9b42;--green:#17b890;--ink:#14213d;--muted:#64748b;--line:#e4ebf5;--paper:#f4f7fc;--white:#fff;--shadow:0 18px 55px rgba(7,21,46,.12);--radius:22px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans","Noto Sans Devanagari",sans-serif;line-height:1.65}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}.wrap{width:min(1160px,92%);margin:auto}.topline{background:#041024;color:#d8e5ff;font-size:.82rem}.topline .wrap{display:flex;gap:18px;justify-content:space-between;align-items:center;padding:8px 0;flex-wrap:wrap}.topline strong{color:#fff}.nav{position:sticky;top:0;z-index:50;background:rgba(7,21,46,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.1)}.navinner{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:78px}.brand{display:flex;align-items:center;gap:12px;color:#fff;min-width:230px}.brandmark{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;color:#fff;font-weight:900;font-size:1.05rem;box-shadow:0 7px 22px #1769ff55;border:1px solid #ffffff55}.brandname{font-weight:800;letter-spacing:.035em;line-height:1.15}.brandname small{display:block;color:#9eb8e4;font-size:.7rem;font-weight:600;letter-spacing:.08em;margin-top:5px}.navlinks{display:flex;gap:20px;align-items:center;color:#d7e4fa;font-size:.9rem}.navlinks a:hover{color:var(--cyan)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:12px;padding:12px 17px;font-weight:800;cursor:pointer;transition:.2s;white-space:normal}.btn:hover{transform:translateY(-2px)}.btn-primary{background:linear-gradient(135deg,var(--blue),#4d8cff);color:white;box-shadow:0 10px 25px #1769ff35}.btn-light{background:#fff;color:var(--navy)}.btn-outline{border:1px solid #cbd8ed;background:#fff;color:var(--navy)}.btn-whatsapp{background:#12b76a;color:white}.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 82% 25%,#1769ff55,transparent 34%),radial-gradient(ellipse at 8% 90%,#20d3e822,transparent 35%),linear-gradient(125deg,#061329,#0c2854 70%,#0b1c3a);color:#fff;padding:78px 0 68px}.hero:after{content:"";position:absolute;width:440px;height:440px;border:1px solid #ffffff12;border-radius:50%;right:-150px;top:-160px;box-shadow:0 0 0 45px #ffffff05,0 0 0 90px #ffffff03}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:45px;align-items:center;position:relative;z-index:1}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #ffffff30;background:#ffffff0e;border-radius:999px;padding:7px 12px;color:#c8e8ff;font-size:.83rem;font-weight:700}.live-dot{width:8px;height:8px;border-radius:50%;background:#21e6a2;box-shadow:0 0 0 5px #21e6a222}.hero h1{font-size:clamp(2.3rem,5vw,4.45rem);line-height:1.08;letter-spacing:-.045em;margin:20px 0}.hero h1 span{background:linear-gradient(90deg,#fff,#7cecff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:650px;color:#c3d2ec;font-size:1.06rem}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:25px 0}.trust-row{display:flex;gap:18px;flex-wrap:wrap;color:#d7e6ff;font-size:.86rem}.trust-row span{display:flex;align-items:center;gap:7px}.hero-photo{position:relative;padding:13px;border:1px solid #ffffff35;border-radius:28px;background:linear-gradient(135deg,#ffffff22,#ffffff08);box-shadow:0 30px 80px #0005;transform:rotate(1deg)}.hero-photo img{display:block;width:100%;height:350px;object-fit:cover;border-radius:19px;background:#e5eaf3}.photo-label{position:absolute;left:28px;right:28px;bottom:28px;border:1px solid #ffffff45;background:#061329d9;backdrop-filter:blur(12px);border-radius:16px;padding:13px 16px}.photo-label strong{display:block}.photo-label small{color:#b9cce8}.stats{margin-top:-25px;position:relative;z-index:3}.statgrid{display:grid;grid-template-columns:repeat(4,1fr);background:white;border-radius:20px;box-shadow:var(--shadow);padding:22px;gap:12px}.stat{padding:8px 18px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat strong{display:block;font-size:1.35rem;color:var(--navy)}.stat span{font-size:.82rem;color:var(--muted)}section{padding:78px 0}.section-head{max-width:730px;margin:0 auto 34px;text-align:center}.kicker{color:var(--blue);font-weight:900;text-transform:uppercase;font-size:.76rem;letter-spacing:.16em}.section-head h2{font-size:clamp(1.8rem,3vw,2.8rem);letter-spacing:-.035em;line-height:1.15;margin:10px 0 13px;color:var(--navy)}.section-head p{color:var(--muted);margin:0}.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.service-card,.portal-card,.policy-card,.info-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:23px;box-shadow:0 6px 22px #10284b08;transition:.22s}.service-card:hover,.portal-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#b9d0ff}.service-top{display:flex;align-items:center;gap:14px;margin-bottom:13px}.service-icon{width:51px;height:51px;flex:0 0 51px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(135deg,#e9f5ff,#e8eeff);color:#1558d6;font-weight:900;font-size:1rem;border:1px solid #d6e5ff}.service-card h3,.portal-card h3{margin:0;color:var(--navy);font-size:1.07rem}.service-card p,.portal-card p{color:var(--muted);font-size:.91rem;margin:8px 0 16px}.card-link{color:var(--blue);font-weight:800;font-size:.9rem}.service-card .small-note{font-size:.78rem;color:#7b879b;margin-top:10px}.soft{background:#edf3fc}.portal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.portal-card{display:flex;flex-direction:column;align-items:flex-start}.portal-badge{height:44px;min-width:44px;border-radius:14px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900;letter-spacing:.03em;padding:0 10px;margin-bottom:15px}.portal-card .btn{margin-top:auto;font-size:.85rem;padding:10px 13px}.notice{border:1px solid #f3d9a4;background:#fff8e9;color:#785119;border-radius:16px;padding:15px 17px;font-size:.88rem;margin-top:22px}.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:42px;align-items:center}.about-photo{position:relative}.about-photo img{width:100%;height:420px;object-fit:cover;border-radius:25px;box-shadow:var(--shadow);background:#e5eaf3}.about-photo:before{content:"";position:absolute;inset:15px -15px -15px 15px;border:2px solid var(--cyan);border-radius:25px;z-index:-1}.about-copy h2{font-size:clamp(1.9rem,3vw,2.8rem);line-height:1.15;color:var(--navy);letter-spacing:-.04em}.about-copy p{color:var(--muted)}.checklist{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}.checklist li:before{content:"✓";color:#0ca77b;font-weight:900;margin-right:9px}.charges-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.charge{background:#fff;border:1px solid var(--line);border-radius:19px;padding:23px}.charge h3{margin:0 0 7px;color:var(--navy)}.price{font-size:1.75rem;font-weight:900;color:var(--blue)}.charge p{font-size:.88rem;color:var(--muted)}.booking-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:25px;align-items:start}.booking-aside{background:linear-gradient(145deg,#07152e,#123c79);color:#fff;border-radius:23px;padding:28px;position:sticky;top:105px}.booking-aside h3{font-size:1.55rem;margin:0 0 10px}.booking-aside p{color:#c4d5ef}.contactline{display:flex;gap:12px;margin:20px 0;align-items:flex-start}.contactline b{display:block}.contactline small{color:#c4d5ef}.form-card{background:#fff;border:1px solid var(--line);border-radius:23px;padding:28px;box-shadow:var(--shadow)}.form-card h3{margin:0 0 5px;color:var(--navy);font-size:1.35rem}.form-card>p{color:var(--muted);font-size:.9rem;margin:0 0 22px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-weight:800;font-size:.85rem;color:#273b5b}.field input,.field select,.field textarea{width:100%;border:1px solid #d6dfed;border-radius:11px;padding:12px 13px;outline:none;background:#fbfdff;color:var(--ink)}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769ff18}.field textarea{min-height:105px;resize:vertical}.consent{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--muted);margin:17px 0}.consent input{margin-top:5px}.form-actions{display:flex;gap:10px;flex-wrap:wrap}.policy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.policy-card h3{font-size:1rem;color:var(--navy);margin:0 0 7px}.policy-card p{font-size:.85rem;color:var(--muted);margin:0}.footer{background:#041024;color:#b7c7e1;padding:52px 0 20px}.footergrid{display:grid;grid-template-columns:1.3fr .8fr .9fr;gap:30px}.footer h3,.footer h4{color:#fff}.footer p,.footer a{font-size:.88rem;color:#b7c7e1}.footer a:hover{color:var(--cyan)}.footerlinks{display:grid;gap:7px}.copyright{border-top:1px solid #ffffff18;margin-top:30px;padding-top:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.8rem}.float-wa{position:fixed;right:19px;bottom:20px;z-index:60;border-radius:999px;background:#13b96d;color:white;box-shadow:0 12px 30px #13b96d55;padding:13px 17px;font-weight:900}.backtop{position:fixed;right:24px;bottom:83px;width:43px;height:43px;border:0;border-radius:14px;background:#0c2347;color:white;box-shadow:var(--shadow);cursor:pointer;display:none}.backtop.show{display:block}.fineprint{font-size:.8rem;color:var(--muted)}.mobile-menu{display:none}
+    @media(max-width:900px){.navlinks{display:none}.mobile-menu{display:inline-flex}.hero-grid,.about-grid,.booking-grid{grid-template-columns:1fr}.hero-photo{max-width:600px;margin:auto}.services-grid,.portal-grid{grid-template-columns:repeat(2,1fr)}.charges-grid,.policy-grid{grid-template-columns:repeat(2,1fr)}.booking-aside{position:static}.footergrid{grid-template-columns:1fr 1fr}.hero{padding-top:55px}}
+    @media(max-width:580px){.topline .wrap{justify-content:center;text-align:center;gap:5px}.brand{min-width:0}.brandname{font-size:.83rem}.brandname small{font-size:.62rem}.navinner{min-height:69px}.brandmark{width:42px;height:42px}.hero h1{font-size:2.45rem}.hero-photo img{height:265px}.statgrid{grid-template-columns:1fr 1fr;padding:14px}.stat{border:0;padding:10px}.services-grid,.portal-grid,.charges-grid,.policy-grid,.footergrid{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}section{padding:58px 0}.about-photo img{height:310px}.checklist{grid-template-columns:1fr}.form-card{padding:20px}.float-wa{right:12px;bottom:12px}.backtop{right:17px;bottom:75px}}
+  </style>
 </head>
-
 <body>
+  <div class="topline"><div class="wrap"><span><strong>LEKHPAL DIGITAL SERVICES</strong> · Mainpuri, Uttar Pradesh</span><span>Digital Documentation Assistance · Appointment & Booking</span></div></div>
+  <header class="nav">
+    <div class="wrap navinner">
+      <a class="brand" href="#home" aria-label="LEKHPAL DIGITAL SERVICES home">
+        <span class="brandmark">LD</span>
+        <span class="brandname">LEKHPAL DIGITAL SERVICES<small>DIGITAL • DOCUMENTATION • ASSISTANCE</small></span>
+      </a>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="#services">Services</a><a href="#portals">Official Portals</a><a href="#about">About Centre</a><a href="#charges">Charges</a><a href="#booking">Book Service</a>
+      </nav>
+      <a class="btn btn-primary mobile-menu" href="#booking">Book Now ↗</a>
+      <a class="btn btn-primary" href="#booking">Book a Service ↗</a>
+    </div>
+  </header>
 
-<div class='topbar'>LEKHPAL DIGITAL SERVICES &#8226; Digital Service &amp; Online Assistance &#8226; Mainpuri, Uttar Pradesh</div>
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="live-dot"></span> DIGITAL SERVICE & DOCUMENTATION CENTRE</div>
+          <h1>Your trusted partner for <span>digital services.</span></h1>
+          <p>ऑनलाइन फॉर्म, दस्तावेज़ सहायता और नागरिक सेवाओं के लिए स्पष्ट जानकारी व बुकिंग सहायता। सही पोर्टल तक पहुँचें, सेवा चुनें और हमारी टीम से संपर्क करें।</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#booking">Book Your Service <span>→</span></a>
+            <a class="btn btn-light" href="#portals">Open Official Portals</a>
+          </div>
+          <div class="trust-row"><span>✓ Transparent assistance</span><span>✓ Clear service charges</span><span>✓ WhatsApp support</span></div>
+        </div>
+        <div class="hero-photo">
+          <img src="https://i.imgur.com/s64MSSf.png" alt="LEKHPAL DIGITAL SERVICES centre photo" onerror="this.onerror=null;this.src='https://i.imgur.com/P1CSBHC.png';">
+          <div class="photo-label"><strong>LEKHPAL DIGITAL SERVICES</strong><small>Gram Aimanpur, Post Kirthua, Karhal, Mainpuri, Uttar Pradesh</small></div>
+        </div>
+      </div>
+    </section>
 
-<header>
-<div class='nav'>
- <a class='brand' href='#home'>
-  <div class='logo'>L</div>
-  <div><h1>LEKHPAL DIGITAL SERVICES</h1><small>Online Digital &amp; Documentation Assistance</small></div>
- </a>
- <nav>
-  <a href='#home'>Home</a>
-  <a href='#services'>Services</a>
-  <a href='#booking'>Book Service</a>
-  <a href='#charges'>Charges</a>
-  <a href='#about'>About Us</a>
-  <a href='#policies'>Policies</a>
-  <a href='#contact'>Contact</a>
- </nav>
- <button aria-label='Open menu' class='menu' onclick='document.querySelector(&apos;nav&apos;).style.display=document.querySelector(&apos;nav&apos;).style.display===&apos;flex&apos;?&apos;none&apos;:&apos;flex&apos;'>&#9776;</button>
-</div>
-</header>
+    <div class="wrap stats">
+      <div class="statgrid">
+        <div class="stat"><strong>01</strong><span>Direct official portal links</span></div>
+        <div class="stat"><strong>Easy</strong><span>WhatsApp booking process</span></div>
+        <div class="stat"><strong>Clear</strong><span>Service & fee information</span></div>
+        <div class="stat"><strong>Local</strong><span>Mainpuri, Uttar Pradesh</span></div>
+      </div>
+    </div>
 
-<main id='home'>
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">What we help with</div><h2>Digital services, made simpler.</h2><p>नीचे दी गई सेवाओं के लिए आवेदन-प्रक्रिया समझने, दस्तावेज़ तैयार करने और ऑनलाइन फॉर्म भरने में सहायता उपलब्ध है। सरकारी निर्णय और स्वीकृति संबंधित विभाग के अधिकार में हैं।</p></div>
+        <div class="services-grid">
+          <article class="service-card"><div class="service-top"><div class="service-icon">PAN</div><h3>PAN Card Assistance</h3></div><p>नया PAN, सुधार, e-PAN डाउनलोड और आवेदन की स्थिति के लिए मार्गदर्शन।</p><a class="card-link" href="https://www.pan.utiitsl.com/" target="_blank" rel="noopener">Official UTIITSL portal ↗</a></article>
+          <article class="service-card"><div class="service-top"><div class="service-icon">CSC</div><h3>CSC / Digital Seva</h3></div><p>CSC से जुड़ी जानकारी और आधिकारिक पोर्टल तक पहुँचने में सहायता। केवल अधिकृत ID धारक अपने क्रेडेंशियल इस्तेमाल करें।</p><a class="card-link" href="https://digitalseva.csc.gov.in/" target="_blank" rel="noopener">Open Digital Seva ↗</a></article>
+          <article class="service-card"><div class="service-top"><div class="service-icon">e-D</div><h3>UP e-District</h3></div><p>आय, जाति, निवास तथा अन्य उपलब्ध सेवाओं के आवेदन और स्टेटस संबंधी सहायता।</p><a class="card-link" href="https://edistrict.up.gov.in/" target="_blank" rel="noopener">Open UP e-District ↗</a></article>
+          <article class="service-card"><div class="service-top"><div class="service-icon">UID</div><h3>Aadhaar Services</h3></div><p>आधार डाउनलोड, अपडेट पोर्टल तक पहुँच और प्रक्रिया संबंधी सहायता। OTP या आधार विवरण किसी अनजान व्यक्ति से साझा न करें।</p><a class="card-link" href="https://myaadhaar.uidai.gov.in/" target="_blank" rel="noopener">Open MyAadhaar ↗</a></article>
+          <article class="service-card"><div class="service-top"><div class="service-icon">PMJ</div><h3>Ayushman Bharat</h3></div><p>आयुष्मान कार्ड/लाभार्थी पोर्टल तक पहुँचने और पात्रता प्रक्रिया समझने में सहायता।</p><a class="card-link" href="https://beneficiary.nha.gov.in/" target="_blank" rel="noopener">Beneficiary login ↗</a></article>
+          <article class="service-card"><div class="service-top"><div class="service-icon">DL</div><h3>Driving Licence / Parivahan</h3></div><p>ड्राइविंग लाइसेंस, वाहन सेवाएँ और संबंधित आवेदन के लिए आधिकारिक लिंक।</p><a class="card-link" href="https://parivahan.gov.in/" target="_blank" rel="noopener">Open Parivahan ↗</a></article>
+          <article class="service-card"><div class="service-top"><div class="service-icon">VOT</div><h3>Voter Services</h3></div><p>मतदाता पंजीकरण, सुधार और आवेदन स्थिति के लिए आधिकारिक पोर्टल।</p><a class="card-link" href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Open Voters’ Service ↗</a></article>
+          <article class="service-card"><div class="service-top"><div class="service-icon">DOC</div><h3>Online Forms & Applications</h3></div><p>ऑनलाइन फॉर्म भरने, स्कैनिंग, PDF, दस्तावेज़ क्रमबद्ध करने और अपलोड सहायता।</p><a class="card-link" href="#booking">Book assistance ↗</a></article>
+          <article class="service-card"><div class="service-top"><div class="service-icon">PRINT</div><h3>Print, Scan & Document Work</h3></div><p>प्रिंट, स्कैन, फोटो, टाइपिंग और सामान्य दस्तावेज़-फॉर्मेटिंग सहायता।</p><a class="card-link" href="#booking">Request service ↗</a></article>
+        </div>
+      </div>
+    </section>
 
-<section class='hero' id='home'>
-<div class='hero-inner'>
- <div>
-  <span class='badge'>&#9889; ENTERPRISE DIGITAL SERVICE EXPERIENCE</span>
-  <div style='display:flex;align-items:center;gap:12px;margin:18px 0 4px'><div aria-label='LEKHPAL Digital Services Logo' class='logo'>L</div><div><div style='font-weight:950;font-size:15px;letter-spacing:.5px'>LEKHPAL DIGITAL SERVICES</div><div style='font-size:11px;opacity:.78'>CSC VLE &#8226; Digital &#8226; Online &#8226; Documentation</div></div></div>
-  <h2>आपक&#2366; क&#2366;म, <span>ड&#2367;ज&#2367;टल तर&#2368;क&#2375; स&#2375;</span></h2>
-  <p>Online forms, documents, applications, certificates, transport assistance, recharge, utility services और home-service booking &#8212; एक premium digital service experience म&#2375;&#2306;&#2404;</p>
-  <div class='cta'>
-   <a class='btn btn-primary' href='#booking'>🚀 Service Book कर&#2375;&#2306;</a>
-   <a class='btn btn-green' href='https://wa.me/917819019217?text=Hello%20LEKHPAL%20DIGITAL%20SERVICES%2C%20mujhe%20service%20ki%20jankari%20chahiye.'>💬 WhatsApp कर&#2375;&#2306;</a>
-  </div>
-  <p class='small'>🔐 आपक&#2368; privacy महत&#2381;वप&#2370;र&#2381;ण ह&#2376;&#2404; Login password, OTP और confidential CSC/VLE credentials public website पर प&#2381;रक&#2366;श&#2367;त नह&#2368;&#2306; क&#2367;ए ज&#2366;त&#2375;&#2404;</p>
- </div>
- <div class='hero-card'>
-  <h3>&#10024; One-Stop Digital Service Centre</h3>
-  <ul>
-   <li>📝 Online Form &amp; Application Assistance</li>
-   <li>📜 Certificate &amp; Document Assistance</li>
-   <li>🚗 Driving Licence / RC Assistance</li>
-   <li>🖨&#65039; Typing, Printing, Scanning &amp; Photo</li>
-   <li>💳 Recharge &amp; Utility Assistance</li>
-   <li>🔧 TV &amp; AC Installation Booking</li>
-  </ul>
- </div>
-</div>
-</section>
+    <section class="soft" id="portals">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Verified destinations</div><h2>Quick access to official portals.</h2><p>ये बाहरी सरकारी/सेवा पोर्टल हैं। लॉगिन और आवेदन उन्हीं की वेबसाइट पर होंगे; हम किसी सरकारी विभाग का हिस्सा होने का दावा नहीं करते।</p></div>
+        <div class="portal-grid">
+          <article class="portal-card"><div class="portal-badge">UTI</div><h3>UTIITSL PAN Card</h3><p>नया PAN, सुधार, e-PAN और reprint के लिए UTIITSL का पोर्टल।</p><a class="btn btn-outline" href="https://www.pan.utiitsl.com/" target="_blank" rel="noopener">Open UTIITSL ↗</a></article>
+          <article class="portal-card"><div class="portal-badge">CSC</div><h3>CSC Digital Seva Login</h3><p>अधिकृत CSC VLE के लिए आधिकारिक Digital Seva पोर्टल।</p><a class="btn btn-outline" href="https://digitalseva.csc.gov.in/" target="_blank" rel="noopener">Open CSC Login ↗</a></article>
+          <article class="portal-card"><div class="portal-badge">UP</div><h3>UP e-District</h3><p>उत्तर प्रदेश की ई-डिस्ट्रिक्ट सेवाएँ और पोर्टल प्रवेश।</p><a class="btn btn-outline" href="https://edistrict.up.gov.in/" target="_blank" rel="noopener">Open e-District ↗</a></article>
+          <article class="portal-card"><div class="portal-badge">PMJAY</div><h3>Ayushman Beneficiary</h3><p>आयुष्मान भारत लाभार्थी पोर्टल पर उपलब्ध सेवाएँ।</p><a class="btn btn-outline" href="https://beneficiary.nha.gov.in/" target="_blank" rel="noopener">Open Ayushman ↗</a></article>
+          <article class="portal-card"><div class="portal-badge">UIDAI</div><h3>Aadhaar Download / Login</h3><p>MyAadhaar पर आधार डाउनलोड और उपलब्ध सेवाएँ।</p><a class="btn btn-outline" href="https://myaadhaar.uidai.gov.in/" target="_blank" rel="noopener">Open MyAadhaar ↗</a></article>
+          <article class="portal-card"><div class="portal-badge">IN</div><h3>Income Tax / PAN Links</h3><p>PAN और टैक्स संबंधित आधिकारिक जानकारी के लिए विभागीय पोर्टल।</p><a class="btn btn-outline" href="https://www.incometax.gov.in/" target="_blank" rel="noopener">Open Income Tax ↗</a></article>
+        </div>
+        <div class="notice"><strong>सुरक्षा सूचना:</strong> अपने पासवर्ड, OTP, आधार OTP या CSC/e-District लॉगिन क्रेडेंशियल इस वेबसाइट के फॉर्म में न लिखें। केवल आधिकारिक पोर्टल पर ही दर्ज करें। लॉगिन लिंक सुविधा के लिए हैं; किसी ID की उपलब्धता या सरकारी स्वीकृति की गारंटी नहीं है।</div>
+      </div>
+    </section>
 
-<section id='services'>
-<div class='wrap'>
- <div class='section-head'><h2>🎯 हम&#2366;र&#2368; Premium Digital Services</h2><p>हर service क&#2379; अलग branded colour, icon और visual identity क&#2375; स&#2366;थ design क&#2367;य&#2366; गय&#2366; ह&#2376;&#2404;</p></div>
- <div class='services'>
-  <div class='service'><div class='icon'>📝</div><h3>Online Form Filling</h3><p>Online forms, data-entry और application details भरन&#2375; म&#2375;&#2306; digital assistance.</p><span class='tag'>&#9889; Digital Assistance</span></div>
-  <div class='service'><div class='icon'>🚀</div><h3>Application Assistance</h3><p>Application preparation और available online submission process म&#2375;&#2306; सह&#2366;यत&#2366;.</p><span class='tag'>📲 Online Support</span></div>
-  <div class='service'><div class='icon'>🏛&#65039;</div><h3>आय / ज&#2366;त&#2367; / न&#2367;व&#2366;स</h3><p>UP certificate applications क&#2375; ल&#2367;ए eligible applicants क&#2379; digital assistance.</p><span class='tag'>🇮🇳 UP Services</span></div>
-  <div class='service'><div class='icon'>📜</div><h3>Certificate Assistance</h3><p>Birth, death तथ&#2366; उपलब&#2381;ध certificate application processes म&#2375;&#2306; सह&#2366;यत&#2366;.</p><span class='tag'>📑 Certificate</span></div>
-  <div class='service'><div class='icon'>💳</div><h3>PAN / ID Assistance</h3><p>PAN और eligible identity-document application/correction process assistance.</p><span class='tag'>🪪 ID Service</span></div>
-  <div class='service'><div class='icon'>🆔</div><h3>Aadhaar Assistance</h3><p>Aadhaar-related information और eligible application assistance.</p><span class='tag'>🔐 Identity</span></div>
-  <div class='service'><div class='icon'>🚘</div><h3>Driving Licence</h3><p>Eligible licence application, renewal और related online process assistance.</p><span class='tag'>🛣&#65039; Transport</span></div>
-  <div class='service'><div class='icon'>🚗</div><h3>RC / Vehicle Services</h3><p>Eligible RC और vehicle-related online process assistance.</p><span class='tag'>🚦 Vehicle</span></div>
-  <div class='service'><div class='icon'>🗳&#65039;</div><h3>Voter Services</h3><p>Voter application, correction और eligible electoral service assistance.</p><span class='tag'>🗳&#65039; Election</span></div>
-  <div class='service'><div class='icon'>🍚</div><h3>Ration Card Assistance</h3><p>Eligible ration-card application/correction process म&#2375;&#2306; digital support.</p><span class='tag'>🏠 Citizen Service</span></div>
-  <div class='service'><div class='icon'>🏦</div><h3>Government Scheme</h3><p>Available government schemes क&#2368; online application प&#2381;रक&#2381;र&#2367;य&#2366; म&#2375;&#2306; सह&#2366;यत&#2366;.</p><span class='tag'>🎁 Scheme Support</span></div>
-  <div class='service'><div class='icon'>🖨&#65039;</div><h3>Print / Scan / PDF</h3><p>Printing, scanning, PDF conversion और digital document preparation.</p><span class='tag'>📄 Document</span></div>
-  <div class='service'><div class='icon'>&#9000;&#65039;</div><h3>Typing &amp; Letter</h3><p>Hindi/English typing, letters, applications और basic drafting.</p><span class='tag'>&#9997;&#65039; Typing</span></div>
-  <div class='service'><div class='icon'>📸</div><h3>Photo / Digital Photo</h3><p>Document-size photo और basic digital photo preparation.</p><span class='tag'>📷 Photo</span></div>
-  <div class='service'><div class='icon'>📱</div><h3>Mobile Recharge</h3><p>Supported operators क&#2375; mobile recharge म&#2375;&#2306; assistance.</p><span class='tag'>&#9889; Recharge</span></div>
-  <div class='service'><div class='icon'>📺</div><h3>TV / DTH Recharge</h3><p>Supported DTH/TV services क&#2375; recharge म&#2375;&#2306; assistance.</p><span class='tag'>📡 DTH</span></div>
-  <div class='service'><div class='icon'>💡</div><h3>Utility Bill Assistance</h3><p>Eligible electricity तथ&#2366; digital utility payment assistance.</p><span class='tag'>💳 Utility</span></div>
-  <div class='service'><div class='icon'>🔧</div><h3>TV Installation</h3><p>TV installation service booking assistance. Charge &#8377;1,100, subject to confirmation.</p><span class='tag'>🏠 Home Service</span></div>
-  <div class='service'><div class='icon'>&#10052;&#65039;</div><h3>AC Installation</h3><p>AC installation service booking assistance. Charge &#8377;1,200, subject to confirmation.</p><span class='tag'>&#10052;&#65039; Home Service</span></div>
-  <div class='service'><div class='icon'>📅</div><h3>Online Registration</h3><p>Eligible online registration, appointments और application processes म&#2375;&#2306; सह&#2366;यत&#2366;.</p><span class='tag'>📌 Registration</span></div>
-  <div class='service'><div class='icon'>🧾</div><h3>Document Formatting</h3><p>Documents format करन&#2366;, PDF बन&#2366;न&#2366; और digital file preparation.</p><span class='tag'>&#10024; Documentation</span></div>
- </div>
-</div>
-</section>
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="about-photo"><img src="https://i.imgur.com/P1CSBHC.png" alt="LEKHPAL DIGITAL SERVICES office and service centre" onerror="this.onerror=null;this.src='https://i.imgur.com/s64MSSf.png';"></div>
+        <div class="about-copy"><div class="kicker">About our centre</div><h2>Personal support. Clear process. Professional service.</h2><p><strong>LEKHPAL DIGITAL SERVICES</strong> Mainpuri, Uttar Pradesh में ऑनलाइन डिजिटल और दस्तावेज़-संबंधी सहायता के लिए बनाया गया सेवा केंद्र है। हमारा उद्देश्य प्रक्रिया को सरल बनाना, आवश्यक दस्तावेज़ों की जानकारी देना और आधिकारिक पोर्टल तक सही दिशा दिखाना है।</p><p>हम स्वतंत्र सहायता सेवा हैं, सरकारी विभाग नहीं। अंतिम आवेदन, पात्रता, शुल्क, सत्यापन और स्वीकृति संबंधित विभाग/पोर्टल के नियमों पर निर्भर करते हैं।</p><ul class="checklist"><li>Booking by WhatsApp</li><li>Service details before work</li><li>Official portal links</li><li>Privacy-aware assistance</li><li>Transparent quoted charges</li><li>Local support in Mainpuri</li></ul><p><strong>Centre address:</strong><br>Gram Aimanpur, Post Kirthua, Karhal, District Mainpuri, Uttar Pradesh, India.</p><a class="btn btn-primary" href="#booking">Contact the centre →</a></div>
+      </div>
+    </section>
 
-<section class='dark' id='charges'>
-<div class='wrap'>
- <div class='section-head'><h2>Service Charges</h2><p>न&#2368;च&#2375; स&#2366;म&#2366;न&#2381;य assistance/service charges ह&#2376;&#2306;&#2404; ल&#2366;ग&#2370; सरक&#2366;र&#2368; य&#2366; third-party fees अलग ह&#2379; सकत&#2368; ह&#2376;&#2306;&#2404; अ&#2306;त&#2367;म charge क&#2366;म श&#2369;र&#2370; करन&#2375; स&#2375; पहल&#2375; बत&#2366;य&#2366; ज&#2366;एग&#2366;&#2404;</p></div>
- <div class='prices'>
-  <div class='price'><h3>Document Assistance</h3><strong>&#8377;49</strong><p>Basic document assistance</p></div>
-  <div class='price'><h3>Form Filling</h3><strong>&#8377;100</strong><p>Basic online form assistance</p></div>
-  <div class='price'><h3>Application Assistance</h3><strong>&#8377;199</strong><p>Online application support</p></div>
-  <div class='price'><h3>Digital Service</h3><strong>&#8377;399</strong><p>Extended digital assistance</p></div>
-  <div class='price'><h3>TV Installation</h3><strong>&#8377;1,100</strong><p>Service booking charge</p></div>
-  <div class='price'><h3>AC Installation</h3><strong>&#8377;1,200</strong><p>Service booking charge</p></div>
- </div>
-</div>
-</section>
+    <section class="soft" id="charges">
+      <div class="wrap"><div class="section-head"><div class="kicker">Pricing information</div><h2>Simple, transparent service charges.</h2><p>नीचे दिए गए शुल्क उदाहरण/आरंभिक सेवा शुल्क हैं। काम शुरू होने से पहले WhatsApp पर कुल शुल्क और सरकारी पोर्टल फीस अलग-अलग पुष्टि कर लें।</p></div>
+        <div class="charges-grid">
+          <article class="charge"><h3>Document Assistance</h3><div class="price">₹49 <small style="font-size:.8rem">से शुरू</small></div><p>सामान्य दस्तावेज़ सहायता, PDF/स्कैन और फॉर्म संबंधी मार्गदर्शन।</p><a class="card-link" href="#booking">Request a quote →</a></article>
+          <article class="charge"><h3>Form Filling Assistance</h3><div class="price">₹100 <small style="font-size:.8rem">से शुरू</small></div><p>सामान्य ऑनलाइन फॉर्म भरने में सहायता; जटिलता के अनुसार शुल्क बदल सकता है।</p><a class="card-link" href="#booking">Request a quote →</a></article>
+          <article class="charge"><h3>Application Assistance</h3><div class="price">₹199 <small style="font-size:.8rem">से शुरू</small></div><p>दस्तावेज़ तैयारी और आवेदन प्रक्रिया सहायता; सरकारी फीस अलग हो सकती है।</p><a class="card-link" href="#booking">Request a quote →</a></article>
+          <article class="charge"><h3>Digital Service Support</h3><div class="price">₹399 <small style="font-size:.8rem">से शुरू</small></div><p>चयनित डिजिटल सेवाओं के लिए सहायता; सेवा उपलब्धता पहले जाँचें।</p><a class="card-link" href="#booking">Request a quote →</a></article>
+          <article class="charge"><h3>TV Installation</h3><div class="price">₹1,100</div><p>स्थापना का शुल्क काम की स्थिति/स्थान और आवश्यक सामग्री के अनुसार पुष्टि होगा।</p><a class="card-link" href="#booking">Book a visit →</a></article>
+          <article class="charge"><h3>AC Installation</h3><div class="price">₹1,200</div><p>स्थापना का शुल्क साइट की स्थिति और सामग्री के अनुसार पुष्टि होगा।</p><a class="card-link" href="#booking">Book a visit →</a></article>
+        </div>
+        <p class="fineprint" style="text-align:center;margin-top:18px">सरकारी आवेदन शुल्क, पोर्टल शुल्क, कर और बाहरी सेवा प्रदाता के शुल्क अलग हो सकते हैं। भुगतान से पहले लिखित/WhatsApp पुष्टि लें।</p>
+      </div>
+    </section>
 
-<section class='booking-area' id='booking'>
-<div class='wrap'>
- <div class='section-head'>
-  <h2>Service Booking</h2>
-  <p>अपन&#2368; ज&#2366;नक&#2366;र&#2368; भर&#2375;&#2306;&#2404; Submit करन&#2375; पर WhatsApp म&#2375;&#2306; booking message त&#2376;य&#2366;र ह&#2379;ग&#2366;&#2404; Message भ&#2375;जन&#2375; स&#2375; पहल&#2375; details और final charges क&#2368; प&#2369;ष&#2381;ट&#2367; कर&#2375;&#2306;&#2404;</p>
- </div>
+    <section id="booking">
+      <div class="wrap"><div class="section-head"><div class="kicker">Book a service</div><h2>Tell us what you need.</h2><p>यह फॉर्म आपके मैसेज को WhatsApp में तैयार करता है। सबमिट करने पर मैसेज भेजने से पहले आप उसे देख और बदल सकते हैं।</p></div>
+        <div class="booking-grid">
+          <aside class="booking-aside"><h3>Let’s get it done.</h3><p>सेवा, अनुमानित शुल्क और आवश्यक दस्तावेज़ों की जानकारी के लिए सीधे संपर्क करें।</p>
+            <div class="contactline"><span>☎</span><div><b>WhatsApp / Phone</b><small>+91 78190 19217</small></div></div>
+            <div class="contactline"><span>⌖</span><div><b>Centre location</b><small>Gram Aimanpur, Post Kirthua, Karhal, Mainpuri, Uttar Pradesh</small></div></div>
+            <div class="contactline"><span>✉</span><div><b>Email</b><small>kmpooja0851997@gmail.com</small></div></div>
+            <a class="btn btn-whatsapp" style="width:100%;margin-top:10px" href="https://wa.me/917819019217?text=Hello%20LEKHPAL%20DIGITAL%20SERVICES%2C%20mujhe%20service%20ki%20jankari%20chahiye." target="_blank" rel="noopener">Chat on WhatsApp ↗</a>
+          </aside>
+          <form class="form-card" id="bookingForm">
+            <h3>Service booking request</h3><p>कृपया सही जानकारी भरें। OTP, पासवर्ड या पूरा आधार नंबर यहाँ न दें।</p>
+            <div class="formgrid">
+              <div class="field"><label for="fullName">Full name / पूरा नाम *</label><input id="fullName" name="fullName" required maxlength="100" autocomplete="name" placeholder="अपना नाम लिखें"></div>
+              <div class="field"><label for="phone">Mobile number *</label><input id="phone" name="phone" required inputmode="numeric" pattern="[6-9][0-9]{9}" maxlength="10" placeholder="10 अंकों का मोबाइल नंबर"></div>
+              <div class="field"><label for="email">Email (optional)</label><input id="email" name="email" type="email" maxlength="120" autocomplete="email" placeholder="name@example.com"></div>
+              <div class="field"><label for="service">Select service *</label><select id="service" name="service" required><option value="">सेवा चुनें</option><option>PAN Card / UTIITSL</option><option>CSC / Digital Seva information</option><option>UP e-District / certificate</option><option>Aadhaar download / assistance</option><option>Ayushman Bharat assistance</option><option>Driving Licence / Parivahan</option><option>Voter service</option><option>Online form filling</option><option>Print / Scan / PDF / Typing</option><option>TV installation</option><option>AC installation</option><option>Other service</option></select></div>
+              <div class="field"><label for="date">Preferred date (optional)</label><input id="date" name="date" type="date"></div>
+              <div class="field"><label for="mode">Preferred contact</label><select id="mode" name="mode"><option>WhatsApp</option><option>Phone call</option><option>Visit centre</option></select></div>
+              <div class="field full"><label for="address">Village / area (optional)</label><input id="address" name="address" maxlength="180" placeholder="गाँव/क्षेत्र; पूरा निजी पता आवश्यक नहीं"></div>
+              <div class="field full"><label for="details">Service details (optional)</label><textarea id="details" name="details" maxlength="800" placeholder="किस प्रकार की सहायता चाहिए? यहाँ OTP/पासवर्ड/आधार नंबर न लिखें।"></textarea></div>
+            </div>
+            <label class="consent"><input id="consent" type="checkbox" required><span>मैं सहमत हूँ कि यह केवल सेवा-सहायता अनुरोध है। आवेदन की स्वीकृति संबंधित विभाग पर निर्भर है और सेवा/सरकारी शुल्क काम शुरू होने से पहले स्पष्ट किए जाएँगे।</span></label>
+            <div class="form-actions"><button class="btn btn-primary" type="submit">Continue on WhatsApp →</button><button class="btn btn-outline" type="reset">Clear form</button></div>
+            <p class="fineprint" style="margin-top:14px">यह फॉर्म जानकारी को इस पेज पर सर्वर में सेव नहीं करता; यह आपके डिवाइस पर WhatsApp संदेश तैयार करता है। WhatsApp की अपनी शर्तें लागू होंगी।</p>
+          </form>
+        </div>
+      </div>
+    </section>
 
- <form class='booking' id='bookingForm'>
-  <div class='form-grid'>
-   <div><label for='name'>Customer Name *</label><input id='name' placeholder='पूरा नाम' required='required'/></div>
-   <div><label for='phone'>Mobile Number *</label><input id='phone' inputmode='numeric' maxlength='10' placeholder='10 अंकों का मोबाइल नंबर' required='required' type='tel'/></div>
-   <div><label for='email'>Email ID</label><input id='email' placeholder='example@email.com' type='email'/></div>
-   <div><label for='service'>Select Service *</label>
-    <select id='service' required='required'>
-     <option value=''>-- स&#2375;व&#2366; च&#2369;न&#2375;&#2306; --</option>
-     <option>Document Assistance - &#8377;49</option>
-     <option>Online Form Filling - &#8377;100</option>
-     <option>Application Assistance - &#8377;199</option>
-     <option>Digital Service - &#8377;399</option>
-     <option>आय / ज&#2366;त&#2367; / न&#2367;व&#2366;स Assistance</option>
-     <option>Certificate Assistance</option>
-     <option>PAN / ID Assistance</option>
-     <option>Aadhaar Assistance</option>
-     <option>Driving Licence Assistance</option>
-     <option>RC / Vehicle Services</option>
-     <option>Voter Services</option>
-     <option>Ration Card Assistance</option>
-     <option>Government Scheme Assistance</option>
-     <option>Print / Scan / PDF</option>
-     <option>Typing &amp; Letter</option>
-     <option>Photo / Digital Photo</option>
-     <option>Mobile Recharge</option>
-     <option>TV / DTH Recharge</option>
-     <option>Utility Bill Assistance</option>
-     <option>TV Installation - &#8377;1,100</option>
-     <option>AC Installation - &#8377;1,200</option>
-     <option>Online Registration</option>
-     <option>Document Formatting</option>
-    </select>
-   </div>
-   <div><label for='date'>Preferred Date</label><input id='date' type='date'/></div>
-   <div class='full'><label for='address'>Address *</label><textarea id='address' placeholder='मकान/गाँव, पोस्ट, तहसील, जिला, राज्य, पिनकोड' required='required' rows='3'/></div>
-   <div class='full'><label for='details'>क&#2366;म/Service क&#2366; व&#2367;वरण</label><textarea id='details' placeholder='आपको किस काम की आवश्यकता है?' rows='3'/></div>
-  </div>
+    <section class="soft" id="policies">
+      <div class="wrap"><div class="section-head"><div class="kicker">Trust & transparency</div><h2>Policies and customer information.</h2><p>AdSense समीक्षा और ग्राहक विश्वास के लिए साइट पर असली, उपयोगी जानकारी रखें। नीचे संक्षिप्त नीति जानकारी है; प्रकाशन से पहले इसे अपनी वास्तविक प्रक्रिया के अनुसार जाँचें।</p></div>
+        <div class="policy-grid">
+          <article class="policy-card"><h3>Privacy Policy</h3><p>बुकिंग फॉर्म इस पेज पर डेटा स्टोर नहीं करता। WhatsApp पर भेजी गई जानकारी WhatsApp के माध्यम से जाती है। पासवर्ड/OTP न भेजें।</p></article>
+          <article class="policy-card"><h3>Terms & Conditions</h3><p>हम डिजिटल प्रक्रिया में सहायता देते हैं; सरकारी स्वीकृति, पात्रता या पोर्टल उपलब्धता की गारंटी नहीं देते। ग्राहक सही विवरण देने के लिए जिम्मेदार है।</p></article>
+          <article class="policy-card"><h3>Refund & Cancellation</h3><p>काम शुरू होने से पहले शुल्क और रद्द करने की शर्तें WhatsApp पर स्पष्ट करें। बाहरी सरकारी/पोर्टल शुल्क की वापसी संबंधित पोर्टल के नियमों पर निर्भर है।</p></article>
+          <article class="policy-card"><h3>Disclaimer</h3><p>LEKHPAL DIGITAL SERVICES स्वतंत्र सहायता केंद्र है, सरकार या किसी विभाग का आधिकारिक प्रतिनिधि नहीं। सरकारी लोगो/पहचान से संबद्धता का दावा नहीं किया जाता।</p></article>
+          <article class="policy-card"><h3>Customer Support</h3><p>सेवा से पहले कीमत, दस्तावेज़ और अनुमानित समय की पुष्टि करें। सहायता के लिए WhatsApp: +91 78190 19217.</p></article>
+          <article class="policy-card"><h3>Service Availability</h3><p>सेवाएँ पोर्टल, नेटवर्क, नियमों और अधिकृत पहुँच की उपलब्धता पर निर्भर हैं। केवल वैध और अधिकृत लॉगिन का उपयोग करें।</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <div class='notice'>
-   <b>Advance / Booking Amount:</b> यद&#2367; क&#2367;स&#2368; च&#2369;न&#2368; ह&#2369;ई service क&#2375; ल&#2367;ए advance ल&#2366;ग&#2370; ह&#2376;, त&#2379; WhatsApp पर service availability, final amount और payment instructions क&#2368; प&#2369;ष&#2381;ट&#2367; क&#2375; ब&#2366;द ह&#2368; payment कर&#2375;&#2306;&#2404; क&#2375;वल WhatsApp message त&#2376;य&#2366;र ह&#2379;न&#2375; स&#2375; booking य&#2366; service confirmation नह&#2368;&#2306; म&#2366;न&#2368; ज&#2366;एग&#2368;&#2404;
-  </div>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footergrid">
+        <div><a class="brand" href="#home"><span class="brandmark">LD</span><span class="brandname">LEKHPAL DIGITAL SERVICES<small>DIGITAL • DOCUMENTATION • ASSISTANCE</small></span></a><p>Online Digital & Documentation Assistance in Mainpuri, Uttar Pradesh. Professional assistance, clear pricing and direct links to official portals.</p></div>
+        <div><h4>Explore</h4><div class="footerlinks"><a href="#services">Services</a><a href="#portals">Official Portals</a><a href="#about">About Centre</a><a href="#charges">Charges</a><a href="#booking">Book Service</a></div></div>
+        <div><h4>Contact & Policies</h4><div class="footerlinks"><a href="https://wa.me/917819019217" target="_blank" rel="noopener">WhatsApp support</a><a href="mailto:kmpooja0851997@gmail.com">Email us</a><a href="#policies">Privacy Policy</a><a href="#policies">Terms & Conditions</a><a href="#policies">Refund & Cancellation</a></div><p>Gram Aimanpur, Post Kirthua, Karhal, Mainpuri, Uttar Pradesh, India.</p></div>
+      </div>
+      <div class="copyright"><span>© <span id="year"></span> LEKHPAL DIGITAL SERVICES. All rights reserved.</span><span>Independent digital assistance centre · Not a government website</span></div>
+    </div>
+  </footer>
+  <a class="float-wa" href="https://wa.me/917819019217?text=Hello%20LEKHPAL%20DIGITAL%20SERVICES%2C%20mujhe%20service%20ki%20jankari%20chahiye." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">WhatsApp ↗</a>
+  <button class="backtop" id="backtop" aria-label="Back to top">↑</button>
 
-  <label class='consent'>
-   <input id='consent' required='required' type='checkbox'/>
-   <span>म&#2376;&#2306; प&#2369;ष&#2381;ट&#2367; करत&#2366;/करत&#2368; ह&#2370;&#2305; क&#2367; द&#2368; गई ज&#2366;नक&#2366;र&#2368; म&#2375;र&#2368; ज&#2366;नक&#2366;र&#2368; क&#2375; अन&#2369;स&#2366;र सह&#2368; ह&#2376;&#2404; म&#2376;&#2306; समझत&#2366;/समझत&#2368; ह&#2370;&#2305; क&#2367; LEKHPAL DIGITAL SERVICES एक स&#2381;वत&#2306;त&#2381;र digital assistance business ह&#2376; और क&#2367;स&#2368; सरक&#2366;र&#2368; व&#2367;भ&#2366;ग क&#2368; official website नह&#2368;&#2306; ह&#2376;&#2404;</span>
-  </label>
-
-  <button class='submit' type='submit'>Booking Submit कर&#2375;&#2306; &#8594; WhatsApp</button>
-  <p class='small'>Submit करन&#2375; पर WhatsApp आपक&#2375; म&#2379;ब&#2366;इल म&#2375;&#2306; ख&#2369;ल&#2375;ग&#2366; और booking details message म&#2375;&#2306; द&#2367;ख&#2366;ई द&#2375;&#2306;ग&#2368;&#2404; Message भ&#2375;जन&#2375; क&#2375; ल&#2367;ए आपक&#2379; स&#2381;वय&#2306; Send दब&#2366;न&#2366; ह&#2379;ग&#2366;&#2404;</p>
- </form>
-</div>
-</section>
-
-<section id='official-portals' style='background:linear-gradient(180deg,#f7fbff,#eef7ff)'>
-<div class='wrap'>
- <div class='section-head'>
-  <h2>Official Government Portals</h2>
-  <p>सरक&#2366;र&#2368; स&#2375;व&#2366;ओ&#2306; क&#2368; ज&#2366;नक&#2366;र&#2368; और verification क&#2375; ल&#2367;ए स&#2306;ब&#2306;ध&#2367;त official websites पर ज&#2366;ए&#2305;</p>
- </div>
- <div class='official-grid'>
-  <div class='official-card'>
-   <div class='portal-icon'>🏢</div><h3>CSC / Common Service Centre</h3>
-   <p>CSC ecosystem और Common Service Centre स&#2375; स&#2306;ब&#2306;ध&#2367;त official information क&#2375; ल&#2367;ए&#2404;</p>
-   <a class='official-link' href='https://csc.gov.in/' rel='noopener noreferrer' target='_blank'>Official CSC Website &#8599;</a>
-  </div>
-  <div class='official-card'>
-   <div class='portal-icon'>🪪</div><h3>UIDAI / Aadhaar</h3>
-   <p>Aadhaar enrolment, update, verification और अन&#2381;य official Aadhaar information क&#2375; ल&#2367;ए&#2404;</p>
-   <a class='official-link' href='https://www.uidai.gov.in/' rel='noopener noreferrer' target='_blank'>Official UIDAI Website &#8599;</a>
-  </div>
-  <div class='official-card'>
-   <div class='portal-icon'>🚘</div><h3>Parivahan Sewa</h3>
-   <p>Driving Licence, vehicle registration और transport-related citizen services क&#2375; ल&#2367;ए&#2404;</p>
-   <a class='official-link' href='https://parivahan.gov.in/' rel='noopener noreferrer' target='_blank'>Official Parivahan &#8599;</a>
-  </div>
-  <div class='official-card'>
-   <div class='portal-icon'>🏛&#65039;</div><h3>Uttar Pradesh eDistrict</h3>
-   <p>उत&#2381;तर प&#2381;रद&#2375;श क&#2368; उपलब&#2381;ध eDistrict/certificate services क&#2368; official ज&#2366;नक&#2366;र&#2368; क&#2375; ल&#2367;ए&#2404;</p>
-   <a class='official-link' href='https://edistrict.up.gov.in/' rel='noopener noreferrer' target='_blank'>Official UP eDistrict &#8599;</a>
-  </div>
-  <div class='official-card'>
-   <div class='portal-icon'>💳</div><h3>Income Tax / PAN</h3>
-   <p>PAN verification, e-PAN और Income Tax e-Filing क&#2368; official services क&#2375; ल&#2367;ए&#2404;</p>
-   <a class='official-link' href='https://www.incometax.gov.in/' rel='noopener noreferrer' target='_blank'>Official Income Tax Portal &#8599;</a>
-  </div>
-  <div class='official-card'>
-   <div class='portal-icon'>🗳&#65039;</div><h3>Election Commission / Voter Services</h3>
-   <p>Voter registration, correction, application status और electoral services क&#2375; ल&#2367;ए&#2404;</p>
-   <a class='official-link' href='https://voters.eci.gov.in/' rel='noopener noreferrer' target='_blank'>Official Voter Portal &#8599;</a>
-  </div>
- </div>
- <div class='private-note'>
-  <b>Important:</b> Official portals क&#2375; public links यह&#2366;&#2305; उपलब&#2381;ध ह&#2376;&#2306;&#2404; CSC/VLE login, UIDAI operator access, RTO/transport credentials, PAN agency credentials, passwords, OTP और private authorization documents इस व&#2375;बस&#2366;इट पर प&#2381;रक&#2366;श&#2367;त नह&#2368;&#2306; क&#2367;ए ज&#2366;त&#2375;&#2404;
- </div>
-</div>
-</section>
-
-<section id='office'>
-<div class='wrap'>
- <div class='section-head'><h2>🏢 Our Office &amp; Service Centre</h2><p>हम&#2366;र&#2375; व&#2366;स&#2381;तव&#2367;क service centre क&#2368; तस&#2381;व&#2368;र&#2375;&#2306; और office location</p></div>
- <div class='office-gallery'>
-  <div class='office-photo'><img alt='LEKHPAL Digital Services office photo' src='https://i.imgur.com/s64MSSf.png'/></div>
-  <div class='office-photo'><img alt='LEKHPAL Digital Services office photo' src='https://i.imgur.com/P1CSBHC.png'/></div>
- </div>
- <div class='office-location'>
-  <div style='font-size:13px;opacity:.8'>📍 OFFICE LOCATION</div>
-  <h3 style='margin:7px 0 8px;color:#fff'>LEKHPAL DIGITAL SERVICES / CSC VLE SERVICE CENTRE</h3>
-  <p style='margin:0 0 15px;line-height:1.7;color:rgba(255,255,255,.9)'><b>Gram Aimanpur, Post Kirthua, Karhal, District Mainpuri, Uttar Pradesh, India</b></p>
-  <div class='cta'><a class='btn btn-green' href='https://www.google.com/maps/search/?api=1&amp;query=Gram+Aimanpur+Post+Kirthua+Karhal+Mainpuri+Uttar+Pradesh' rel='noopener noreferrer' target='_blank'>🗺&#65039; Location द&#2375;ख&#2375;&#2306;</a><a class='btn btn-primary' href='https://wa.me/917819019217?text=Hello%20LEKHPAL%20DIGITAL%20SERVICES%2C%20main%20office%20location%20ke%20baare%20mein%20jankari%20chahta%20hoon.'>📍 Location WhatsApp</a></div>
- </div>
-</div>
-</section>
-
-<section id='about'>
-<div class='wrap'>
- <div class='section-head'><h2>About LEKHPAL DIGITAL SERVICES</h2><p>CSC VLE &amp; Digital Service Assistance Centre</p></div>
- <div class='info-grid'>
-  <div class='info-card'>
-   <h3>हम&#2366;र&#2375; ब&#2366;र&#2375; म&#2375;&#2306;</h3>
-   <p><b>LEKHPAL DIGITAL SERVICES</b> एक स&#2381;थ&#2366;न&#2368;य digital service assistance centre ह&#2376;, ज&#2379; ग&#2381;र&#2366;हक&#2379;&#2306; क&#2379; online applications, documentation, typing, printing, scanning और उपलब&#2381;ध citizen services क&#2368; प&#2381;रक&#2381;र&#2367;य&#2366; म&#2375;&#2306; सह&#2366;यत&#2366; प&#2381;रद&#2366;न करत&#2366; ह&#2376;&#2404;</p>
-   <p>यह centre <b>CSC VLE (Village Level Entrepreneur)</b> क&#2375; र&#2370;प म&#2375;&#2306; Common Service Centre ecosystem स&#2375; ज&#2369;ड&#2364;&#2368; स&#2375;व&#2366;ओ&#2306; क&#2375; ल&#2367;ए क&#2366;र&#2381;य करत&#2366; ह&#2376;&#2404; उपलब&#2381;ध services स&#2306;ब&#2306;ध&#2367;त portal, eligibility, authorization और ल&#2366;ग&#2370; न&#2367;यम&#2379;&#2306; क&#2375; अन&#2369;स&#2366;र प&#2381;रद&#2366;न क&#2368; ज&#2366;त&#2368; ह&#2376;&#2306;&#2404;</p>
-   <p>जह&#2366;&#2305; क&#2367;स&#2368; स&#2375;व&#2366; क&#2375; ल&#2367;ए स&#2306;ब&#2306;ध&#2367;त government department, UIDAI, Transport Department, Income Tax Department य&#2366; अन&#2381;य authority क&#2366; approval/issuance आवश&#2381;यक ह&#2376;, अ&#2306;त&#2367;म न&#2367;र&#2381;णय और document issuance उस&#2368; स&#2306;ब&#2306;ध&#2367;त authority क&#2375; न&#2367;यम&#2379;&#2306; क&#2375; अन&#2369;स&#2366;र ह&#2379;त&#2366; ह&#2376;&#2404;</p>
-  </div>
-  <div class='info-card'>
-   <h3>हम&#2366;र&#2368; पहच&#2366;न एव&#2306; स&#2375;व&#2366; क&#2381;ष&#2375;त&#2381;र</h3>
-   <ul>
-    <li><b>Business:</b> LEKHPAL DIGITAL SERVICES</li>
-    <li><b>Centre:</b> CSC VLE / Digital Service Assistance Centre</li>
-    <li><b>Location:</b> Karhal, Post Karhal, District Mainpuri, Uttar Pradesh, India</li>
-    <li><b>Service:</b> Online application &amp; digital documentation assistance</li>
-    <li><b>Support:</b> Phone, WhatsApp और Email</li>
-   </ul>
-  </div>
- </div>
- <div class='private-note'>
-  <b>VLE Authorization &amp; Certificate Privacy:</b> हम&#2366;र&#2375; CSC/VLE authorization documents, certificates, ID details और अन&#2381;य sensitive credentials व&#2375;बस&#2366;इट पर स&#2366;र&#2381;वजन&#2367;क र&#2370;प स&#2375; प&#2381;रक&#2366;श&#2367;त नह&#2368;&#2306; क&#2367;ए ज&#2366;त&#2375;&#2404; आवश&#2381;यकत&#2366; ह&#2379;न&#2375; पर verification क&#2375; ल&#2367;ए स&#2306;ब&#2306;ध&#2367;त official portal/link उपलब&#2381;ध कर&#2366;य&#2366; ज&#2366; सकत&#2366; ह&#2376;&#2404; क&#2367;स&#2368; भ&#2368; visitor क&#2379; login ID, password, OTP, CSC credentials य&#2366; अन&#2381;य confidential access details नह&#2368;&#2306; द&#2367;ए ज&#2366;त&#2375;&#2404;
- </div>
-</div>
-</section>
-
-<section id='policies'>
-<div class='wrap'>
- <div class='section-head'>
-  <h2>Terms, Conditions, Refund &amp; Privacy</h2>
-  <p>स&#2375;व&#2366; ल&#2375;न&#2375; स&#2375; पहल&#2375; न&#2368;च&#2375; द&#2368; गई ज&#2366;नक&#2366;र&#2368; पढ&#2364;&#2375;&#2306;&#2404;</p>
- </div>
-
- <div class='info-grid'>
-
-  <div class='info-card' id='terms'>
-   <h3>Terms &amp; Conditions</h3>
-   <p>LEKHPAL DIGITAL SERVICES क&#2368; services क&#2366; उपय&#2379;ग करन&#2375; पर ग&#2381;र&#2366;हक न&#2367;म&#2381;न शर&#2381;त&#2379;&#2306; क&#2379; समझत&#2366; और स&#2381;व&#2368;क&#2366;र करत&#2366; ह&#2376;:</p>
-   <ul>
-    <li>ग&#2381;र&#2366;हक द&#2381;व&#2366;र&#2366; द&#2368; गई personal information, documents और application details सह&#2368; ह&#2379;न&#2366; आवश&#2381;यक ह&#2376;&#2404;</li>
-    <li>हम क&#2375;वल digital assistance, data-entry, documentation और उपलब&#2381;ध online processes म&#2375;&#2306; सह&#2366;यत&#2366; प&#2381;रद&#2366;न करत&#2375; ह&#2376;&#2306;&#2404;</li>
-    <li>क&#2367;स&#2368; सरक&#2366;र&#2368; व&#2367;भ&#2366;ग, bank, company य&#2366; third-party authority द&#2381;व&#2366;र&#2366; application approval, certificate issuance, licence issuance अथव&#2366; service availability क&#2368; guarantee हम&#2366;र&#2368; ओर स&#2375; नह&#2368;&#2306; द&#2368; ज&#2366;त&#2368;&#2404;</li>
-    <li>सरक&#2366;र&#2368;, portal, payment gateway, courier य&#2366; अन&#2381;य third-party charges हम&#2366;र&#2368; service fee स&#2375; अलग ह&#2379; सकत&#2375; ह&#2376;&#2306;&#2404;</li>
-    <li>Service श&#2369;र&#2370; करन&#2375; स&#2375; पहल&#2375; ग&#2381;र&#2366;हक क&#2379; applicable service charge और क&#2366;म क&#2366; स&#2366;म&#2366;न&#2381;य scope बत&#2366;य&#2366; ज&#2366;एग&#2366;&#2404;</li>
-    <li>ग&#2381;र&#2366;हक क&#2367;स&#2368; गलत, ज&#2366;ल&#2368;, भ&#2381;र&#2366;मक य&#2366; अव&#2376;ध document/information क&#2366; उपय&#2379;ग करन&#2375; क&#2375; ल&#2367;ए हमस&#2375; सह&#2366;यत&#2366; नह&#2368;&#2306; म&#2366;&#2306;ग सकत&#2366;&#2404;</li>
-    <li>क&#2367;स&#2368; application क&#2366; final decision स&#2306;ब&#2306;ध&#2367;त government/authorized authority क&#2375; न&#2367;यम&#2379;&#2306; क&#2375; अन&#2369;स&#2366;र ह&#2379;ग&#2366;&#2404;</li>
-    <li>Website पर उपलब&#2381;ध service information समय, availability और third-party rules क&#2375; अन&#2369;स&#2366;र बदल सकत&#2368; ह&#2376;&#2404;</li>
-    <li>जह&#2366;&#2305; क&#2367;स&#2368; service क&#2375; ल&#2367;ए authorized centre, biometric verification, physical presence य&#2366; original document आवश&#2381;यक ह&#2379;, वह&#2366;&#2305; ग&#2381;र&#2366;हक क&#2379; स&#2306;ब&#2306;ध&#2367;त authority/centre पर ज&#2366;न&#2366; पड&#2364; सकत&#2366; ह&#2376;&#2404;</li>
-   </ul>
-  </div>
-
-  <div class='info-card' id='refund'>
-   <h3>Refund &amp; Cancellation Policy</h3>
-   <p>LEKHPAL DIGITAL SERVICES म&#2375;&#2306; क&#2367;स&#2368; online payment, including Razorpay य&#2366; अन&#2381;य उपलब&#2381;ध payment method, क&#2375; ब&#2366;द यद&#2367; requested service उपलब&#2381;ध न ह&#2379;, service हम&#2366;र&#2368; ओर स&#2375; श&#2369;र&#2370; न क&#2368; ज&#2366; सक&#2375;, य&#2366; हम&#2366;र&#2368; ओर स&#2375; क&#2366;म प&#2370;र&#2366; करन&#2366; स&#2306;भव न ह&#2379;, त&#2379; ग&#2381;र&#2366;हक refund request कर सकत&#2366; ह&#2376;&#2404;</p>
-   <ul>
-    <li>Refund request क&#2375; ल&#2367;ए ग&#2381;र&#2366;हक WhatsApp <a href='https://wa.me/917819019217'>7819019217</a>, फ&#2379;न <a href='tel:7819019217'>7819019217</a> य&#2366; <a href='mailto:kmpooja0851997@gmail.com'>kmpooja0851997@gmail.com</a> पर booking/payment details भ&#2375;ज सकत&#2366; ह&#2376;&#2404;</li>
-    <li>Refund claim म&#2375;&#2306; ग&#2381;र&#2366;हक क&#2366; न&#2366;म, म&#2379;ब&#2366;इल न&#2306;बर, payment reference/transaction ID, payment date, paid amount और refund क&#2366; क&#2366;रण द&#2375;न&#2366; उपय&#2379;ग&#2368; रह&#2375;ग&#2366;&#2404;</li>
-    <li>यद&#2367; refund स&#2381;व&#2368;क&#2371;त ह&#2379;त&#2366; ह&#2376;, त&#2379; refund उपलब&#2381;ध और उपय&#2369;क&#2381;त म&#2366;ध&#2381;यम स&#2375; क&#2367;य&#2366; ज&#2366; सकत&#2366; ह&#2376;&#2404; आवश&#2381;यकत&#2366; क&#2375; अन&#2369;स&#2366;र PhonePe/UPI, bank account य&#2366; payment provider क&#2375; म&#2366;ध&#2381;यम स&#2375; र&#2366;श&#2367; व&#2366;पस भ&#2375;ज&#2368; ज&#2366; सकत&#2368; ह&#2376;&#2404;</li>
-    <li>जह&#2366;&#2305; स&#2306;भव ह&#2379;, refund request प&#2381;र&#2366;प&#2381;त ह&#2379;न&#2375; क&#2375; ब&#2366;द refund process श&#2368;घ&#2381;र श&#2369;र&#2370; क&#2367;य&#2366; ज&#2366;एग&#2366;&#2404; ब&#2376;&#2306;क, Razorpay, UPI य&#2366; अन&#2381;य payment provider क&#2368; processing/settlement timing क&#2375; क&#2366;रण व&#2366;स&#2381;तव&#2367;क र&#2366;श&#2367; ख&#2366;त&#2375; म&#2375;&#2306; आन&#2375; म&#2375;&#2306; अत&#2367;र&#2367;क&#2381;त समय लग सकत&#2366; ह&#2376;&#2404;</li>
-    <li>यद&#2367; क&#2366;म पहल&#2375; ह&#2368; प&#2370;र&#2366; ह&#2379; च&#2369;क&#2366; ह&#2376;, customer-requested work श&#2369;र&#2370; ह&#2379; च&#2369;क&#2366; ह&#2376;, य&#2366; क&#2379;ई non-refundable government/third-party charge भ&#2369;गत&#2366;न क&#2367;य&#2366; ज&#2366; च&#2369;क&#2366; ह&#2376;, त&#2379; refund प&#2370;र&#2368; र&#2366;श&#2367; क&#2366; ह&#2379;न&#2366; आवश&#2381;यक नह&#2368;&#2306; ह&#2376;&#2404; ऐस&#2375; म&#2366;मल&#2379;&#2306; म&#2375;&#2306; refund request क&#2368; स&#2381;थ&#2367;त&#2367; क&#2375; अन&#2369;स&#2366;र व&#2367;च&#2366;र क&#2367;य&#2366; ज&#2366;एग&#2366;&#2404;</li>
-    <li>क&#2367;स&#2368; payment क&#2379; ल&#2375;कर dispute ह&#2379;न&#2375; पर ग&#2381;र&#2366;हक पहल&#2375; WhatsApp/फ&#2379;न/email क&#2375; म&#2366;ध&#2381;यम स&#2375; support team स&#2375; स&#2306;पर&#2381;क कर&#2375; और payment proof उपलब&#2381;ध कर&#2366;ए&#2404;</li>
-    <li>गलत account/UPI details क&#2375; क&#2366;रण payment क&#2367;स&#2368; अन&#2381;य व&#2381;यक&#2381;त&#2367; क&#2379; चल&#2366; ज&#2366;न&#2375; क&#2368; स&#2381;थ&#2367;त&#2367; म&#2375;&#2306; उच&#2367;त transaction proof क&#2375; आध&#2366;र पर सह&#2366;यत&#2366; क&#2368; ज&#2366;एग&#2368;; recovery/payment reversal payment provider क&#2375; न&#2367;यम&#2379;&#2306; क&#2375; अध&#2368;न ह&#2379; सकत&#2366; ह&#2376;&#2404;</li>
-   </ul>
-   <p class='small'><b>महत&#2381;वप&#2370;र&#2381;ण:</b> Payment करन&#2375; स&#2375; पहल&#2375; service, applicable service charge और यद&#2367; क&#2379;ई government/third-party fee ह&#2379; त&#2379; उसक&#2368; प&#2369;ष&#2381;ट&#2367; कर ल&#2375;&#2306;&#2404;</p>
-  </div>
-
-  <div class='info-card' id='privacy'>
-   <h3>Privacy Policy</h3><p>Sensitive credentials, operator passwords, OTPs, CSC login details and private authorization documents are never published on this website.</p>
-   <p>हम ग&#2381;र&#2366;हक द&#2381;व&#2366;र&#2366; द&#2368; गई ज&#2366;नक&#2366;र&#2368; क&#2366; उपय&#2379;ग requested service, communication, booking management और customer support क&#2375; उद&#2381;द&#2375;श&#2381;य स&#2375; करत&#2375; ह&#2376;&#2306;&#2404;</p>
-   <ul>
-    <li>हम न&#2366;म, म&#2379;ब&#2366;इल न&#2306;बर, email, address और service-related details ज&#2376;स&#2368; ज&#2366;नक&#2366;र&#2368; तभ&#2368; ल&#2375;त&#2375; ह&#2376;&#2306; जब वह enquiry/booking/service क&#2375; ल&#2367;ए आवश&#2381;यक ह&#2379;&#2404;</li>
-    <li>Booking form submit करन&#2375; पर ज&#2366;नक&#2366;र&#2368; WhatsApp message क&#2375; र&#2370;प म&#2375;&#2306; customer क&#2375; device पर त&#2376;य&#2366;र ह&#2379;त&#2368; ह&#2376;; customer स&#2381;वय&#2306; message भ&#2375;जत&#2366; ह&#2376;&#2404;</li>
-    <li>हम customer information क&#2379; ज&#2366;नब&#2370;झकर ब&#2375;चन&#2375; य&#2366; अनध&#2367;क&#2371;त marketing क&#2375; ल&#2367;ए उपय&#2379;ग करन&#2375; क&#2366; उद&#2381;द&#2375;श&#2381;य नह&#2368;&#2306; रखत&#2375;&#2404;</li>
-    <li>जह&#2366;&#2305; क&#2367;स&#2368; third-party website, payment provider य&#2366; service platform क&#2368; आवश&#2381;यकत&#2366; ह&#2379;त&#2368; ह&#2376;, वह&#2366;&#2305; उस platform क&#2368; अपन&#2368; privacy policy और terms ल&#2366;ग&#2370; ह&#2379; सकत&#2368; ह&#2376;&#2306;&#2404;</li>
-    <li>Customer क&#2379; OTP, UPI PIN, ATM PIN, password य&#2366; अन&#2381;य confidential credentials स&#2366;झ&#2366; नह&#2368;&#2306; करन&#2375; च&#2366;ह&#2367;ए&#2404;</li>
-    <li>क&#2366;न&#2370;न, fraud prevention, dispute resolution य&#2366; legitimate business record क&#2375; ल&#2367;ए आवश&#2381;यक ज&#2366;नक&#2366;र&#2368; उच&#2367;त अवध&#2367; तक रख&#2368; ज&#2366; सकत&#2368; ह&#2376;&#2404;</li>
-    <li>Privacy स&#2375; स&#2306;ब&#2306;ध&#2367;त प&#2381;रश&#2381;न य&#2366; correction request क&#2375; ल&#2367;ए न&#2368;च&#2375; द&#2367;ए गए contact details क&#2366; उपय&#2379;ग कर&#2375;&#2306;&#2404;</li>
-   </ul>
-  </div>
-
-  <div class='info-card' id='disclaimer'>
-   <h3>Disclaimer</h3>
-   <p>LEKHPAL DIGITAL SERVICES एक स&#2381;वत&#2306;त&#2381;र digital assistance business ह&#2376;&#2404; यह website क&#2367;स&#2368; सरक&#2366;र&#2368; व&#2367;भ&#2366;ग, CSC, UIDAI, RTO, bank य&#2366; अन&#2381;य authority क&#2368; official website नह&#2368;&#2306; ह&#2376; और न ह&#2368; ऐस&#2368; official affiliation क&#2366; द&#2366;व&#2366; करत&#2368; ह&#2376;&#2404;</p>
-   <p>सरक&#2366;र&#2368; य&#2379;जन&#2366;ओ&#2306;, certificates, licences, registrations और अन&#2381;य third-party services क&#2368; final approval, issuance, processing तथ&#2366; eligibility स&#2306;ब&#2306;ध&#2367;त authority क&#2375; न&#2367;यम&#2379;&#2306; पर न&#2367;र&#2381;भर करत&#2368; ह&#2376;&#2404; Website पर द&#2368; गई ज&#2366;नक&#2366;र&#2368; स&#2366;म&#2366;न&#2381;य assistance क&#2375; ल&#2367;ए ह&#2376;; official decision क&#2375; ल&#2367;ए स&#2306;ब&#2306;ध&#2367;त व&#2367;भ&#2366;ग/portal क&#2368; ज&#2366;नक&#2366;र&#2368; क&#2379; प&#2381;र&#2366;थम&#2367;कत&#2366; द&#2375;&#2306;&#2404;</p>
-  </div>
-
-  <div class='info-card' id='grievance'>
-   <h3>Grievance &amp; Customer Support</h3>
-   <p>क&#2367;स&#2368; service, payment, correction, cancellation य&#2366; refund स&#2375; स&#2306;ब&#2306;ध&#2367;त समस&#2381;य&#2366; ह&#2379;न&#2375; पर क&#2371;पय&#2366; booking details क&#2375; स&#2366;थ हमस&#2375; स&#2306;पर&#2381;क कर&#2375;&#2306;&#2404;</p>
-   <ul>
-    <li><b>Phone:</b> 7819019217</li>
-    <li><b>WhatsApp:</b> 7819019217</li>
-    <li><b>Email:</b> kmpooja0851997@gmail.com</li>
-    <li><b>Service Area:</b> Mainpuri, Uttar Pradesh</li>
-   </ul>
-  </div>
-
-  <div class='info-card'>
-   <h3>Service Availability</h3>
-   <p>सभ&#2368; services हर समय उपलब&#2381;ध ह&#2379;&#2306;, यह आवश&#2381;यक नह&#2368;&#2306; ह&#2376;&#2404; Government portal, third-party provider, technical issue, appointment availability य&#2366; अन&#2381;य क&#2366;रण&#2379;&#2306; स&#2375; क&#2367;स&#2368; service क&#2368; availability बदल सकत&#2368; ह&#2376;&#2404; Booking request भ&#2375;जन&#2366; service acceptance क&#2368; guarantee नह&#2368;&#2306; ह&#2376;&#2404;</p>
-  </div>
-
- </div>
-</div>
-</section>
-
-<section id='contact' style='background:#edf5fc'>
-<div class='wrap'>
- <div class='section-head'><h2>Contact &amp; WhatsApp Booking</h2><p>Service enquiry और booking क&#2375; ल&#2367;ए स&#2368;ध&#2375; स&#2306;पर&#2381;क कर&#2375;&#2306;&#2404;</p></div>
- <div class='contact-grid'>
-  <div class='contact-card'>
-   <div class='contact-item'><b>Business Name</b><br/>LEKHPAL DIGITAL SERVICES</div>
-   <div class='contact-item'><b>Business Type</b><br/>Independent Digital Service &amp; Online Assistance</div>
-   <div class='contact-item'><b>Office Address</b><br/>Gram Aimanpur, Post Kirthua, Karhal, District Mainpuri, Uttar Pradesh, India</div>
-   <div class='contact-item'><b>Phone / WhatsApp</b><br/><a href='tel:7819019217'>7819019217</a></div>
-   <div class='contact-item'><b>Email</b><br/><a href='mailto:kmpooja0851997@gmail.com'>kmpooja0851997@gmail.com</a></div><div class='contact-item'><b>Office Location</b><br/><a class='official-link' href='https://www.google.com/maps/search/?api=1&amp;query=Gram+Aimanpur+Post+Kirthua+Karhal+Mainpuri+Uttar+Pradesh' rel='noopener noreferrer' target='_blank'>📍 Google Maps पर Location द&#2375;ख&#2375;&#2306; &#8599;</a></div>
-  </div>
-  <div class='contact-card'>
-   <h3>Quick Contact</h3>
-   <div class='contact-item'><b>Refund / Payment Support</b><br/>Refund claim य&#2366; payment issue क&#2375; ल&#2367;ए WhatsApp, फ&#2379;न य&#2366; email पर payment reference क&#2375; स&#2366;थ स&#2306;पर&#2381;क कर&#2375;&#2306;&#2404;</div>
-   <p class='small'>अगर booking form नह&#2368;&#2306; भरन&#2366; च&#2366;हत&#2375; ह&#2376;&#2306; त&#2379; WhatsApp पर स&#2368;ध&#2375; enquiry भ&#2375;ज सकत&#2375; ह&#2376;&#2306;&#2404; Service श&#2369;र&#2370; ह&#2379;न&#2375; स&#2375; पहल&#2375; availability और final charges क&#2368; प&#2369;ष&#2381;ट&#2367; कर&#2375;&#2306;&#2404;</p>
-   <div class='cta'>
-    <a class='btn btn-green' href='https://wa.me/917819019217?text=Hello%20LEKHPAL%20DIGITAL%20SERVICES%2C%20mujhe%20service%20book%20karni%20hai.'>WhatsApp Now</a>
-    <a class='btn btn-primary' href='tel:7819019217'>Call Now</a>
-   </div>
-  </div>
- </div>
-</div>
-</section>
-
-<div class='disclaimer'>LEKHPAL DIGITAL SERVICES स&#2381;वत&#2306;त&#2381;र digital assistance business ह&#2376;&#2404; यह व&#2375;बस&#2366;इट क&#2367;स&#2368; सरक&#2366;र&#2368; व&#2367;भ&#2366;ग/CSC/UIDAI/RTO अथव&#2366; अन&#2381;य authority क&#2368; official website नह&#2368;&#2306; ह&#2376;&#2404; Government/third-party services क&#2368; final approval, issuance और processing स&#2306;ब&#2306;ध&#2367;त authority क&#2375; न&#2367;यम&#2379;&#2306; क&#2375; अन&#2369;स&#2366;र ह&#2379;त&#2368; ह&#2376;&#2404;</div>
-
-</main>
-
-<footer>
-<div class='footer-grid'>
- <div>
-  <h3>LEKHPAL DIGITAL SERVICES</h3>
-  <p>Online Digital &amp; Documentation Assistance</p>
-  <p>Mainpuri, Uttar Pradesh &#8211; 205264</p>
- </div>
- <div>
-  <h3>Quick Links</h3>
-  <a href='#home'>Home</a>
-  <a href='#services'>Services</a>
-  <a href='#booking'>Book Service</a>
-  <a href='#charges'>Charges</a>
-  <a href='#about'>About Us</a>
-  <a href='#policies'>Policies</a>
-  <a href='#contact'>Contact</a>
- </div>
- <div>
-  <h3>Support</h3>
-  <a href='tel:7819019217'>7819019217</a>
-  <a href='mailto:kmpooja0851997@gmail.com'>kmpooja0851997@gmail.com</a>
-  <a href='https://wa.me/917819019217'>WhatsApp</a>
- </div>
-</div>
-<div class='copyright'>&#169; 2026 LEKHPAL DIGITAL SERVICES. All rights reserved.</div>
-</footer>
-
-<script>
-document.getElementById(&quot;bookingForm&quot;).addEventListener(&quot;submit&quot;,function(e){
- e.preventDefault();
-
- const name=document.getElementById(&quot;name&quot;).value.trim();
- const phone=document.getElementById(&quot;phone&quot;).value.trim();
- const email=document.getElementById(&quot;email&quot;).value.trim() || &quot;Not provided&quot;;
- const service=document.getElementById(&quot;service&quot;).value;
- const date=document.getElementById(&quot;date&quot;).value || &quot;Not specified&quot;;
- const address=document.getElementById(&quot;address&quot;).value.trim();
- const details=document.getElementById(&quot;details&quot;).value.trim() || &quot;Not provided&quot;;
- const consent=document.getElementById(&quot;consent&quot;).checked;
-
- if(!/^[0-9]{10}$/.test(phone)){
-  alert(&quot;क&#2371;पय&#2366; सह&#2368; 10 अ&#2306;क&#2379;&#2306; क&#2366; म&#2379;ब&#2366;इल न&#2306;बर ड&#2366;ल&#2375;&#2306;&#2404;&quot;);
-  return;
- }
-
- if(!consent){
-  alert(&quot;क&#2371;पय&#2366; Terms और service information क&#2379; स&#2381;व&#2368;क&#2366;र कर&#2375;&#2306;&#2404;&quot;);
-  return;
- }
-
- const message =
- &quot;LEKHPAL DIGITAL SERVICES - NEW BOOKING\n\n&quot; +
- &quot;Customer Name: &quot; + name + &quot;\n&quot; +
- &quot;Mobile: &quot; + phone + &quot;\n&quot; +
- &quot;Email: &quot; + email + &quot;\n&quot; +
- &quot;Service: &quot; + service + &quot;\n&quot; +
- &quot;Preferred Date: &quot; + date + &quot;\n&quot; +
- &quot;Address: &quot; + address + &quot;\n&quot; +
- &quot;Work Details: &quot; + details + &quot;\n\n&quot; +
- &quot;Please confirm service availability, final charges and payment instructions before payment.&quot;;
-
- const whatsappUrl=&quot;https://wa.me/917819019217?text=&quot;+encodeURIComponent(message);
- window.location.href=whatsappUrl;
-});
-</script>
-
-<b:section class='footer' id='blogger-footer' maxwidgets='1' showaddelement='no'>
-  <b:widget id='HTML99' locked='true' title='' type='HTML' version='2' visible='true'>
-    <b:includable id='main'>
-      <div style='display:none'>LEKHPAL DIGITAL SERVICES</div>
-    </b:includable>
-  </b:widget>
-</b:section>
-
-
-<a aria-label='WhatsApp' class='floating-wa' href='https://wa.me/917819019217?text=Hello%20LEKHPAL%20DIGITAL%20SERVICES%2C%20mujhe%20digital%20service%20ki%20jankari%20chahiye.'>💬<span>WhatsApp</span></a>
-<button aria-label='Back to top' class='back-top' id='backTop'>&#8593;</button>
-<script>
-//<![CDATA[
-(function(){var b=document.getElementById('backTop');if(!b)return;window.addEventListener('scroll',function(){b.style.display=window.scrollY>500?'grid':'none'});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})})})();
-//]]>
-</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('bookingForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const name = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const service = document.getElementById('service').value;
+      const date = document.getElementById('date').value;
+      const mode = document.getElementById('mode').value;
+      const address = document.getElementById('address').value.trim();
+      const details = document.getElementById('details').value.trim();
+      if (!/^[6-9]\d{9}$/.test(phone)) { alert('कृपया सही 10 अंकों का मोबाइल नंबर लिखें।'); return; }
+      if (!document.getElementById('consent').checked) { alert('कृपया सहमति बॉक्स चुनें।'); return; }
+      const lines = [
+        'Hello LEKHPAL DIGITAL SERVICES, mujhe service booking karni hai.',
+        '',
+        'Name: ' + name,
+        'Mobile: ' + phone,
+        'Service: ' + service,
+        'Preferred contact: ' + mode,
+        date ? 'Preferred date: ' + date : '',
+        email ? 'Email: ' + email : '',
+        address ? 'Area: ' + address : '',
+        details ? 'Details: ' + details : '',
+        '',
+        'Please confirm service availability, documents and total charges.'
+      ].filter(Boolean);
+      const url = 'https://wa.me/917819019217?text=' + encodeURIComponent(lines.join('\n'));
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
+    const backtop = document.getElementById('backtop');
+    window.addEventListener('scroll', () => backtop.classList.toggle('show', window.scrollY > 500));
+    backtop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+  </script>
 </body>
 </html>
